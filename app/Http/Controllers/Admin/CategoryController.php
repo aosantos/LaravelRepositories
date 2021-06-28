@@ -7,6 +7,7 @@ use App\Http\Requests\StoreUpdateCategoryFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class CategoryController extends Controller
 {
     /**
@@ -56,7 +57,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = DB::table('categories')->where('id', $id)->first();
+
+        if(!$category){
+            return redirect()->back();
+        }
+
+        return view('admin.categories.show',compact('category'));
     }
 
     /**
@@ -85,7 +92,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('categories')
+            ->where('id',$id)
+            ->update([
+                'title'         => $request->title,
+                'url'           => $request->url,
+                'description'   => $request->description
+            ]);
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -96,6 +110,35 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('categories')->where('id',$id)->delete();
+
+        return redirect()->route('categories.index');
+    }
+    public function search(Request $request)
+    {
+        $data = $request->all();
+        /*$categories = DB::table('categories')
+            ->where('title',$search)
+            ->orWhere('url',$search)
+            ->orWhere('description','LIKE',"%{$search}%")
+            ->get();
+        */
+
+        $categories = DB::table('categories')
+            ->where(function ($query) use ($data){
+                if (isset($data['title'])){
+                    $query->where('title',$data['title']);
+                }
+            if(isset($data['url'])){
+                $query->orWhere('url',$data['url']);
+            }
+                if(isset($data['description'])){
+                    $desc = $data['description'];
+                    $query->Where('description','LIKE',"%{$desc}%");
+                }
+           })
+            ->get();
+
+        return view('admin.categories.index',compact('categories'));
     }
 }
