@@ -6,6 +6,10 @@
         Categorias
     </h3>
 
+    <ol class="breadcrumb">
+        <li><a href="{{route('categories.index')}}">Categorias</a></li>
+    </ol>
+
 @stop
 
 @section('content')

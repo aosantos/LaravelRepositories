@@ -17,7 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = DB::table('categories')->get();
+        $categories = DB::table('categories')
+            ->orderBy('id','desc')
+            ->get();
 
         return view('admin.categories.index',compact($categories,'categories'));
     }
@@ -137,6 +139,7 @@ class CategoryController extends Controller
                     $query->Where('description','LIKE',"%{$desc}%");
                 }
            })
+            ->orderBy('id','desc')
             ->get();
 
         return view('admin.categories.index',compact('categories'));

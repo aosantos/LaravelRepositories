@@ -4,6 +4,10 @@
     <h3>
         Editar categoria:{{$category->title}}
     </h3>
+    <ol class="breadcrumb">
+        <li><a href="{{route('categories.index')}}">Categorias</a></li>/
+        <li><a href="{{route('categories.show',$category->id)}}" class="active">Detalhes</a></li>
+    </ol>
 @stop
 
 @section('content')
