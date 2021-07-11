@@ -324,7 +324,13 @@ trait Converter
      */
     public function toIso8601ZuluString($unitPrecision = 'second')
     {
+<<<<<<< HEAD
         return $this->copy()->utc()->rawFormat('Y-m-d\T'.static::getTimeFormatByPrecision($unitPrecision).'\Z');
+=======
+        return $this->avoidMutation()
+            ->utc()
+            ->rawFormat('Y-m-d\T'.static::getTimeFormatByPrecision($unitPrecision).'\Z');
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -452,7 +458,11 @@ trait Converter
      */
     public function toRfc7231String()
     {
+<<<<<<< HEAD
         return $this->copy()
+=======
+        return $this->avoidMutation()
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             ->setTimezone('GMT')
             ->rawFormat(\defined('static::RFC7231_FORMAT') ? static::RFC7231_FORMAT : CarbonInterface::RFC7231_FORMAT);
     }
@@ -512,7 +522,11 @@ trait Converter
      */
     public function toString()
     {
+<<<<<<< HEAD
         return $this->copy()->locale('en')->isoFormat('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
+=======
+        return $this->avoidMutation()->locale('en')->isoFormat('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -537,7 +551,11 @@ trait Converter
 
         $yearFormat = $this->year < 0 || $this->year > 9999 ? 'YYYYYY' : 'YYYY';
         $tzFormat = $keepOffset ? 'Z' : '[Z]';
+<<<<<<< HEAD
         $date = $keepOffset ? $this : $this->copy()->utc();
+=======
+        $date = $keepOffset ? $this : $this->avoidMutation()->utc();
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         return $date->isoFormat("$yearFormat-MM-DD[T]HH:mm:ss.SSSSSS$tzFormat");
     }

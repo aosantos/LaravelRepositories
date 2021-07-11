@@ -25,18 +25,34 @@ use Monolog\Logger;
  *   $log->pushHandler($redis);
  *
  * @author Thomas Tourlourat <thomas@tourlourat.com>
+<<<<<<< HEAD
  */
 class RedisHandler extends AbstractProcessingHandler
 {
     private $redisClient;
     private $redisKey;
+=======
+ *
+ * @phpstan-import-type FormattedRecord from AbstractProcessingHandler
+ */
+class RedisHandler extends AbstractProcessingHandler
+{
+    /** @var \Predis\Client|\Redis */
+    private $redisClient;
+    /** @var string */
+    private $redisKey;
+    /** @var int */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected $capSize;
 
     /**
      * @param \Predis\Client|\Redis $redis   The redis instance
      * @param string                $key     The key name to push records to
+<<<<<<< HEAD
      * @param string|int            $level   The minimum logging level at which this handler will be triggered
      * @param bool                  $bubble  Whether the messages that are handled can bubble up the stack or not
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @param int                   $capSize Number of entries to limit list size to, 0 = unlimited
      */
     public function __construct($redis, string $key, $level = Logger::DEBUG, bool $bubble = true, int $capSize = 0)
@@ -67,6 +83,11 @@ class RedisHandler extends AbstractProcessingHandler
     /**
      * Write and cap the collection
      * Writes the record to the redis list and caps its
+<<<<<<< HEAD
+=======
+     *
+     * @phpstan-param FormattedRecord $record
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function writeCapped(array $record): void
     {

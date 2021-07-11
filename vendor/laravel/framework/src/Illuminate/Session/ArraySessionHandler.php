@@ -3,6 +3,10 @@
 namespace Illuminate\Session;
 
 use Illuminate\Support\InteractsWithTime;
+<<<<<<< HEAD
+=======
+use ReturnTypeWillChange;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use SessionHandlerInterface;
 
 class ArraySessionHandler implements SessionHandlerInterface
@@ -37,6 +41,10 @@ class ArraySessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function open($savePath, $sessionName)
     {
         return true;
@@ -45,6 +53,10 @@ class ArraySessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function close()
     {
         return true;
@@ -53,6 +65,10 @@ class ArraySessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function read($sessionId)
     {
         if (! isset($this->storage[$sessionId])) {
@@ -73,6 +89,10 @@ class ArraySessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function write($sessionId, $data)
     {
         $this->storage[$sessionId] = [
@@ -86,6 +106,10 @@ class ArraySessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function destroy($sessionId)
     {
         if (isset($this->storage[$sessionId])) {
@@ -98,6 +122,10 @@ class ArraySessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function gc($lifetime)
     {
         $expiration = $this->calculateExpiration($lifetime);

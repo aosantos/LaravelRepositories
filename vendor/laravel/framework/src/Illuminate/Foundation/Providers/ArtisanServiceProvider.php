@@ -68,6 +68,10 @@ use Illuminate\Queue\Console\ForgetFailedCommand as ForgetFailedQueueCommand;
 use Illuminate\Queue\Console\ListenCommand as QueueListenCommand;
 use Illuminate\Queue\Console\ListFailedCommand as ListFailedQueueCommand;
 use Illuminate\Queue\Console\PruneBatchesCommand as PruneBatchesQueueCommand;
+<<<<<<< HEAD
+=======
+use Illuminate\Queue\Console\PruneFailedJobsCommand;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use Illuminate\Queue\Console\RestartCommand as QueueRestartCommand;
 use Illuminate\Queue\Console\RetryBatchCommand as QueueRetryBatchCommand;
 use Illuminate\Queue\Console\RetryCommand as QueueRetryCommand;
@@ -109,6 +113,10 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
         'QueueForget' => 'command.queue.forget',
         'QueueListen' => 'command.queue.listen',
         'QueuePruneBatches' => 'command.queue.prune-batches',
+<<<<<<< HEAD
+=======
+        'QueuePruneFailedJobs' => 'command.queue.prune-failed-jobs',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         'QueueRestart' => 'command.queue.restart',
         'QueueRetry' => 'command.queue.retry',
         'QueueRetryBatch' => 'command.queue.retry-batch',
@@ -703,6 +711,21 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
      *
      * @return void
      */
+<<<<<<< HEAD
+=======
+    protected function registerQueuePruneFailedJobsCommand()
+    {
+        $this->app->singleton('command.queue.prune-failed-jobs', function () {
+            return new PruneFailedJobsCommand;
+        });
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected function registerQueueRestartCommand()
     {
         $this->app->singleton('command.queue.restart', function ($app) {

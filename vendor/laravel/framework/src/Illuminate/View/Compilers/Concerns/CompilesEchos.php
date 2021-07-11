@@ -141,7 +141,17 @@ trait CompilesEchos
      */
     protected function wrapInEchoHandler($value)
     {
+<<<<<<< HEAD
         return empty($this->echoHandlers) ? $value : '$__bladeCompiler->applyEchoHandler('.Str::beforeLast($value, ';').')';
+=======
+        $value = Str::of($value)
+            ->trim()
+            ->when(Str::endsWith($value, ';'), function ($str) {
+                return $str->beforeLast(';');
+            });
+
+        return empty($this->echoHandlers) ? $value : '$__bladeCompiler->applyEchoHandler('.$value.')';
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**

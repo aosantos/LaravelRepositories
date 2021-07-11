@@ -157,10 +157,17 @@ class Gate implements GateContract
     {
         $abilities = $abilities ?: [
             'viewAny' => 'viewAny',
+<<<<<<< HEAD
             'view'    => 'view',
             'create'  => 'create',
             'update'  => 'update',
             'delete'  => 'delete',
+=======
+            'view' => 'view',
+            'create' => 'create',
+            'update' => 'update',
+            'delete' => 'delete',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         ];
 
         foreach ($abilities as $ability => $method) {

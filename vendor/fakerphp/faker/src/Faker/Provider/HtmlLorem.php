@@ -152,7 +152,11 @@ class HtmlLorem extends Base
 
         switch ($rand) {
             case 1:
+<<<<<<< HEAD
                 $node->setAttribute('class', $this->generator->word);
+=======
+                $node->setAttribute('class', $this->generator->word());
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
                 break;
 
@@ -180,7 +184,11 @@ class HtmlLorem extends Base
     {
         $text = $element->ownerDocument->createTextNode($this->generator->sentence(self::numberBetween(1, $maxLength)));
         $node = $element->ownerDocument->createElement(static::A_TAG);
+<<<<<<< HEAD
         $node->setAttribute('href', $this->generator->safeEmailDomain);
+=======
+        $node->setAttribute('href', $this->generator->safeEmailDomain());
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $node->appendChild($text);
         $element->appendChild($node);
     }
@@ -234,7 +242,11 @@ class HtmlLorem extends Base
 
         $textLabel = $element->ownerDocument->createElement(static::LABEL_TAG);
         $textLabel->setAttribute('for', 'username');
+<<<<<<< HEAD
         $textLabel->textContent = $this->generator->word;
+=======
+        $textLabel->textContent = $this->generator->word();
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         $passwordInput = $element->ownerDocument->createElement(static::INPUT_TAG);
         $passwordInput->setAttribute('type', 'password');
@@ -242,6 +254,7 @@ class HtmlLorem extends Base
 
         $passwordLabel = $element->ownerDocument->createElement(static::LABEL_TAG);
         $passwordLabel->setAttribute('for', 'password');
+<<<<<<< HEAD
         $passwordLabel->textContent = $this->generator->word;
 
         $submit = $element->ownerDocument->createElement(static::INPUT_TAG);
@@ -250,6 +263,16 @@ class HtmlLorem extends Base
 
         $submit = $element->ownerDocument->createElement(static::FORM_TAG);
         $submit->setAttribute('action', $this->generator->safeEmailDomain);
+=======
+        $passwordLabel->textContent = $this->generator->word();
+
+        $submit = $element->ownerDocument->createElement(static::INPUT_TAG);
+        $submit->setAttribute('type', 'submit');
+        $submit->setAttribute('value', $this->generator->word());
+
+        $submit = $element->ownerDocument->createElement(static::FORM_TAG);
+        $submit->setAttribute('action', $this->generator->safeEmailDomain());
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $submit->setAttribute('method', 'POST');
         $submit->appendChild($textLabel);
         $submit->appendChild($textInput);

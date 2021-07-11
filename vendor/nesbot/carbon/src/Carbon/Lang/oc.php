@@ -82,7 +82,11 @@ return [
     'weekdays' => ['dimenge', 'diluns', 'dimars', 'dimècres', 'dijòus', 'divendres', 'dissabte'],
     'weekdays_short' => ['dg', 'dl', 'dm', 'dc', 'dj', 'dv', 'ds'],
     'weekdays_min' => ['dg', 'dl', 'dm', 'dc', 'dj', 'dv', 'ds'],
+<<<<<<< HEAD
     'ordinal' => function ($number, $period) {
+=======
+    'ordinal' => function ($number, string $period = '') {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $ordinal = [1 => 'èr', 2 => 'nd'][(int) $number] ?? 'en';
 
         // feminine for year, week, hour, minute, second

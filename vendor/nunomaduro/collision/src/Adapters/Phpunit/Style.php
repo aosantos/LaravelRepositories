@@ -185,6 +185,13 @@ final class Style
             '/vendor\/laravel\/dusk/',
             '/vendor\/laravel\/framework\/src\/Illuminate\/Testing/',
             '/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Testing/',
+<<<<<<< HEAD
+=======
+            '/vendor\/symfony\/phpunit-bridge/',
+            '/vendor\/bin\/.phpunit/',
+            '/bin\/.phpunit/',
+            '/vendor\/sulu\/sulu\/src\/Sulu\/Bundle\/TestBundle\/Testing/',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         ]);
 
         if ($throwable instanceof ExceptionWrapper && $throwable->getOriginalException() !== null) {

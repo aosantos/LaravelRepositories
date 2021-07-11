@@ -22,6 +22,11 @@ use Monolog\Formatter\FormatterInterface;
  * sending one per log message.
  *
  * @author Christophe Coevoet <stof@notk.org>
+<<<<<<< HEAD
+=======
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class BufferHandler extends AbstractHandler implements ProcessableHandlerInterface, FormattableHandlerInterface
 {
@@ -29,17 +34,32 @@ class BufferHandler extends AbstractHandler implements ProcessableHandlerInterfa
 
     /** @var HandlerInterface */
     protected $handler;
+<<<<<<< HEAD
     protected $bufferSize = 0;
     protected $bufferLimit;
     protected $flushOnOverflow;
     protected $buffer = [];
+=======
+    /** @var int */
+    protected $bufferSize = 0;
+    /** @var int */
+    protected $bufferLimit;
+    /** @var bool */
+    protected $flushOnOverflow;
+    /** @var Record[] */
+    protected $buffer = [];
+    /** @var bool */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected $initialized = false;
 
     /**
      * @param HandlerInterface $handler         Handler.
      * @param int              $bufferLimit     How many entries should be buffered at most, beyond that the oldest items are removed from the buffer.
+<<<<<<< HEAD
      * @param string|int       $level           The minimum logging level at which this handler will be triggered
      * @param bool             $bubble          Whether the messages that are handled can bubble up the stack or not
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @param bool             $flushOnOverflow If true, the buffer is flushed when the max size has been reached, by default oldest entries are discarded
      */
     public function __construct(HandlerInterface $handler, int $bufferLimit = 0, $level = Logger::DEBUG, bool $bubble = true, bool $flushOnOverflow = false)
@@ -75,6 +95,10 @@ class BufferHandler extends AbstractHandler implements ProcessableHandlerInterfa
         }
 
         if ($this->processors) {
+<<<<<<< HEAD
+=======
+            /** @var Record $record */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $record = $this->processRecord($record);
         }
 

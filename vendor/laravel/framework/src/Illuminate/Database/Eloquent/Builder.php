@@ -283,7 +283,11 @@ class Builder
      * @param  mixed  $operator
      * @param  mixed  $value
      * @param  string  $boolean
+<<<<<<< HEAD
      * @return \Illuminate\Database\Eloquent\Model|static
+=======
+     * @return \Illuminate\Database\Eloquent\Model|static|null
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function firstWhere($column, $operator = null, $value = null, $boolean = 'and')
     {

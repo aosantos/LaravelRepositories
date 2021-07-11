@@ -44,12 +44,20 @@ class ProcessHandler extends AbstractProcessingHandler
     private $cwd;
 
     /**
+<<<<<<< HEAD
      * @var array
+=======
+     * @var resource[]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     private $pipes = [];
 
     /**
+<<<<<<< HEAD
      * @var array
+=======
+     * @var array<int, string[]>
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected const DESCRIPTOR_SPEC = [
         0 => ['pipe', 'r'],  // STDIN is a pipe that the child will read from
@@ -60,8 +68,11 @@ class ProcessHandler extends AbstractProcessingHandler
     /**
      * @param  string                    $command Command for the process to start. Absolute paths are recommended,
      *                                            especially if you do not use the $cwd parameter.
+<<<<<<< HEAD
      * @param  string|int                $level   The minimum logging level at which this handler will be triggered.
      * @param  bool                      $bubble  Whether the messages that are handled can bubble up the stack or not.
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @param  string|null               $cwd     "Current working directory" (CWD) for the process to be executed in.
      * @throws \InvalidArgumentException
      */
@@ -164,7 +175,11 @@ class ProcessHandler extends AbstractProcessingHandler
      */
     protected function readProcessErrors(): string
     {
+<<<<<<< HEAD
         return stream_get_contents($this->pipes[2]);
+=======
+        return (string) stream_get_contents($this->pipes[2]);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**

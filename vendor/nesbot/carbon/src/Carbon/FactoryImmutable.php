@@ -214,7 +214,11 @@ use Closure;
  *                                                                                                                                                                                                           You should rather use the ->settings() method.
  *                                                                                                                                                                                                           Or you can use method variants: addYearsWithOverflow/addYearsNoOverflow, same variants
  *                                                                                                                                                                                                           are available for quarters, years, decade, centuries, millennia (singular and plural forms).
+<<<<<<< HEAD
  * @method CarbonImmutable                                    withTestNow($testNow = null, $callback = null)                                                                                     Temporarily sets a static date to be used within the callback.
+=======
+ * @method mixed                                              withTestNow($testNow = null, $callback = null)                                                                                     Temporarily sets a static date to be used within the callback.
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  *                                                                                                                                                                                               Using setTestNow to set the date, executing the callback, then
  *                                                                                                                                                                                               clearing the test instance.
  *                                                                                                                                                                                               /!\ Use this method for unit tests only.

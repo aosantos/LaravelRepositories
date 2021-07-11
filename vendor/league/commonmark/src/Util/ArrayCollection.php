@@ -71,8 +71,11 @@ class ArrayCollection implements \IteratorAggregate, \Countable, \ArrayAccess
      * Retrieve an external iterator
      *
      * @return \ArrayIterator<int|string, mixed>
+<<<<<<< HEAD
      *
      * @phpstan-return \ArrayIterator<TKey, TValue>
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function getIterator()
     {

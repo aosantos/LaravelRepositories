@@ -332,7 +332,11 @@ trait BuildsQueries
      * @param  int  $perPage
      * @param  \Illuminate\Pagination\Cursor  $cursor
      * @param  array  $options
+<<<<<<< HEAD
      * @return \Illuminate\Pagination\Paginator
+=======
+     * @return \Illuminate\Pagination\CursorPaginator
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function cursorPaginator($items, $perPage, $cursor, $options)
     {

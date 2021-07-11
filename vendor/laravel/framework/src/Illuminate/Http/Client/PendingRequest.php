@@ -8,6 +8,10 @@ use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\TransferException;
 use GuzzleHttp\HandlerStack;
+<<<<<<< HEAD
+=======
+use Illuminate\Http\Client\Events\ConnectionFailed;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use Illuminate\Http\Client\Events\RequestSending;
 use Illuminate\Http\Client\Events\ResponseReceived;
 use Illuminate\Support\Collection;
@@ -623,8 +627,11 @@ class PendingRequest
             $results[$key] = $item instanceof static ? $item->getPromise()->wait() : $item->wait();
         }
 
+<<<<<<< HEAD
         ksort($results);
 
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         return $results;
     }
 
@@ -676,6 +683,11 @@ class PendingRequest
                     $this->dispatchResponseReceivedEvent($response);
                 });
             } catch (ConnectException $e) {
+<<<<<<< HEAD
+=======
+                $this->dispatchConnectionFailedEvent();
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 throw new ConnectionException($e->getMessage(), 0, $e);
             }
         }, $this->retryDelay ?? 100);
@@ -706,7 +718,14 @@ class PendingRequest
     {
         return $this->promise = $this->sendRequest($method, $url, $options)
             ->then(function (MessageInterface $message) {
+<<<<<<< HEAD
                 return $this->populateResponse(new Response($message));
+=======
+                return tap(new Response($message), function ($response) {
+                    $this->populateResponse($response);
+                    $this->dispatchResponseReceivedEvent($response);
+                });
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             })
             ->otherwise(function (TransferException $e) {
                 return $e instanceof RequestException ? $this->populateResponse(new Response($e->getResponse())) : $e;
@@ -995,6 +1014,21 @@ class PendingRequest
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Dispatch the ConnectionFailed event if a dispatcher is available.
+     *
+     * @return void
+     */
+    protected function dispatchConnectionFailedEvent()
+    {
+        if ($dispatcher = optional($this->factory)->getDispatcher()) {
+            $dispatcher->dispatch(new ConnectionFailed($this->request));
+        }
+    }
+
+    /**
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Set the client instance.
      *
      * @param  \GuzzleHttp\Client  $client

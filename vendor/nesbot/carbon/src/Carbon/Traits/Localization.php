@@ -168,7 +168,11 @@ trait Localization
      *
      * @return string
      */
+<<<<<<< HEAD
     public static function getTranslationMessageWith($translator, string $key, string $locale = null, string $default = null)
+=======
+    public static function getTranslationMessageWith($translator, string $key, ?string $locale = null, ?string $default = null)
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!($translator instanceof TranslatorBagInterface && $translator instanceof TranslatorInterface)) {
             throw new InvalidTypeException(
@@ -196,7 +200,11 @@ trait Localization
      *
      * @return string
      */
+<<<<<<< HEAD
     public function getTranslationMessage(string $key, string $locale = null, string $default = null, $translator = null)
+=======
+    public function getTranslationMessage(string $key, ?string $locale = null, ?string $default = null, $translator = null)
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return static::getTranslationMessageWith($translator ?: $this->getLocalTranslator(), $key, $locale, $default);
     }
@@ -239,12 +247,20 @@ trait Localization
      *
      * @param string                                             $key
      * @param array                                              $parameters
+<<<<<<< HEAD
      * @param null                                               $number
+=======
+     * @param string|int|float|null                              $number
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @param \Symfony\Component\Translation\TranslatorInterface $translator
      *
      * @return string
      */
+<<<<<<< HEAD
     public function translate(string $key, array $parameters = [], $number = null, TranslatorInterface $translator = null, bool $altNumbers = false): string
+=======
+    public function translate(string $key, array $parameters = [], $number = null, ?TranslatorInterface $translator = null, bool $altNumbers = false): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $translation = static::translateWith($translator ?: $this->getLocalTranslator(), $key, $parameters, $number);
 
@@ -302,7 +318,11 @@ trait Localization
             return $result;
         }
 
+<<<<<<< HEAD
         return "$number";
+=======
+        return (string) $number;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**

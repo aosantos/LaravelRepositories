@@ -2,11 +2,24 @@
 
 All notable changes of the PHPUnit 8.5 release series are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
+=======
+## [8.5.17] - 2021-06-23
+
+### Changed
+
+* PHPUnit now errors out on startup when `PHP_VERSION` contains a value that is not compatible with `version_compare()`, for instance `X.Y.Z-(to be removed in future macOS)`
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 ## [8.5.16] - 2021-06-05
 
 ### Changed
 
+<<<<<<< HEAD
 * The test result cache (the storage for which is implemented in `PHPUnit\Runner\DefaultTestResultCache`) no longer uses PHP's `serialize()` and `unserialize()` function for persistence. It now uses a versioned JSON format instead that is independent of PHP implementation details (see [#3581](https://github.com/sebastianbergmann/phpunit/issues/3581) and [#4662](https://github.com/sebastianbergmann/phpunit/pull/4662) for examples why this is a problem). When PHPUnit tries to load the test result cache from a file that does not exist, or from a file that does not contain data in JSON format, or from a file that contains data in a JSON format version other than the one used by the currently running PHPUnit version, then this is considered to be a "cache miss". An empty `DefaultTestResultCache` object is created in this case. This should also prevent PHPUnit from crashing when trying to load a test result cache file created by a different version of PHPUnit (see [#4580](https://github.com/sebastianbergmann/phpunit/issues/4580) for example).
+=======
+* The test result cache (the storage for which is implemented in `PHPUnit\Runner\DefaultTestResultCache`) no longer uses PHP's `serialize()` and `unserialize()` functions for persistence. It now uses a versioned JSON format instead that is independent of PHP implementation details (see [#3581](https://github.com/sebastianbergmann/phpunit/issues/3581) and [#4662](https://github.com/sebastianbergmann/phpunit/pull/4662) for examples why this is a problem). When PHPUnit tries to load the test result cache from a file that does not exist, or from a file that does not contain data in JSON format, or from a file that contains data in a JSON format version other than the one used by the currently running PHPUnit version, then this is considered to be a "cache miss". An empty `DefaultTestResultCache` object is created in this case. This should also prevent PHPUnit from crashing when trying to load a test result cache file created by a different version of PHPUnit (see [#4580](https://github.com/sebastianbergmann/phpunit/issues/4580) for example).
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 ### Fixed
 
@@ -143,6 +156,10 @@ All notable changes of the PHPUnit 8.5 release series are documented in this fil
 * [#3967](https://github.com/sebastianbergmann/phpunit/issues/3967): Cannot double interface that extends interface that extends `\Throwable`
 * [#3968](https://github.com/sebastianbergmann/phpunit/pull/3968): Test class run in a separate PHP process are passing when `exit` called inside
 
+<<<<<<< HEAD
+=======
+[8.5.17]: https://github.com/sebastianbergmann/phpunit/compare/8.5.16...8.5.17
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 [8.5.16]: https://github.com/sebastianbergmann/phpunit/compare/8.5.15...8.5.16
 [8.5.15]: https://github.com/sebastianbergmann/phpunit/compare/8.5.14...8.5.15
 [8.5.14]: https://github.com/sebastianbergmann/phpunit/compare/8.5.13...8.5.14

@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 namespace GuzzleHttp\Psr7;
 
 final class Query
@@ -14,10 +19,15 @@ final class Query
      *
      * @param string   $str         Query string to parse
      * @param int|bool $urlEncoding How the query string is encoded
+<<<<<<< HEAD
      *
      * @return array
      */
     public static function parse($str, $urlEncoding = true)
+=======
+     */
+    public static function parse(string $str, $urlEncoding = true): array
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $result = [];
 
@@ -27,7 +37,11 @@ final class Query
 
         if ($urlEncoding === true) {
             $decoder = function ($value) {
+<<<<<<< HEAD
                 return rawurldecode(str_replace('+', ' ', $value));
+=======
+                return rawurldecode(str_replace('+', ' ', (string) $value));
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             };
         } elseif ($urlEncoding === PHP_QUERY_RFC3986) {
             $decoder = 'rawurldecode';
@@ -67,17 +81,26 @@ final class Query
      * @param int|false $encoding Set to false to not encode, PHP_QUERY_RFC3986
      *                            to encode using RFC3986, or PHP_QUERY_RFC1738
      *                            to encode using RFC1738.
+<<<<<<< HEAD
      *
      * @return string
      */
     public static function build(array $params, $encoding = PHP_QUERY_RFC3986)
+=======
+     */
+    public static function build(array $params, $encoding = PHP_QUERY_RFC3986): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!$params) {
             return '';
         }
 
         if ($encoding === false) {
+<<<<<<< HEAD
             $encoder = function ($str) {
+=======
+            $encoder = function (string $str): string {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 return $str;
             };
         } elseif ($encoding === PHP_QUERY_RFC3986) {
@@ -90,18 +113,33 @@ final class Query
 
         $qs = '';
         foreach ($params as $k => $v) {
+<<<<<<< HEAD
             $k = $encoder($k);
             if (!is_array($v)) {
                 $qs .= $k;
                 if ($v !== null) {
                     $qs .= '=' . $encoder($v);
+=======
+            $k = $encoder((string) $k);
+            if (!is_array($v)) {
+                $qs .= $k;
+                $v = is_bool($v) ? (int) $v : $v;
+                if ($v !== null) {
+                    $qs .= '=' . $encoder((string) $v);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 }
                 $qs .= '&';
             } else {
                 foreach ($v as $vv) {
                     $qs .= $k;
+<<<<<<< HEAD
                     if ($vv !== null) {
                         $qs .= '=' . $encoder($vv);
+=======
+                    $vv = is_bool($vv) ? (int) $vv : $vv;
+                    if ($vv !== null) {
+                        $qs .= '=' . $encoder((string) $vv);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                     }
                     $qs .= '&';
                 }

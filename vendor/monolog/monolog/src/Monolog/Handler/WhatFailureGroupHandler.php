@@ -16,15 +16,28 @@ namespace Monolog\Handler;
  * and continuing through to give every handler a chance to succeed.
  *
  * @author Craig D'Amelio <craig@damelio.ca>
+<<<<<<< HEAD
+=======
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class WhatFailureGroupHandler extends GroupHandler
 {
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * {@inheritDoc}
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function handle(array $record): bool
     {
         if ($this->processors) {
+<<<<<<< HEAD
+=======
+            /** @var Record $record */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $record = $this->processRecord($record);
         }
 
@@ -40,7 +53,11 @@ class WhatFailureGroupHandler extends GroupHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
+=======
+     * {@inheritDoc}
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function handleBatch(array $records): void
     {
@@ -49,6 +66,10 @@ class WhatFailureGroupHandler extends GroupHandler
             foreach ($records as $record) {
                 $processed[] = $this->processRecord($record);
             }
+<<<<<<< HEAD
+=======
+            /** @var Record[] $records */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $records = $processed;
         }
 

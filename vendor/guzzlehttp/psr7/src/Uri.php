@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\UriInterface;
@@ -19,9 +24,15 @@ class Uri implements UriInterface
      * we apply this default host when no host is given yet to form a
      * valid URI.
      */
+<<<<<<< HEAD
     const HTTP_DEFAULT_HOST = 'localhost';
 
     private static $defaultPorts = [
+=======
+    private const HTTP_DEFAULT_HOST = 'localhost';
+
+    private const DEFAULT_PORTS = [
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         'http'  => 80,
         'https' => 443,
         'ftp' => 21,
@@ -35,9 +46,26 @@ class Uri implements UriInterface
         'ldap' => 389,
     ];
 
+<<<<<<< HEAD
     private static $charUnreserved = 'a-zA-Z0-9_\-\.~';
     private static $charSubDelims = '!\$&\'\(\)\*\+,;=';
     private static $replaceQuery = ['=' => '%3D', '&' => '%26'];
+=======
+    /**
+     * Unreserved characters for use in a regex.
+     *
+     * @link https://tools.ietf.org/html/rfc3986#section-2.3
+     */
+    private const CHAR_UNRESERVED = 'a-zA-Z0-9_\-\.~';
+
+    /**
+     * Sub-delims for use in a regex.
+     *
+     * @link https://tools.ietf.org/html/rfc3986#section-2.2
+     */
+    private const CHAR_SUB_DELIMS = '!\$&\'\(\)\*\+,;=';
+    private const QUERY_SEPARATORS_REPLACEMENT = ['=' => '%3D', '&' => '%26'];
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
     /** @var string Uri scheme. */
     private $scheme = '';
@@ -60,6 +88,7 @@ class Uri implements UriInterface
     /** @var string Uri fragment. */
     private $fragment = '';
 
+<<<<<<< HEAD
     /**
      * @param string $uri URI to parse
      */
@@ -67,6 +96,14 @@ class Uri implements UriInterface
     {
         // weak type check to also accept null until we can add scalar type hints
         if ($uri != '') {
+=======
+    /** @var string|null String representation */
+    private $composedComponents;
+
+    public function __construct(string $uri = '')
+    {
+        if ($uri !== '') {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $parts = self::parse($uri);
             if ($parts === false) {
                 throw new \InvalidArgumentException("Unable to parse URI: $uri");
@@ -74,7 +111,10 @@ class Uri implements UriInterface
             $this->applyParts($parts);
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     /**
      * UTF-8 aware \parse_url() replacement.
      *
@@ -88,19 +128,33 @@ class Uri implements UriInterface
      * @see https://www.php.net/manual/en/function.parse-url.php#114817
      * @see https://curl.haxx.se/libcurl/c/CURLOPT_URL.html#ENCODING
      *
+<<<<<<< HEAD
      * @param string $url
      *
      * @return array|false
      */
     private static function parse($url)
+=======
+     * @return array|false
+     */
+    private static function parse(string $url)
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         // If IPv6
         $prefix = '';
         if (preg_match('%^(.*://\[[0-9:a-f]+\])(.*?)$%', $url, $matches)) {
+<<<<<<< HEAD
+=======
+            /** @var array{0:string, 1:string, 2:string} $matches */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $prefix = $matches[1];
             $url = $matches[2];
         }
 
+<<<<<<< HEAD
+=======
+        /** @var string */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $encodedUrl = preg_replace_callback(
             '%[^:/@?&=#]+%usD',
             static function ($matches) {
@@ -118,6 +172,7 @@ class Uri implements UriInterface
         return array_map('urldecode', $result);
     }
 
+<<<<<<< HEAD
     public function __toString()
     {
         return self::composeComponents(
@@ -127,6 +182,21 @@ class Uri implements UriInterface
             $this->query,
             $this->fragment
         );
+=======
+    public function __toString(): string
+    {
+        if ($this->composedComponents === null) {
+            $this->composedComponents = self::composeComponents(
+                $this->scheme,
+                $this->getAuthority(),
+                $this->path,
+                $this->query,
+                $this->fragment
+            );
+        }
+
+        return $this->composedComponents;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -145,6 +215,7 @@ class Uri implements UriInterface
      * `file:///` is the more common syntax for the file scheme anyway (Chrome for example redirects to
      * that format).
      *
+<<<<<<< HEAD
      * @param string $scheme
      * @param string $authority
      * @param string $path
@@ -156,6 +227,11 @@ class Uri implements UriInterface
      * @link https://tools.ietf.org/html/rfc3986#section-5.3
      */
     public static function composeComponents($scheme, $authority, $path, $query, $fragment)
+=======
+     * @link https://tools.ietf.org/html/rfc3986#section-5.3
+     */
+    public static function composeComponents(?string $scheme, ?string $authority, string $path, ?string $query, ?string $fragment): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $uri = '';
 
@@ -186,6 +262,7 @@ class Uri implements UriInterface
      *
      * `Psr\Http\Message\UriInterface::getPort` may return null or the standard port. This method can be used
      * independently of the implementation.
+<<<<<<< HEAD
      *
      * @param UriInterface $uri
      *
@@ -195,6 +272,13 @@ class Uri implements UriInterface
     {
         return $uri->getPort() === null
             || (isset(self::$defaultPorts[$uri->getScheme()]) && $uri->getPort() === self::$defaultPorts[$uri->getScheme()]);
+=======
+     */
+    public static function isDefaultPort(UriInterface $uri): bool
+    {
+        return $uri->getPort() === null
+            || (isset(self::DEFAULT_PORTS[$uri->getScheme()]) && $uri->getPort() === self::DEFAULT_PORTS[$uri->getScheme()]);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -207,16 +291,23 @@ class Uri implements UriInterface
      * - absolute-path references, e.g. '/path'
      * - relative-path references, e.g. 'subpath'
      *
+<<<<<<< HEAD
      * @param UriInterface $uri
      *
      * @return bool
      *
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @see Uri::isNetworkPathReference
      * @see Uri::isAbsolutePathReference
      * @see Uri::isRelativePathReference
      * @link https://tools.ietf.org/html/rfc3986#section-4
      */
+<<<<<<< HEAD
     public static function isAbsolute(UriInterface $uri)
+=======
+    public static function isAbsolute(UriInterface $uri): bool
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $uri->getScheme() !== '';
     }
@@ -226,6 +317,7 @@ class Uri implements UriInterface
      *
      * A relative reference that begins with two slash characters is termed an network-path reference.
      *
+<<<<<<< HEAD
      * @param UriInterface $uri
      *
      * @return bool
@@ -233,6 +325,11 @@ class Uri implements UriInterface
      * @link https://tools.ietf.org/html/rfc3986#section-4.2
      */
     public static function isNetworkPathReference(UriInterface $uri)
+=======
+     * @link https://tools.ietf.org/html/rfc3986#section-4.2
+     */
+    public static function isNetworkPathReference(UriInterface $uri): bool
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $uri->getScheme() === '' && $uri->getAuthority() !== '';
     }
@@ -242,6 +339,7 @@ class Uri implements UriInterface
      *
      * A relative reference that begins with a single slash character is termed an absolute-path reference.
      *
+<<<<<<< HEAD
      * @param UriInterface $uri
      *
      * @return bool
@@ -249,6 +347,11 @@ class Uri implements UriInterface
      * @link https://tools.ietf.org/html/rfc3986#section-4.2
      */
     public static function isAbsolutePathReference(UriInterface $uri)
+=======
+     * @link https://tools.ietf.org/html/rfc3986#section-4.2
+     */
+    public static function isAbsolutePathReference(UriInterface $uri): bool
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $uri->getScheme() === ''
             && $uri->getAuthority() === ''
@@ -261,6 +364,7 @@ class Uri implements UriInterface
      *
      * A relative reference that does not begin with a slash character is termed a relative-path reference.
      *
+<<<<<<< HEAD
      * @param UriInterface $uri
      *
      * @return bool
@@ -268,6 +372,11 @@ class Uri implements UriInterface
      * @link https://tools.ietf.org/html/rfc3986#section-4.2
      */
     public static function isRelativePathReference(UriInterface $uri)
+=======
+     * @link https://tools.ietf.org/html/rfc3986#section-4.2
+     */
+    public static function isRelativePathReference(UriInterface $uri): bool
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $uri->getScheme() === ''
             && $uri->getAuthority() === ''
@@ -284,11 +393,17 @@ class Uri implements UriInterface
      * @param UriInterface      $uri  The URI to check
      * @param UriInterface|null $base An optional base URI to compare against
      *
+<<<<<<< HEAD
      * @return bool
      *
      * @link https://tools.ietf.org/html/rfc3986#section-4.4
      */
     public static function isSameDocumentReference(UriInterface $uri, UriInterface $base = null)
+=======
+     * @link https://tools.ietf.org/html/rfc3986#section-4.4
+     */
+    public static function isSameDocumentReference(UriInterface $uri, UriInterface $base = null): bool
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if ($base !== null) {
             $uri = UriResolver::resolve($base, $uri);
@@ -303,6 +418,7 @@ class Uri implements UriInterface
     }
 
     /**
+<<<<<<< HEAD
      * Removes dot segments from a path and returns the new path.
      *
      * @param string $path
@@ -338,6 +454,8 @@ class Uri implements UriInterface
     }
 
     /**
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Creates a new URI with a specific query string value removed.
      *
      * Any existing query string values that exactly match the provided key are
@@ -345,10 +463,15 @@ class Uri implements UriInterface
      *
      * @param UriInterface $uri URI to use as a base.
      * @param string       $key Query string key to remove.
+<<<<<<< HEAD
      *
      * @return UriInterface
      */
     public static function withoutQueryValue(UriInterface $uri, $key)
+=======
+     */
+    public static function withoutQueryValue(UriInterface $uri, string $key): UriInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $result = self::getFilteredQueryString($uri, [$key]);
 
@@ -367,10 +490,15 @@ class Uri implements UriInterface
      * @param UriInterface $uri   URI to use as a base.
      * @param string       $key   Key to set.
      * @param string|null  $value Value to set
+<<<<<<< HEAD
      *
      * @return UriInterface
      */
     public static function withQueryValue(UriInterface $uri, $key, $value)
+=======
+     */
+    public static function withQueryValue(UriInterface $uri, string $key, ?string $value): UriInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $result = self::getFilteredQueryString($uri, [$key]);
 
@@ -384,17 +512,28 @@ class Uri implements UriInterface
      *
      * It has the same behavior as withQueryValue() but for an associative array of key => value.
      *
+<<<<<<< HEAD
      * @param UriInterface $uri           URI to use as a base.
      * @param array        $keyValueArray Associative array of key and values
      *
      * @return UriInterface
      */
     public static function withQueryValues(UriInterface $uri, array $keyValueArray)
+=======
+     * @param UriInterface               $uri           URI to use as a base.
+     * @param array<string, string|null> $keyValueArray Associative array of key and values
+     */
+    public static function withQueryValues(UriInterface $uri, array $keyValueArray): UriInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $result = self::getFilteredQueryString($uri, array_keys($keyValueArray));
 
         foreach ($keyValueArray as $key => $value) {
+<<<<<<< HEAD
             $result[] = self::generateQueryString($key, $value);
+=======
+            $result[] = self::generateQueryString((string) $key, $value !== null ? (string) $value : null);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         return $uri->withQuery(implode('&', $result));
@@ -403,15 +542,22 @@ class Uri implements UriInterface
     /**
      * Creates a URI from a hash of `parse_url` components.
      *
+<<<<<<< HEAD
      * @param array $parts
      *
      * @return UriInterface
      *
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @link http://php.net/manual/en/function.parse-url.php
      *
      * @throws \InvalidArgumentException If the components do not form a valid URI.
      */
+<<<<<<< HEAD
     public static function fromParts(array $parts)
+=======
+    public static function fromParts(array $parts): UriInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $uri = new self();
         $uri->applyParts($parts);
@@ -420,12 +566,20 @@ class Uri implements UriInterface
         return $uri;
     }
 
+<<<<<<< HEAD
     public function getScheme()
+=======
+    public function getScheme(): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->scheme;
     }
 
+<<<<<<< HEAD
     public function getAuthority()
+=======
+    public function getAuthority(): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $authority = $this->host;
         if ($this->userInfo !== '') {
@@ -439,37 +593,65 @@ class Uri implements UriInterface
         return $authority;
     }
 
+<<<<<<< HEAD
     public function getUserInfo()
+=======
+    public function getUserInfo(): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->userInfo;
     }
 
+<<<<<<< HEAD
     public function getHost()
+=======
+    public function getHost(): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->host;
     }
 
+<<<<<<< HEAD
     public function getPort()
+=======
+    public function getPort(): ?int
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->port;
     }
 
+<<<<<<< HEAD
     public function getPath()
+=======
+    public function getPath(): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->path;
     }
 
+<<<<<<< HEAD
     public function getQuery()
+=======
+    public function getQuery(): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->query;
     }
 
+<<<<<<< HEAD
     public function getFragment()
+=======
+    public function getFragment(): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->fragment;
     }
 
+<<<<<<< HEAD
     public function withScheme($scheme)
+=======
+    public function withScheme($scheme): UriInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $scheme = $this->filterScheme($scheme);
 
@@ -479,13 +661,21 @@ class Uri implements UriInterface
 
         $new = clone $this;
         $new->scheme = $scheme;
+<<<<<<< HEAD
+=======
+        $new->composedComponents = null;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $new->removeDefaultPort();
         $new->validateState();
 
         return $new;
     }
 
+<<<<<<< HEAD
     public function withUserInfo($user, $password = null)
+=======
+    public function withUserInfo($user, $password = null): UriInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $info = $this->filterUserInfoComponent($user);
         if ($password !== null) {
@@ -498,12 +688,20 @@ class Uri implements UriInterface
 
         $new = clone $this;
         $new->userInfo = $info;
+<<<<<<< HEAD
+=======
+        $new->composedComponents = null;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $new->validateState();
 
         return $new;
     }
 
+<<<<<<< HEAD
     public function withHost($host)
+=======
+    public function withHost($host): UriInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $host = $this->filterHost($host);
 
@@ -513,12 +711,20 @@ class Uri implements UriInterface
 
         $new = clone $this;
         $new->host = $host;
+<<<<<<< HEAD
+=======
+        $new->composedComponents = null;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $new->validateState();
 
         return $new;
     }
 
+<<<<<<< HEAD
     public function withPort($port)
+=======
+    public function withPort($port): UriInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $port = $this->filterPort($port);
 
@@ -528,13 +734,21 @@ class Uri implements UriInterface
 
         $new = clone $this;
         $new->port = $port;
+<<<<<<< HEAD
+=======
+        $new->composedComponents = null;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $new->removeDefaultPort();
         $new->validateState();
 
         return $new;
     }
 
+<<<<<<< HEAD
     public function withPath($path)
+=======
+    public function withPath($path): UriInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $path = $this->filterPath($path);
 
@@ -544,12 +758,20 @@ class Uri implements UriInterface
 
         $new = clone $this;
         $new->path = $path;
+<<<<<<< HEAD
+=======
+        $new->composedComponents = null;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $new->validateState();
 
         return $new;
     }
 
+<<<<<<< HEAD
     public function withQuery($query)
+=======
+    public function withQuery($query): UriInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $query = $this->filterQueryAndFragment($query);
 
@@ -559,11 +781,19 @@ class Uri implements UriInterface
 
         $new = clone $this;
         $new->query = $query;
+<<<<<<< HEAD
+=======
+        $new->composedComponents = null;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         return $new;
     }
 
+<<<<<<< HEAD
     public function withFragment($fragment)
+=======
+    public function withFragment($fragment): UriInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $fragment = $this->filterQueryAndFragment($fragment);
 
@@ -573,6 +803,10 @@ class Uri implements UriInterface
 
         $new = clone $this;
         $new->fragment = $fragment;
+<<<<<<< HEAD
+=======
+        $new->composedComponents = null;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         return $new;
     }
@@ -582,7 +816,11 @@ class Uri implements UriInterface
      *
      * @param array $parts Array of parse_url parts to apply.
      */
+<<<<<<< HEAD
     private function applyParts(array $parts)
+=======
+    private function applyParts(array $parts): void
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $this->scheme = isset($parts['scheme'])
             ? $this->filterScheme($parts['scheme'])
@@ -613,6 +851,7 @@ class Uri implements UriInterface
     }
 
     /**
+<<<<<<< HEAD
      * @param string $scheme
      *
      * @return string
@@ -620,6 +859,13 @@ class Uri implements UriInterface
      * @throws \InvalidArgumentException If the scheme is invalid.
      */
     private function filterScheme($scheme)
+=======
+     * @param mixed $scheme
+     *
+     * @throws \InvalidArgumentException If the scheme is invalid.
+     */
+    private function filterScheme($scheme): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!is_string($scheme)) {
             throw new \InvalidArgumentException('Scheme must be a string');
@@ -629,6 +875,7 @@ class Uri implements UriInterface
     }
 
     /**
+<<<<<<< HEAD
      * @param string $component
      *
      * @return string
@@ -636,19 +883,31 @@ class Uri implements UriInterface
      * @throws \InvalidArgumentException If the user info is invalid.
      */
     private function filterUserInfoComponent($component)
+=======
+     * @param mixed $component
+     *
+     * @throws \InvalidArgumentException If the user info is invalid.
+     */
+    private function filterUserInfoComponent($component): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!is_string($component)) {
             throw new \InvalidArgumentException('User info must be a string');
         }
 
         return preg_replace_callback(
+<<<<<<< HEAD
             '/(?:[^%' . self::$charUnreserved . self::$charSubDelims . ']+|%(?![A-Fa-f0-9]{2}))/',
+=======
+            '/(?:[^%' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . ']+|%(?![A-Fa-f0-9]{2}))/',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             [$this, 'rawurlencodeMatchZero'],
             $component
         );
     }
 
     /**
+<<<<<<< HEAD
      * @param string $host
      *
      * @return string
@@ -656,6 +915,13 @@ class Uri implements UriInterface
      * @throws \InvalidArgumentException If the host is invalid.
      */
     private function filterHost($host)
+=======
+     * @param mixed $host
+     *
+     * @throws \InvalidArgumentException If the host is invalid.
+     */
+    private function filterHost($host): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!is_string($host)) {
             throw new \InvalidArgumentException('Host must be a string');
@@ -665,6 +931,7 @@ class Uri implements UriInterface
     }
 
     /**
+<<<<<<< HEAD
      * @param int|null $port
      *
      * @return int|null
@@ -672,6 +939,13 @@ class Uri implements UriInterface
      * @throws \InvalidArgumentException If the port is invalid.
      */
     private function filterPort($port)
+=======
+     * @param mixed $port
+     *
+     * @throws \InvalidArgumentException If the port is invalid.
+     */
+    private function filterPort($port): ?int
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if ($port === null) {
             return null;
@@ -688,12 +962,20 @@ class Uri implements UriInterface
     }
 
     /**
+<<<<<<< HEAD
      * @param UriInterface $uri
      * @param array        $keys
      *
      * @return array
      */
     private static function getFilteredQueryString(UriInterface $uri, array $keys)
+=======
+     * @param string[] $keys
+     *
+     * @return string[]
+     */
+    private static function getFilteredQueryString(UriInterface $uri, array $keys): array
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $current = $uri->getQuery();
 
@@ -708,6 +990,7 @@ class Uri implements UriInterface
         });
     }
 
+<<<<<<< HEAD
     /**
      * @param string      $key
      * @param string|null $value
@@ -715,20 +998,34 @@ class Uri implements UriInterface
      * @return string
      */
     private static function generateQueryString($key, $value)
+=======
+    private static function generateQueryString(string $key, ?string $value): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         // Query string separators ("=", "&") within the key or value need to be encoded
         // (while preventing double-encoding) before setting the query string. All other
         // chars that need percent-encoding will be encoded by withQuery().
+<<<<<<< HEAD
         $queryString = strtr($key, self::$replaceQuery);
 
         if ($value !== null) {
             $queryString .= '=' . strtr($value, self::$replaceQuery);
+=======
+        $queryString = strtr($key, self::QUERY_SEPARATORS_REPLACEMENT);
+
+        if ($value !== null) {
+            $queryString .= '=' . strtr($value, self::QUERY_SEPARATORS_REPLACEMENT);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         return $queryString;
     }
 
+<<<<<<< HEAD
     private function removeDefaultPort()
+=======
+    private function removeDefaultPort(): void
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if ($this->port !== null && self::isDefaultPort($this)) {
             $this->port = null;
@@ -738,6 +1035,7 @@ class Uri implements UriInterface
     /**
      * Filters the path of a URI
      *
+<<<<<<< HEAD
      * @param string $path
      *
      * @return string
@@ -745,13 +1043,24 @@ class Uri implements UriInterface
      * @throws \InvalidArgumentException If the path is invalid.
      */
     private function filterPath($path)
+=======
+     * @param mixed $path
+     *
+     * @throws \InvalidArgumentException If the path is invalid.
+     */
+    private function filterPath($path): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!is_string($path)) {
             throw new \InvalidArgumentException('Path must be a string');
         }
 
         return preg_replace_callback(
+<<<<<<< HEAD
             '/(?:[^' . self::$charUnreserved . self::$charSubDelims . '%:@\/]++|%(?![A-Fa-f0-9]{2}))/',
+=======
+            '/(?:[^' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . '%:@\/]++|%(?![A-Fa-f0-9]{2}))/',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             [$this, 'rawurlencodeMatchZero'],
             $path
         );
@@ -760,6 +1069,7 @@ class Uri implements UriInterface
     /**
      * Filters the query string or fragment of a URI.
      *
+<<<<<<< HEAD
      * @param string $str
      *
      * @return string
@@ -767,24 +1077,43 @@ class Uri implements UriInterface
      * @throws \InvalidArgumentException If the query or fragment is invalid.
      */
     private function filterQueryAndFragment($str)
+=======
+     * @param mixed $str
+     *
+     * @throws \InvalidArgumentException If the query or fragment is invalid.
+     */
+    private function filterQueryAndFragment($str): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!is_string($str)) {
             throw new \InvalidArgumentException('Query and fragment must be a string');
         }
 
         return preg_replace_callback(
+<<<<<<< HEAD
             '/(?:[^' . self::$charUnreserved . self::$charSubDelims . '%:@\/\?]++|%(?![A-Fa-f0-9]{2}))/',
+=======
+            '/(?:[^' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . '%:@\/\?]++|%(?![A-Fa-f0-9]{2}))/',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             [$this, 'rawurlencodeMatchZero'],
             $str
         );
     }
 
+<<<<<<< HEAD
     private function rawurlencodeMatchZero(array $match)
+=======
+    private function rawurlencodeMatchZero(array $match): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return rawurlencode($match[0]);
     }
 
+<<<<<<< HEAD
     private function validateState()
+=======
+    private function validateState(): void
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if ($this->host === '' && ($this->scheme === 'http' || $this->scheme === 'https')) {
             $this->host = self::HTTP_DEFAULT_HOST;
@@ -798,6 +1127,7 @@ class Uri implements UriInterface
                 throw new \InvalidArgumentException('A relative URI must not have a path beginning with a segment containing a colon');
             }
         } elseif (isset($this->path[0]) && $this->path[0] !== '/') {
+<<<<<<< HEAD
             @trigger_error(
                 'The path of a URI with an authority must start with a slash "/" or be empty. Automagically fixing the URI ' .
                 'by adding a leading slash to the path is deprecated since version 1.4 and will throw an exception instead.',
@@ -805,6 +1135,9 @@ class Uri implements UriInterface
             );
             $this->path = '/' . $this->path;
             //throw new \InvalidArgumentException('The path of a URI with an authority must start with a slash "/" or be empty');
+=======
+            throw new \InvalidArgumentException('The path of a URI with an authority must start with a slash "/" or be empty');
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
     }
 }

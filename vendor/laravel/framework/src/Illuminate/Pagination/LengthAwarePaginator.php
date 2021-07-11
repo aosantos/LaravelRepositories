@@ -10,6 +10,10 @@ use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Collection;
 use IteratorAggregate;
 use JsonSerializable;
+<<<<<<< HEAD
+=======
+use ReturnTypeWillChange;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 class LengthAwarePaginator extends AbstractPaginator implements Arrayable, ArrayAccess, Countable, IteratorAggregate, Jsonable, JsonSerializable, LengthAwarePaginatorContract
 {
@@ -213,6 +217,10 @@ class LengthAwarePaginator extends AbstractPaginator implements Arrayable, Array
      *
      * @return array
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function jsonSerialize()
     {
         return $this->toArray();

@@ -2,6 +2,10 @@
 
 namespace Illuminate\Session;
 
+<<<<<<< HEAD
+=======
+use ReturnTypeWillChange;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use SessionHandlerInterface;
 
 class NullSessionHandler implements SessionHandlerInterface
@@ -9,6 +13,10 @@ class NullSessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function open($savePath, $sessionName)
     {
         return true;
@@ -17,6 +25,10 @@ class NullSessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function close()
     {
         return true;
@@ -25,6 +37,10 @@ class NullSessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function read($sessionId)
     {
         return '';
@@ -33,6 +49,10 @@ class NullSessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function write($sessionId, $data)
     {
         return true;
@@ -41,6 +61,10 @@ class NullSessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function destroy($sessionId)
     {
         return true;
@@ -49,6 +73,10 @@ class NullSessionHandler implements SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function gc($lifetime)
     {
         return true;

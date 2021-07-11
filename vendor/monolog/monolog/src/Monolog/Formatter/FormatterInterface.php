@@ -15,6 +15,11 @@ namespace Monolog\Formatter;
  * Interface for formatters
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
+<<<<<<< HEAD
+=======
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 interface FormatterInterface
 {
@@ -23,6 +28,11 @@ interface FormatterInterface
      *
      * @param  array $record A record to format
      * @return mixed The formatted record
+<<<<<<< HEAD
+=======
+     *
+     * @phpstan-param Record $record
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function format(array $record);
 
@@ -31,6 +41,11 @@ interface FormatterInterface
      *
      * @param  array $records A set of records to format
      * @return mixed The formatted set of records
+<<<<<<< HEAD
+=======
+     *
+     * @phpstan-param Record[] $records
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function formatBatch(array $records);
 }

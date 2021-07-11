@@ -12,6 +12,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 $capsule = new Capsule;
 
 $capsule->addConnection([
+<<<<<<< HEAD
     'driver'    => 'mysql',
     'host'      => 'localhost',
     'database'  => 'database',
@@ -20,6 +21,16 @@ $capsule->addConnection([
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',
+=======
+    'driver' => 'mysql',
+    'host' => 'localhost',
+    'database' => 'database',
+    'username' => 'root',
+    'password' => 'password',
+    'charset' => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix' => '',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 ]);
 
 // Set the event dispatcher used by Eloquent models... (optional)

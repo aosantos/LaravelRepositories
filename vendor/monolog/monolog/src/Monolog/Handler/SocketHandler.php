@@ -18,10 +18,22 @@ use Monolog\Logger;
  *
  * @author Pablo de Leon Belloc <pablolb@gmail.com>
  * @see    http://php.net/manual/en/function.fsockopen.php
+<<<<<<< HEAD
  */
 class SocketHandler extends AbstractProcessingHandler
 {
     private $connectionString;
+=======
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+ * @phpstan-import-type FormattedRecord from AbstractProcessingHandler
+ */
+class SocketHandler extends AbstractProcessingHandler
+{
+    /** @var string */
+    private $connectionString;
+    /** @var float */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private $connectionTimeout;
     /** @var resource|null */
     private $resource;
@@ -29,6 +41,7 @@ class SocketHandler extends AbstractProcessingHandler
     private $timeout = 0.0;
     /** @var float */
     private $writingTimeout = 10.0;
+<<<<<<< HEAD
     private $lastSentBytes = null;
     /** @var int */
     private $chunkSize = null;
@@ -42,6 +55,23 @@ class SocketHandler extends AbstractProcessingHandler
      * @param string     $connectionString Socket connection string
      * @param int|string $level            The minimum logging level at which this handler will be triggered
      * @param bool       $bubble           Whether the messages that are handled can bubble up the stack or not
+=======
+    /** @var ?int */
+    private $lastSentBytes = null;
+    /** @var int */
+    private $chunkSize = null;
+    /** @var bool */
+    private $persistent = false;
+    /** @var ?int */
+    private $errno = null;
+    /** @var ?string */
+    private $errstr = null;
+    /** @var ?float */
+    private $lastWritingAt = null;
+
+    /**
+     * @param string $connectionString Socket connection string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct(string $connectionString, $level = Logger::DEBUG, bool $bubble = true)
     {
@@ -53,7 +83,11 @@ class SocketHandler extends AbstractProcessingHandler
     /**
      * Connect (if necessary) and write to the socket
      *
+<<<<<<< HEAD
      * @param array $record
+=======
+     * {@inheritDoc}
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      *
      * @throws \UnexpectedValueException
      * @throws \RuntimeException
@@ -208,6 +242,11 @@ class SocketHandler extends AbstractProcessingHandler
 
     /**
      * Wrapper to allow mocking
+<<<<<<< HEAD
+=======
+     *
+     * @return resource|false
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function pfsockopen()
     {
@@ -216,6 +255,11 @@ class SocketHandler extends AbstractProcessingHandler
 
     /**
      * Wrapper to allow mocking
+<<<<<<< HEAD
+=======
+     *
+     * @return resource|false
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function fsockopen()
     {
@@ -226,12 +270,24 @@ class SocketHandler extends AbstractProcessingHandler
      * Wrapper to allow mocking
      *
      * @see http://php.net/manual/en/function.stream-set-timeout.php
+<<<<<<< HEAD
+=======
+     *
+     * @return bool
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function streamSetTimeout()
     {
         $seconds = floor($this->timeout);
         $microseconds = round(($this->timeout - $seconds) * 1e6);
 
+<<<<<<< HEAD
+=======
+        if (!is_resource($this->resource)) {
+            throw new \LogicException('streamSetTimeout called but $this->resource is not a resource');
+        }
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         return stream_set_timeout($this->resource, (int) $seconds, (int) $microseconds);
     }
 
@@ -239,22 +295,47 @@ class SocketHandler extends AbstractProcessingHandler
      * Wrapper to allow mocking
      *
      * @see http://php.net/manual/en/function.stream-set-chunk-size.php
+<<<<<<< HEAD
      */
     protected function streamSetChunkSize()
     {
+=======
+     *
+     * @return int|bool
+     */
+    protected function streamSetChunkSize()
+    {
+        if (!is_resource($this->resource)) {
+            throw new \LogicException('streamSetChunkSize called but $this->resource is not a resource');
+        }
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         return stream_set_chunk_size($this->resource, $this->chunkSize);
     }
 
     /**
      * Wrapper to allow mocking
+<<<<<<< HEAD
      */
     protected function fwrite($data)
     {
+=======
+     *
+     * @return int|bool
+     */
+    protected function fwrite(string $data)
+    {
+        if (!is_resource($this->resource)) {
+            throw new \LogicException('fwrite called but $this->resource is not a resource');
+        }
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         return @fwrite($this->resource, $data);
     }
 
     /**
      * Wrapper to allow mocking
+<<<<<<< HEAD
      */
     protected function streamGetMetadata()
     {
@@ -265,11 +346,32 @@ class SocketHandler extends AbstractProcessingHandler
     {
         $ok = filter_var($value, FILTER_VALIDATE_FLOAT);
         if ($ok === false || $value < 0) {
+=======
+     *
+     * @return mixed[]|bool
+     */
+    protected function streamGetMetadata()
+    {
+        if (!is_resource($this->resource)) {
+            throw new \LogicException('streamGetMetadata called but $this->resource is not a resource');
+        }
+
+        return stream_get_meta_data($this->resource);
+    }
+
+    private function validateTimeout(float $value): void
+    {
+        if ($value < 0) {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             throw new \InvalidArgumentException("Timeout must be 0 or a positive float (got $value)");
         }
     }
 
+<<<<<<< HEAD
     private function connectIfNotConnected()
+=======
+    private function connectIfNotConnected(): void
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if ($this->isConnected()) {
             return;
@@ -277,6 +379,12 @@ class SocketHandler extends AbstractProcessingHandler
         $this->connect();
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @phpstan-param FormattedRecord $record
+     */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected function generateDataStream(array $record): string
     {
         return (string) $record['formatted'];
@@ -304,7 +412,11 @@ class SocketHandler extends AbstractProcessingHandler
         } else {
             $resource = $this->fsockopen();
         }
+<<<<<<< HEAD
         if (!$resource) {
+=======
+        if (is_bool($resource)) {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             throw new \UnexpectedValueException("Failed connecting to $this->connectionString ($this->errno: $this->errstr)");
         }
         $this->resource = $resource;
@@ -340,7 +452,11 @@ class SocketHandler extends AbstractProcessingHandler
             }
             $sent += $chunk;
             $socketInfo = $this->streamGetMetadata();
+<<<<<<< HEAD
             if ($socketInfo['timed_out']) {
+=======
+            if (is_array($socketInfo) && $socketInfo['timed_out']) {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 throw new \RuntimeException("Write timed-out");
             }
 

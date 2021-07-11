@@ -8,6 +8,11 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+<<<<<<< HEAD
+=======
+    'App\\Http\\Controllers\\Admin\\CategoryController' => $baseDir . '/app/Http/Controllers/Admin/CategoryController.php',
+    'App\\Http\\Controllers\\Admin\\ProductController' => $baseDir . '/app/Http/Controllers/Admin/ProductController.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
@@ -25,7 +30,12 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+<<<<<<< HEAD
     'App\\Models\\Models\\Category' => $baseDir . '/app/Models/Models/Category.php',
+=======
+    'App\\Http\\Requests\\StoreUpdateCategoryFormRequest' => $baseDir . '/app/Http/Requests/StoreUpdateCategoryFormRequest.php',
+    'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
@@ -981,6 +991,10 @@ return array(
     'GuzzleHttp\\Psr7\\DroppingStream' => $vendorDir . '/guzzlehttp/psr7/src/DroppingStream.php',
     'GuzzleHttp\\Psr7\\FnStream' => $vendorDir . '/guzzlehttp/psr7/src/FnStream.php',
     'GuzzleHttp\\Psr7\\Header' => $vendorDir . '/guzzlehttp/psr7/src/Header.php',
+<<<<<<< HEAD
+=======
+    'GuzzleHttp\\Psr7\\HttpFactory' => $vendorDir . '/guzzlehttp/psr7/src/HttpFactory.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     'GuzzleHttp\\Psr7\\InflateStream' => $vendorDir . '/guzzlehttp/psr7/src/InflateStream.php',
     'GuzzleHttp\\Psr7\\LazyOpenStream' => $vendorDir . '/guzzlehttp/psr7/src/LazyOpenStream.php',
     'GuzzleHttp\\Psr7\\LimitStream' => $vendorDir . '/guzzlehttp/psr7/src/LimitStream.php',
@@ -1669,6 +1683,10 @@ return array(
     'Illuminate\\Hashing\\HashManager' => $vendorDir . '/laravel/framework/src/Illuminate/Hashing/HashManager.php',
     'Illuminate\\Hashing\\HashServiceProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Hashing/HashServiceProvider.php',
     'Illuminate\\Http\\Client\\ConnectionException' => $vendorDir . '/laravel/framework/src/Illuminate/Http/Client/ConnectionException.php',
+<<<<<<< HEAD
+=======
+    'Illuminate\\Http\\Client\\Events\\ConnectionFailed' => $vendorDir . '/laravel/framework/src/Illuminate/Http/Client/Events/ConnectionFailed.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     'Illuminate\\Http\\Client\\Events\\RequestSending' => $vendorDir . '/laravel/framework/src/Illuminate/Http/Client/Events/RequestSending.php',
     'Illuminate\\Http\\Client\\Events\\ResponseReceived' => $vendorDir . '/laravel/framework/src/Illuminate/Http/Client/Events/ResponseReceived.php',
     'Illuminate\\Http\\Client\\Factory' => $vendorDir . '/laravel/framework/src/Illuminate/Http/Client/Factory.php',
@@ -1787,6 +1805,10 @@ return array(
     'Illuminate\\Queue\\Console\\ListFailedCommand' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/Console/ListFailedCommand.php',
     'Illuminate\\Queue\\Console\\ListenCommand' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/Console/ListenCommand.php',
     'Illuminate\\Queue\\Console\\PruneBatchesCommand' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/Console/PruneBatchesCommand.php',
+<<<<<<< HEAD
+=======
+    'Illuminate\\Queue\\Console\\PruneFailedJobsCommand' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/Console/PruneFailedJobsCommand.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     'Illuminate\\Queue\\Console\\RestartCommand' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/Console/RestartCommand.php',
     'Illuminate\\Queue\\Console\\RetryBatchCommand' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/Console/RetryBatchCommand.php',
     'Illuminate\\Queue\\Console\\RetryCommand' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/Console/RetryCommand.php',
@@ -1805,6 +1827,10 @@ return array(
     'Illuminate\\Queue\\Failed\\DynamoDbFailedJobProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/Failed/DynamoDbFailedJobProvider.php',
     'Illuminate\\Queue\\Failed\\FailedJobProviderInterface' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/Failed/FailedJobProviderInterface.php',
     'Illuminate\\Queue\\Failed\\NullFailedJobProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/Failed/NullFailedJobProvider.php',
+<<<<<<< HEAD
+=======
+    'Illuminate\\Queue\\Failed\\PrunableFailedJobProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/Failed/PrunableFailedJobProvider.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     'Illuminate\\Queue\\InteractsWithQueue' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/InteractsWithQueue.php',
     'Illuminate\\Queue\\InvalidPayloadException' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/InvalidPayloadException.php',
     'Illuminate\\Queue\\Jobs\\BeanstalkdJob' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/Jobs/BeanstalkdJob.php',
@@ -2364,6 +2390,10 @@ return array(
     'League\\Flysystem\\ConfigAwareTrait' => $vendorDir . '/league/flysystem/src/ConfigAwareTrait.php',
     'League\\Flysystem\\ConnectionErrorException' => $vendorDir . '/league/flysystem/src/ConnectionErrorException.php',
     'League\\Flysystem\\ConnectionRuntimeException' => $vendorDir . '/league/flysystem/src/ConnectionRuntimeException.php',
+<<<<<<< HEAD
+=======
+    'League\\Flysystem\\CorruptedPathDetected' => $vendorDir . '/league/flysystem/src/CorruptedPathDetected.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     'League\\Flysystem\\Directory' => $vendorDir . '/league/flysystem/src/Directory.php',
     'League\\Flysystem\\Exception' => $vendorDir . '/league/flysystem/src/Exception.php',
     'League\\Flysystem\\File' => $vendorDir . '/league/flysystem/src/File.php',
@@ -3409,11 +3439,25 @@ return array(
     'Psr\\Http\\Client\\NetworkExceptionInterface' => $vendorDir . '/psr/http-client/src/NetworkExceptionInterface.php',
     'Psr\\Http\\Client\\RequestExceptionInterface' => $vendorDir . '/psr/http-client/src/RequestExceptionInterface.php',
     'Psr\\Http\\Message\\MessageInterface' => $vendorDir . '/psr/http-message/src/MessageInterface.php',
+<<<<<<< HEAD
     'Psr\\Http\\Message\\RequestInterface' => $vendorDir . '/psr/http-message/src/RequestInterface.php',
     'Psr\\Http\\Message\\ResponseInterface' => $vendorDir . '/psr/http-message/src/ResponseInterface.php',
     'Psr\\Http\\Message\\ServerRequestInterface' => $vendorDir . '/psr/http-message/src/ServerRequestInterface.php',
     'Psr\\Http\\Message\\StreamInterface' => $vendorDir . '/psr/http-message/src/StreamInterface.php',
     'Psr\\Http\\Message\\UploadedFileInterface' => $vendorDir . '/psr/http-message/src/UploadedFileInterface.php',
+=======
+    'Psr\\Http\\Message\\RequestFactoryInterface' => $vendorDir . '/psr/http-factory/src/RequestFactoryInterface.php',
+    'Psr\\Http\\Message\\RequestInterface' => $vendorDir . '/psr/http-message/src/RequestInterface.php',
+    'Psr\\Http\\Message\\ResponseFactoryInterface' => $vendorDir . '/psr/http-factory/src/ResponseFactoryInterface.php',
+    'Psr\\Http\\Message\\ResponseInterface' => $vendorDir . '/psr/http-message/src/ResponseInterface.php',
+    'Psr\\Http\\Message\\ServerRequestFactoryInterface' => $vendorDir . '/psr/http-factory/src/ServerRequestFactoryInterface.php',
+    'Psr\\Http\\Message\\ServerRequestInterface' => $vendorDir . '/psr/http-message/src/ServerRequestInterface.php',
+    'Psr\\Http\\Message\\StreamFactoryInterface' => $vendorDir . '/psr/http-factory/src/StreamFactoryInterface.php',
+    'Psr\\Http\\Message\\StreamInterface' => $vendorDir . '/psr/http-message/src/StreamInterface.php',
+    'Psr\\Http\\Message\\UploadedFileFactoryInterface' => $vendorDir . '/psr/http-factory/src/UploadedFileFactoryInterface.php',
+    'Psr\\Http\\Message\\UploadedFileInterface' => $vendorDir . '/psr/http-message/src/UploadedFileInterface.php',
+    'Psr\\Http\\Message\\UriFactoryInterface' => $vendorDir . '/psr/http-factory/src/UriFactoryInterface.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     'Psr\\Http\\Message\\UriInterface' => $vendorDir . '/psr/http-message/src/UriInterface.php',
     'Psr\\Log\\AbstractLogger' => $vendorDir . '/psr/log/Psr/Log/AbstractLogger.php',
     'Psr\\Log\\InvalidArgumentException' => $vendorDir . '/psr/log/Psr/Log/InvalidArgumentException.php',

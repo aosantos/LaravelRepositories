@@ -24,7 +24,11 @@ class NativeMailerHandler extends MailHandler
 {
     /**
      * The email addresses to which the message will be sent
+<<<<<<< HEAD
      * @var array
+=======
+     * @var string[]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected $to;
 
@@ -36,13 +40,21 @@ class NativeMailerHandler extends MailHandler
 
     /**
      * Optional headers for the message
+<<<<<<< HEAD
      * @var array
+=======
+     * @var string[]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected $headers = [];
 
     /**
      * Optional parameters for the message
+<<<<<<< HEAD
      * @var array
+=======
+     * @var string[]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected $parameters = [];
 
@@ -65,12 +77,19 @@ class NativeMailerHandler extends MailHandler
     protected $encoding = 'utf-8';
 
     /**
+<<<<<<< HEAD
      * @param string|array $to             The receiver of the mail
      * @param string       $subject        The subject of the mail
      * @param string       $from           The sender of the mail
      * @param string|int   $level          The minimum logging level at which this handler will be triggered
      * @param bool         $bubble         Whether the messages that are handled can bubble up the stack or not
      * @param int          $maxColumnWidth The maximum column width that the message lines will have
+=======
+     * @param string|string[] $to             The receiver of the mail
+     * @param string          $subject        The subject of the mail
+     * @param string          $from           The sender of the mail
+     * @param int             $maxColumnWidth The maximum column width that the message lines will have
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct($to, string $subject, string $from, $level = Logger::ERROR, bool $bubble = true, int $maxColumnWidth = 70)
     {
@@ -84,7 +103,11 @@ class NativeMailerHandler extends MailHandler
     /**
      * Add headers to the message
      *
+<<<<<<< HEAD
      * @param string|array $headers Custom added headers
+=======
+     * @param string|string[] $headers Custom added headers
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function addHeader($headers): self
     {
@@ -101,7 +124,11 @@ class NativeMailerHandler extends MailHandler
     /**
      * Add parameters to the message
      *
+<<<<<<< HEAD
      * @param string|array $parameters Custom added parameters
+=======
+     * @param string|string[] $parameters Custom added parameters
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function addParameter($parameters): self
     {

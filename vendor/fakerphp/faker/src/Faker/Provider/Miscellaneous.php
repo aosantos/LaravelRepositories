@@ -243,6 +243,11 @@ class Miscellaneous extends Base
 
     /**
      * @example 'cfcd208495d565ef66e7dff9f98764da'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function md5()
     {
@@ -251,6 +256,11 @@ class Miscellaneous extends Base
 
     /**
      * @example 'b5d86317c2a144cd04d0d7c03b2b02666fafadf2'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function sha1()
     {
@@ -259,6 +269,11 @@ class Miscellaneous extends Base
 
     /**
      * @example '85086017559ccc40638fcde2fecaf295e0de7ca51b7517b6aebeaaf75b4d4654'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function sha256()
     {
@@ -267,6 +282,11 @@ class Miscellaneous extends Base
 
     /**
      * @example 'fr_FR'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function locale()
     {
@@ -277,6 +297,11 @@ class Miscellaneous extends Base
      * @example 'FR'
      *
      * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function countryCode()
     {
@@ -287,6 +312,11 @@ class Miscellaneous extends Base
      * @example 'FRA'
      *
      * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function countryISOAlpha3()
     {
@@ -295,6 +325,11 @@ class Miscellaneous extends Base
 
     /**
      * @example 'fr'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function languageCode()
     {
@@ -305,6 +340,11 @@ class Miscellaneous extends Base
      * @example 'EUR'
      *
      * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function currencyCode()
     {
@@ -315,6 +355,11 @@ class Miscellaneous extends Base
      * Returns an Emoji (Unicode character between U+1F600 and U+1F637).
      *
      * @see https://en.wikipedia.org/wiki/Emoji#Unicode_blocks
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function emoji()
     {

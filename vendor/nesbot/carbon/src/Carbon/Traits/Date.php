@@ -27,6 +27,10 @@ use Closure;
 use DateInterval;
 use DatePeriod;
 use DateTime;
+<<<<<<< HEAD
+=======
+use DateTimeImmutable;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use DateTimeInterface;
 use DateTimeZone;
 use InvalidArgumentException;
@@ -630,7 +634,11 @@ trait Date
      *
      * @return CarbonTimeZone
      *
+<<<<<<< HEAD
      * @link http://php.net/manual/en/datetime.gettimezone.php
+=======
+     * @link https://php.net/manual/en/datetime.gettimezone.php
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     #[ReturnTypeWillChange]
     public function getTimezone()
@@ -684,6 +692,26 @@ trait Date
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Clone the current instance if it's mutable.
+     *
+     * This method is convenient to ensure you don't mutate the initial object
+     * but avoid to make a useless copy of it if it's already immutable.
+     *
+     * @return static
+     */
+    public function avoidMutation(): self
+    {
+        if ($this instanceof DateTimeImmutable) {
+            return $this;
+        }
+
+        return clone $this;
+    }
+
+    /**
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Returns a present instance in the same timezone.
      *
      * @return static
@@ -774,7 +802,11 @@ trait Date
     public function carbonize($date = null)
     {
         if ($date instanceof DateInterval) {
+<<<<<<< HEAD
             return $this->copy()->add($date);
+=======
+            return $this->avoidMutation()->add($date);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         if ($date instanceof DatePeriod || $date instanceof CarbonPeriod) {
@@ -939,7 +971,11 @@ trait Date
 
             // @property-read int 1 through 5
             case $name === 'weekNumberInMonth':
+<<<<<<< HEAD
                 return (int) ceil(($this->day + $this->copy()->startOfMonth()->dayOfWeekIso - 1) / static::DAYS_PER_WEEK);
+=======
+                return (int) ceil(($this->day + $this->avoidMutation()->startOfMonth()->dayOfWeekIso - 1) / static::DAYS_PER_WEEK);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
             // @property-read int 0 through 6
             case $name === 'firstWeekDay':
@@ -951,7 +987,11 @@ trait Date
 
             // @property int 1 through 366
             case $name === 'dayOfYear':
+<<<<<<< HEAD
                 return 1 + \intval($this->rawFormat('z'));
+=======
+                return 1 + (int) ($this->rawFormat('z'));
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
             // @property-read int 365 or 366
             case $name === 'daysInYear':
@@ -1013,7 +1053,11 @@ trait Date
 
             // @property-read bool checks if the timezone is local, true if local, false otherwise
             case $name === 'local':
+<<<<<<< HEAD
                 return $this->getOffset() === $this->copy()->setTimezone(date_default_timezone_get())->getOffset();
+=======
+                return $this->getOffset() === $this->avoidMutation()->setTimezone(date_default_timezone_get())->getOffset();
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
             // @property-read bool checks if the timezone is UTC, true if UTC, false otherwise
             case $name === 'utc':
@@ -1321,7 +1365,11 @@ trait Date
      */
     public function weekday($value = null)
     {
+<<<<<<< HEAD
         $dayOfWeek = ($this->dayOfWeek + 7 - \intval($this->getTranslationMessage('first_day_of_week') ?? 0)) % 7;
+=======
+        $dayOfWeek = ($this->dayOfWeek + 7 - (int) ($this->getTranslationMessage('first_day_of_week') ?? 0)) % 7;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         return \is_null($value) ? $dayOfWeek : $this->addDays($value - $dayOfWeek);
     }
@@ -1352,11 +1400,19 @@ trait Date
     public function setUnitNoOverflow($valueUnit, $value, $overflowUnit)
     {
         try {
+<<<<<<< HEAD
             $original = $this->copy();
             /** @var static $date */
             $date = $this->$valueUnit($value);
             $end = $original->copy()->endOf($overflowUnit);
             $start = $original->copy()->startOf($overflowUnit);
+=======
+            $original = $this->avoidMutation();
+            /** @var static $date */
+            $date = $this->$valueUnit($value);
+            $end = $original->avoidMutation()->endOf($overflowUnit);
+            $start = $original->avoidMutation()->startOf($overflowUnit);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             if ($date < $start) {
                 $date = $date->setDateTimeFrom($start);
             } elseif ($date > $end) {
@@ -1791,7 +1847,11 @@ trait Date
 
     /**
      * Format the instance with the current locale.  You can set the current
+<<<<<<< HEAD
      * locale using setlocale() http://php.net/setlocale.
+=======
+     * locale using setlocale() https://php.net/setlocale.
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      *
      * @param string $format
      *
@@ -1900,7 +1960,11 @@ trait Date
                 's' => 'second',
                 'ss' => ['getPaddedUnit', ['second']],
                 'S' => function (CarbonInterface $date) {
+<<<<<<< HEAD
                     return \strval((string) floor($date->micro / 100000));
+=======
+                    return (string) ((string) floor($date->micro / 100000));
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 },
                 'SS' => function (CarbonInterface $date) {
                     return str_pad((string) floor($date->micro / 10000), 2, '0', STR_PAD_LEFT);
@@ -1999,15 +2063,26 @@ trait Date
      *
      * @return string
      */
+<<<<<<< HEAD
     public function ordinal(string $key, string $period = null): string
+=======
+    public function ordinal(string $key, ?string $period = null): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $number = $this->$key;
         $result = $this->translate('ordinal', [
             ':number' => $number,
+<<<<<<< HEAD
             ':period' => $period,
         ]);
 
         return \strval($result === 'ordinal' ? $number : $result);
+=======
+            ':period' => (string) $period,
+        ]);
+
+        return (string) ($result === 'ordinal' ? $number : $result);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -2070,7 +2145,11 @@ trait Date
      *
      * @return string
      */
+<<<<<<< HEAD
     public function isoFormat(string $format, string $originalFormat = null): string
+=======
+    public function isoFormat(string $format, ?string $originalFormat = null): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $result = '';
         $length = mb_strlen($format);
@@ -2149,7 +2228,11 @@ trait Date
                 }
 
                 $format = mb_substr($format, 0, $i).$sequence.mb_substr($format, $i + mb_strlen($code));
+<<<<<<< HEAD
                 $i += mb_strlen("$sequence") - 1;
+=======
+                $i += mb_strlen((string) $sequence) - 1;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 $length = mb_strlen($format);
                 $char = $sequence;
             }
@@ -2179,7 +2262,11 @@ trait Date
                 'S' => function ($date) {
                     $day = $date->rawFormat('j');
 
+<<<<<<< HEAD
                     return str_replace("$day", '', $date->isoFormat('Do'));
+=======
+                    return str_replace((string) $day, '', $date->isoFormat('Do'));
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 },
                 'w' => true,
                 'z' => true,
@@ -2219,7 +2306,11 @@ trait Date
     }
 
     /**
+<<<<<<< HEAD
      * Format as ->format() do (using date replacements patterns from http://php.net/manual/fr/function.date.php)
+=======
+     * Format as ->format() do (using date replacements patterns from https://php.net/manual/en/function.date.php)
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * but translate words whenever possible (months, day names, etc.) using the current locale.
      *
      * @param string $format

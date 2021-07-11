@@ -28,14 +28,23 @@ use Monolog\Logger;
  */
 class SyslogHandler extends AbstractSyslogHandler
 {
+<<<<<<< HEAD
     protected $ident;
+=======
+    /** @var string */
+    protected $ident;
+    /** @var int */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected $logopts;
 
     /**
      * @param string     $ident
      * @param string|int $facility Either one of the names of the keys in $this->facilities, or a LOG_* facility constant
+<<<<<<< HEAD
      * @param string|int $level    The minimum logging level at which this handler will be triggered
      * @param bool       $bubble   Whether the messages that are handled can bubble up the stack or not
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @param int        $logopts  Option flags for the openlog() call, defaults to LOG_PID
      */
     public function __construct(string $ident, $facility = LOG_USER, $level = Logger::DEBUG, bool $bubble = true, int $logopts = LOG_PID)

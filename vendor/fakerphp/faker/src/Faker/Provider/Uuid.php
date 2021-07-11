@@ -8,6 +8,11 @@ class Uuid extends Base
      * Generate name based md5 UUID (version 3).
      *
      * @example '7e57d004-2b97-0e7a-b45f-5387367791cd'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function uuid()
     {

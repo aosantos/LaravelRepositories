@@ -196,9 +196,19 @@ abstract class AbstractCursorPaginator implements Htmlable
             ->flip()
             ->map(function ($_, $parameterName) use ($item) {
                 if ($item instanceof ArrayAccess || is_array($item)) {
+<<<<<<< HEAD
                     return $item[$parameterName] ?? $item[Str::afterLast($parameterName, '.')];
                 } elseif (is_object($item)) {
                     return $item->{$parameterName} ?? $item->{Str::afterLast($parameterName, '.')};
+=======
+                    return $this->ensureParameterIsPrimitive(
+                        $item[$parameterName] ?? $item[Str::afterLast($parameterName, '.')]
+                    );
+                } elseif (is_object($item)) {
+                    return $this->ensureParameterIsPrimitive(
+                        $item->{$parameterName} ?? $item->{Str::afterLast($parameterName, '.')}
+                    );
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 }
 
                 throw new Exception('Only arrays and objects are supported when cursor paginating items.');
@@ -206,6 +216,24 @@ abstract class AbstractCursorPaginator implements Htmlable
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Ensure the parameter is a primitive type.
+     *
+     * This can resolve issues that arise the developer uses a value object for an attribute.
+     *
+     * @param  mixed  $parameter
+     * @return mixed
+     */
+    protected function ensureParameterIsPrimitive($parameter)
+    {
+        return is_object($parameter) && method_exists($parameter, '__toString')
+                        ? (string) $parameter
+                        : $parameter;
+    }
+
+    /**
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Get / set the URL fragment to be appended to URLs.
      *
      * @param  string|null  $fragment

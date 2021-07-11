@@ -313,6 +313,10 @@ class Address extends \Faker\Provider\Address
 
     public static function buildingNumber()
     {
+<<<<<<< HEAD
         return self::numberBetween(1, 999);
+=======
+        return (string) self::numberBetween(1, 999);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 }

@@ -1518,7 +1518,11 @@ trait HasAttributes
     }
 
     /**
+<<<<<<< HEAD
      * Determine if the model and all the given attribute(s) have remained the same.
+=======
+     * Determine if the model or all the given attribute(s) have remained the same.
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      *
      * @param  array|string|null  $attributes
      * @return bool

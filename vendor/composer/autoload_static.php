@@ -4,7 +4,11 @@
 
 namespace Composer\Autoload;
 
+<<<<<<< HEAD
 class ComposerStaticInit50576bb5ba724e2745f274adc23a0357
+=======
+class ComposerStaticInit92458f777472d2e9c178cebd88c0a365
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 {
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
@@ -23,7 +27,10 @@ class ComposerStaticInit50576bb5ba724e2745f274adc23a0357
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+<<<<<<< HEAD
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
@@ -334,7 +341,12 @@ class ComposerStaticInit50576bb5ba724e2745f274adc23a0357
         ),
         'Psr\\Http\\Message\\' => 
         array (
+<<<<<<< HEAD
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+=======
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -520,6 +532,11 @@ class ComposerStaticInit50576bb5ba724e2745f274adc23a0357
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+<<<<<<< HEAD
+=======
+        'App\\Http\\Controllers\\Admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoryController.php',
+        'App\\Http\\Controllers\\Admin\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductController.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -537,7 +554,12 @@ class ComposerStaticInit50576bb5ba724e2745f274adc23a0357
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+<<<<<<< HEAD
         'App\\Models\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Models/Category.php',
+=======
+        'App\\Http\\Requests\\StoreUpdateCategoryFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreUpdateCategoryFormRequest.php',
+        'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -1493,6 +1515,10 @@ class ComposerStaticInit50576bb5ba724e2745f274adc23a0357
         'GuzzleHttp\\Psr7\\DroppingStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/DroppingStream.php',
         'GuzzleHttp\\Psr7\\FnStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/FnStream.php',
         'GuzzleHttp\\Psr7\\Header' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/Header.php',
+<<<<<<< HEAD
+=======
+        'GuzzleHttp\\Psr7\\HttpFactory' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/HttpFactory.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         'GuzzleHttp\\Psr7\\InflateStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/InflateStream.php',
         'GuzzleHttp\\Psr7\\LazyOpenStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/LazyOpenStream.php',
         'GuzzleHttp\\Psr7\\LimitStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/LimitStream.php',
@@ -2181,6 +2207,10 @@ class ComposerStaticInit50576bb5ba724e2745f274adc23a0357
         'Illuminate\\Hashing\\HashManager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Hashing/HashManager.php',
         'Illuminate\\Hashing\\HashServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Hashing/HashServiceProvider.php',
         'Illuminate\\Http\\Client\\ConnectionException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/ConnectionException.php',
+<<<<<<< HEAD
+=======
+        'Illuminate\\Http\\Client\\Events\\ConnectionFailed' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/Events/ConnectionFailed.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         'Illuminate\\Http\\Client\\Events\\RequestSending' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/Events/RequestSending.php',
         'Illuminate\\Http\\Client\\Events\\ResponseReceived' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/Events/ResponseReceived.php',
         'Illuminate\\Http\\Client\\Factory' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/Factory.php',
@@ -2299,6 +2329,10 @@ class ComposerStaticInit50576bb5ba724e2745f274adc23a0357
         'Illuminate\\Queue\\Console\\ListFailedCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Console/ListFailedCommand.php',
         'Illuminate\\Queue\\Console\\ListenCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Console/ListenCommand.php',
         'Illuminate\\Queue\\Console\\PruneBatchesCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Console/PruneBatchesCommand.php',
+<<<<<<< HEAD
+=======
+        'Illuminate\\Queue\\Console\\PruneFailedJobsCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Console/PruneFailedJobsCommand.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         'Illuminate\\Queue\\Console\\RestartCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Console/RestartCommand.php',
         'Illuminate\\Queue\\Console\\RetryBatchCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Console/RetryBatchCommand.php',
         'Illuminate\\Queue\\Console\\RetryCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Console/RetryCommand.php',
@@ -2317,6 +2351,10 @@ class ComposerStaticInit50576bb5ba724e2745f274adc23a0357
         'Illuminate\\Queue\\Failed\\DynamoDbFailedJobProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Failed/DynamoDbFailedJobProvider.php',
         'Illuminate\\Queue\\Failed\\FailedJobProviderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Failed/FailedJobProviderInterface.php',
         'Illuminate\\Queue\\Failed\\NullFailedJobProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Failed/NullFailedJobProvider.php',
+<<<<<<< HEAD
+=======
+        'Illuminate\\Queue\\Failed\\PrunableFailedJobProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Failed/PrunableFailedJobProvider.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         'Illuminate\\Queue\\InteractsWithQueue' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/InteractsWithQueue.php',
         'Illuminate\\Queue\\InvalidPayloadException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/InvalidPayloadException.php',
         'Illuminate\\Queue\\Jobs\\BeanstalkdJob' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/Jobs/BeanstalkdJob.php',
@@ -2876,6 +2914,10 @@ class ComposerStaticInit50576bb5ba724e2745f274adc23a0357
         'League\\Flysystem\\ConfigAwareTrait' => __DIR__ . '/..' . '/league/flysystem/src/ConfigAwareTrait.php',
         'League\\Flysystem\\ConnectionErrorException' => __DIR__ . '/..' . '/league/flysystem/src/ConnectionErrorException.php',
         'League\\Flysystem\\ConnectionRuntimeException' => __DIR__ . '/..' . '/league/flysystem/src/ConnectionRuntimeException.php',
+<<<<<<< HEAD
+=======
+        'League\\Flysystem\\CorruptedPathDetected' => __DIR__ . '/..' . '/league/flysystem/src/CorruptedPathDetected.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         'League\\Flysystem\\Directory' => __DIR__ . '/..' . '/league/flysystem/src/Directory.php',
         'League\\Flysystem\\Exception' => __DIR__ . '/..' . '/league/flysystem/src/Exception.php',
         'League\\Flysystem\\File' => __DIR__ . '/..' . '/league/flysystem/src/File.php',
@@ -3921,11 +3963,25 @@ class ComposerStaticInit50576bb5ba724e2745f274adc23a0357
         'Psr\\Http\\Client\\NetworkExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/NetworkExceptionInterface.php',
         'Psr\\Http\\Client\\RequestExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/RequestExceptionInterface.php',
         'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
+<<<<<<< HEAD
         'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
         'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
         'Psr\\Http\\Message\\ServerRequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/ServerRequestInterface.php',
         'Psr\\Http\\Message\\StreamInterface' => __DIR__ . '/..' . '/psr/http-message/src/StreamInterface.php',
         'Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/..' . '/psr/http-message/src/UploadedFileInterface.php',
+=======
+        'Psr\\Http\\Message\\RequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/RequestFactoryInterface.php',
+        'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
+        'Psr\\Http\\Message\\ResponseFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ResponseFactoryInterface.php',
+        'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
+        'Psr\\Http\\Message\\ServerRequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ServerRequestFactoryInterface.php',
+        'Psr\\Http\\Message\\ServerRequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/ServerRequestInterface.php',
+        'Psr\\Http\\Message\\StreamFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/StreamFactoryInterface.php',
+        'Psr\\Http\\Message\\StreamInterface' => __DIR__ . '/..' . '/psr/http-message/src/StreamInterface.php',
+        'Psr\\Http\\Message\\UploadedFileFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UploadedFileFactoryInterface.php',
+        'Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/..' . '/psr/http-message/src/UploadedFileInterface.php',
+        'Psr\\Http\\Message\\UriFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UriFactoryInterface.php',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         'Psr\\Http\\Message\\UriInterface' => __DIR__ . '/..' . '/psr/http-message/src/UriInterface.php',
         'Psr\\Log\\AbstractLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/AbstractLogger.php',
         'Psr\\Log\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/log/Psr/Log/InvalidArgumentException.php',
@@ -5320,10 +5376,17 @@ class ComposerStaticInit50576bb5ba724e2745f274adc23a0357
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+<<<<<<< HEAD
             $loader->prefixLengthsPsr4 = ComposerStaticInit50576bb5ba724e2745f274adc23a0357::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit50576bb5ba724e2745f274adc23a0357::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit50576bb5ba724e2745f274adc23a0357::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit50576bb5ba724e2745f274adc23a0357::$classMap;
+=======
+            $loader->prefixLengthsPsr4 = ComposerStaticInit92458f777472d2e9c178cebd88c0a365::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit92458f777472d2e9c178cebd88c0a365::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit92458f777472d2e9c178cebd88c0a365::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit92458f777472d2e9c178cebd88c0a365::$classMap;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         }, null, ClassLoader::class);
     }

@@ -110,7 +110,11 @@ class Connection implements ServerInfoAwareConnection
     /**
      * Create a new statement instance.
      *
+<<<<<<< HEAD
      * @param  \PDOStatement
+=======
+     * @param  \PDOStatement  $stmt
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @return \Doctrine\DBAL\Driver\PDO\Statement
      */
     protected function createStatement(PDOStatement $stmt): Statement

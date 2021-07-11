@@ -48,9 +48,12 @@ class DynamoDbHandler extends AbstractProcessingHandler
      */
     protected $marshaler;
 
+<<<<<<< HEAD
     /**
      * @param int|string $level
      */
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function __construct(DynamoDbClient $client, string $table, $level = Logger::DEBUG, bool $bubble = true)
     {
         /** @phpstan-ignore-next-line */
@@ -86,6 +89,13 @@ class DynamoDbHandler extends AbstractProcessingHandler
         ]);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @param  mixed[] $record
+     * @return mixed[]
+     */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected function filterEmptyFields(array $record): array
     {
         return array_filter($record, function ($value) {

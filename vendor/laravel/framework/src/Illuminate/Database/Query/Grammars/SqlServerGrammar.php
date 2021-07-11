@@ -181,6 +181,13 @@ class SqlServerGrammar extends Grammar
 
         unset($components['orders']);
 
+<<<<<<< HEAD
+=======
+        if ($this->queryOrderContainsSubquery($query)) {
+            $query->bindings = $this->sortBindingsForSubqueryOrderBy($query);
+        }
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         // Next we need to calculate the constraints that should be placed on the query
         // to get the right offset and limit from our query but if there is no limit
         // set we will just handle the offset only since that is all that matters.
@@ -201,6 +208,39 @@ class SqlServerGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Determine if the query's order by clauses contain a subquery.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @return bool
+     */
+    protected function queryOrderContainsSubquery($query)
+    {
+        if (! is_array($query->orders)) {
+            return false;
+        }
+
+        return Arr::first($query->orders, function ($value) {
+            return $this->isExpression($value['column'] ?? null);
+        }, false) !== false;
+    }
+
+    /**
+     * Move the order bindings to be after the "select" statement to account for a order by subquery.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @return array
+     */
+    protected function sortBindingsForSubqueryOrderBy($query)
+    {
+        return Arr::sort($query->bindings, function ($bindings, $key) {
+            return array_search($key, ['select', 'order', 'from', 'join', 'where', 'groupBy', 'having', 'union', 'unionOrder']);
+        });
+    }
+
+    /**
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Compile a common table expression for a query.
      *
      * @param  string  $sql

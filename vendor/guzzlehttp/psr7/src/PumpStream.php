@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\StreamInterface;
@@ -13,6 +18,7 @@ use Psr\Http\Message\StreamInterface;
  * returned by the provided callable is buffered internally until drained using
  * the read() function of the PumpStream. The provided callable MUST return
  * false when there is no more data to read.
+<<<<<<< HEAD
  *
  * @final
  */
@@ -22,6 +28,15 @@ class PumpStream implements StreamInterface
     private $source;
 
     /** @var int */
+=======
+ */
+final class PumpStream implements StreamInterface
+{
+    /** @var callable|null */
+    private $source;
+
+    /** @var int|null */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private $size;
 
     /** @var int */
@@ -34,6 +49,7 @@ class PumpStream implements StreamInterface
     private $buffer;
 
     /**
+<<<<<<< HEAD
      * @param callable $source  Source of the stream data. The callable MAY
      *                          accept an integer argument used to control the
      *                          amount of data to return. The callable MUST
@@ -42,10 +58,21 @@ class PumpStream implements StreamInterface
      * @param array    $options Stream options:
      *                          - metadata: Hash of metadata to use with stream.
      *                          - size: Size of the stream, if known.
+=======
+     * @param callable(int): (string|null|false)  $source  Source of the stream data. The callable MAY
+     *                                                     accept an integer argument used to control the
+     *                                                     amount of data to return. The callable MUST
+     *                                                     return a string when called, or false|null on error
+     *                                                     or EOF.
+     * @param array{size?: int, metadata?: array} $options Stream options:
+     *                                                     - metadata: Hash of metadata to use with stream.
+     *                                                     - size: Size of the stream, if known.
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct(callable $source, array $options = [])
     {
         $this->source = $source;
+<<<<<<< HEAD
         $this->size = isset($options['size']) ? $options['size'] : null;
         $this->metadata = isset($options['metadata']) ? $options['metadata'] : [];
         $this->buffer = new BufferStream();
@@ -56,69 +83,134 @@ class PumpStream implements StreamInterface
         try {
             return Utils::copyToString($this);
         } catch (\Exception $e) {
+=======
+        $this->size = $options['size'] ?? null;
+        $this->metadata = $options['metadata'] ?? [];
+        $this->buffer = new BufferStream();
+    }
+
+    public function __toString(): string
+    {
+        try {
+            return Utils::copyToString($this);
+        } catch (\Throwable $e) {
+            if (\PHP_VERSION_ID >= 70400) {
+                throw $e;
+            }
+            trigger_error(sprintf('%s::__toString exception: %s', self::class, (string) $e), E_USER_ERROR);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             return '';
         }
     }
 
+<<<<<<< HEAD
     public function close()
+=======
+    public function close(): void
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $this->detach();
     }
 
     public function detach()
     {
+<<<<<<< HEAD
         $this->tellPos = false;
+=======
+        $this->tellPos = 0;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $this->source = null;
 
         return null;
     }
 
+<<<<<<< HEAD
     public function getSize()
+=======
+    public function getSize(): ?int
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->size;
     }
 
+<<<<<<< HEAD
     public function tell()
+=======
+    public function tell(): int
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->tellPos;
     }
 
+<<<<<<< HEAD
     public function eof()
     {
         return !$this->source;
     }
 
     public function isSeekable()
+=======
+    public function eof(): bool
+    {
+        return $this->source === null;
+    }
+
+    public function isSeekable(): bool
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return false;
     }
 
+<<<<<<< HEAD
     public function rewind()
+=======
+    public function rewind(): void
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $this->seek(0);
     }
 
+<<<<<<< HEAD
     public function seek($offset, $whence = SEEK_SET)
+=======
+    public function seek($offset, $whence = SEEK_SET): void
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         throw new \RuntimeException('Cannot seek a PumpStream');
     }
 
+<<<<<<< HEAD
     public function isWritable()
+=======
+    public function isWritable(): bool
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return false;
     }
 
+<<<<<<< HEAD
     public function write($string)
+=======
+    public function write($string): int
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         throw new \RuntimeException('Cannot write to a PumpStream');
     }
 
+<<<<<<< HEAD
     public function isReadable()
+=======
+    public function isReadable(): bool
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return true;
     }
 
+<<<<<<< HEAD
     public function read($length)
+=======
+    public function read($length): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $data = $this->buffer->read($length);
         $readLen = strlen($data);
@@ -134,7 +226,11 @@ class PumpStream implements StreamInterface
         return $data;
     }
 
+<<<<<<< HEAD
     public function getContents()
+=======
+    public function getContents(): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $result = '';
         while (!$this->eof()) {
@@ -150,10 +246,17 @@ class PumpStream implements StreamInterface
             return $this->metadata;
         }
 
+<<<<<<< HEAD
         return isset($this->metadata[$key]) ? $this->metadata[$key] : null;
     }
 
     private function pump($length)
+=======
+        return $this->metadata[$key] ?? null;
+    }
+
+    private function pump(int $length): void
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if ($this->source) {
             do {

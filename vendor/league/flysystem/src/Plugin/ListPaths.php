@@ -20,7 +20,11 @@ class ListPaths extends AbstractPlugin
      * @param string $directory
      * @param bool   $recursive
      *
+<<<<<<< HEAD
      * @return array paths
+=======
+     * @return string[] paths
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function handle($directory = '', $recursive = false)
     {

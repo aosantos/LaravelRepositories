@@ -18,6 +18,11 @@ use Monolog\Formatter\HtmlFormatter;
  * Base class for all mail handlers
  *
  * @author Gyula Sallai
+<<<<<<< HEAD
+=======
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 abstract class MailHandler extends AbstractProcessingHandler
 {
@@ -32,7 +37,13 @@ abstract class MailHandler extends AbstractProcessingHandler
             if ($record['level'] < $this->level) {
                 continue;
             }
+<<<<<<< HEAD
             $messages[] = $this->processRecord($record);
+=======
+            /** @var Record $message */
+            $message = $this->processRecord($record);
+            $messages[] = $message;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         if (!empty($messages)) {
@@ -45,6 +56,11 @@ abstract class MailHandler extends AbstractProcessingHandler
      *
      * @param string $content formatted email body to be sent
      * @param array  $records the array of log records that formed this content
+<<<<<<< HEAD
+=======
+     *
+     * @phpstan-param Record[] $records
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     abstract protected function send(string $content, array $records): void;
 
@@ -56,6 +72,13 @@ abstract class MailHandler extends AbstractProcessingHandler
         $this->send((string) $record['formatted'], [$record]);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @phpstan-param non-empty-array<Record> $records
+     * @phpstan-return Record
+     */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected function getHighestRecord(array $records): array
     {
         $highestRecord = null;
@@ -70,7 +93,11 @@ abstract class MailHandler extends AbstractProcessingHandler
 
     protected function isHtmlBody(string $body): bool
     {
+<<<<<<< HEAD
         return substr($body, 0, 1) === '<';
+=======
+        return ($body[0] ?? null) === '<';
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**

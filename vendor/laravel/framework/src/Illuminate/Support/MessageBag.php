@@ -8,6 +8,10 @@ use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\MessageBag as MessageBagContract;
 use Illuminate\Contracts\Support\MessageProvider;
 use JsonSerializable;
+<<<<<<< HEAD
+=======
+use ReturnTypeWillChange;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 class MessageBag implements Arrayable, Countable, Jsonable, JsonSerializable, MessageBagContract, MessageProvider
 {
@@ -389,6 +393,10 @@ class MessageBag implements Arrayable, Countable, Jsonable, JsonSerializable, Me
      *
      * @return array
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function jsonSerialize()
     {
         return $this->toArray();

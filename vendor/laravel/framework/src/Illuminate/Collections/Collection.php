@@ -960,6 +960,25 @@ class Collection implements ArrayAccess, Enumerable
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Create chunks representing a "sliding window" view of the items in the collection.
+     *
+     * @param  int  $size
+     * @param  int  $step
+     * @return static
+     */
+    public function sliding($size = 2, $step = 1)
+    {
+        $chunks = floor(($this->count() - $size) / $step) + 1;
+
+        return static::times($chunks, function ($number) use ($size, $step) {
+            return $this->slice(($number - 1) * $step, $size);
+        });
+    }
+
+    /**
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Skip the first {$count} items.
      *
      * @param  int  $count

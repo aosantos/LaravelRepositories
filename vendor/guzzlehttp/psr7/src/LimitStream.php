@@ -1,15 +1,25 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\StreamInterface;
 
 /**
  * Decorator used to return only a subset of a stream.
+<<<<<<< HEAD
  *
  * @final
  */
 class LimitStream implements StreamInterface
+=======
+ */
+final class LimitStream implements StreamInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 {
     use StreamDecoratorTrait;
 
@@ -28,15 +38,24 @@ class LimitStream implements StreamInterface
      */
     public function __construct(
         StreamInterface $stream,
+<<<<<<< HEAD
         $limit = -1,
         $offset = 0
+=======
+        int $limit = -1,
+        int $offset = 0
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     ) {
         $this->stream = $stream;
         $this->setLimit($limit);
         $this->setOffset($offset);
     }
 
+<<<<<<< HEAD
     public function eof()
+=======
+    public function eof(): bool
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         // Always return true if the underlying stream is EOF
         if ($this->stream->eof()) {
@@ -44,7 +63,11 @@ class LimitStream implements StreamInterface
         }
 
         // No limit and the underlying stream is not at EOF
+<<<<<<< HEAD
         if ($this->limit == -1) {
+=======
+        if ($this->limit === -1) {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             return false;
         }
 
@@ -53,6 +76,7 @@ class LimitStream implements StreamInterface
 
     /**
      * Returns the size of the limited subset of data
+<<<<<<< HEAD
      * {@inheritdoc}
      */
     public function getSize()
@@ -60,6 +84,14 @@ class LimitStream implements StreamInterface
         if (null === ($length = $this->stream->getSize())) {
             return null;
         } elseif ($this->limit == -1) {
+=======
+     */
+    public function getSize(): ?int
+    {
+        if (null === ($length = $this->stream->getSize())) {
+            return null;
+        } elseif ($this->limit === -1) {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             return $length - $this->offset;
         } else {
             return min($this->limit, $length - $this->offset);
@@ -68,9 +100,14 @@ class LimitStream implements StreamInterface
 
     /**
      * Allow for a bounded seek on the read limited stream
+<<<<<<< HEAD
      * {@inheritdoc}
      */
     public function seek($offset, $whence = SEEK_SET)
+=======
+     */
+    public function seek($offset, $whence = SEEK_SET): void
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if ($whence !== SEEK_SET || $offset < 0) {
             throw new \RuntimeException(sprintf(
@@ -93,9 +130,14 @@ class LimitStream implements StreamInterface
 
     /**
      * Give a relative tell()
+<<<<<<< HEAD
      * {@inheritdoc}
      */
     public function tell()
+=======
+     */
+    public function tell(): int
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->stream->tell() - $this->offset;
     }
@@ -107,7 +149,11 @@ class LimitStream implements StreamInterface
      *
      * @throws \RuntimeException if the stream cannot be seeked.
      */
+<<<<<<< HEAD
     public function setOffset($offset)
+=======
+    public function setOffset(int $offset): void
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $current = $this->stream->tell();
 
@@ -132,14 +178,24 @@ class LimitStream implements StreamInterface
      * @param int $limit Number of bytes to allow to be read from the stream.
      *                   Use -1 for no limit.
      */
+<<<<<<< HEAD
     public function setLimit($limit)
+=======
+    public function setLimit(int $limit): void
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $this->limit = $limit;
     }
 
+<<<<<<< HEAD
     public function read($length)
     {
         if ($this->limit == -1) {
+=======
+    public function read($length): string
+    {
+        if ($this->limit === -1) {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             return $this->stream->read($length);
         }
 

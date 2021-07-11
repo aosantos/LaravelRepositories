@@ -27,7 +27,13 @@ final class BuilderHelpers
     public static function normalizeNode($node) : Node {
         if ($node instanceof Builder) {
             return $node->getNode();
+<<<<<<< HEAD
         } elseif ($node instanceof Node) {
+=======
+        }
+
+        if ($node instanceof Node) {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             return $node;
         }
 
@@ -127,18 +133,34 @@ final class BuilderHelpers
     private static function normalizeNameCommon($name, bool $allowExpr) {
         if ($name instanceof Name) {
             return $name;
+<<<<<<< HEAD
         } elseif (is_string($name)) {
+=======
+        }
+
+        if (is_string($name)) {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             if (!$name) {
                 throw new \LogicException('Name cannot be empty');
             }
 
             if ($name[0] === '\\') {
                 return new Name\FullyQualified(substr($name, 1));
+<<<<<<< HEAD
             } elseif (0 === strpos($name, 'namespace\\')) {
                 return new Name\Relative(substr($name, strlen('namespace\\')));
             } else {
                 return new Name($name);
             }
+=======
+            }
+
+            if (0 === strpos($name, 'namespace\\')) {
+                return new Name\Relative(substr($name, strlen('namespace\\')));
+            }
+
+            return new Name($name);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         if ($allowExpr) {
@@ -148,9 +170,15 @@ final class BuilderHelpers
             throw new \LogicException(
                 'Name must be a string or an instance of Node\Name or Node\Expr'
             );
+<<<<<<< HEAD
         } else {
             throw new \LogicException('Name must be a string or an instance of Node\Name');
         }
+=======
+        }
+
+        throw new \LogicException('Name must be a string or an instance of Node\Name');
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -183,7 +211,11 @@ final class BuilderHelpers
         }
 
         $builtinTypes = [
+<<<<<<< HEAD
             'array', 'callable', 'string', 'int', 'float', 'bool', 'iterable', 'void', 'object', 'mixed'
+=======
+            'array', 'callable', 'string', 'int', 'float', 'bool', 'iterable', 'void', 'object', 'mixed', 'never',
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         ];
 
         $lowerType = strtolower($type);
@@ -193,12 +225,20 @@ final class BuilderHelpers
             $type = self::normalizeName($type);
         }
 
+<<<<<<< HEAD
         if ($nullable && (string) $type === 'void') {
             throw new \LogicException('void type cannot be nullable');
         }
 
         if ($nullable && (string) $type === 'mixed') {
             throw new \LogicException('mixed type cannot be nullable');
+=======
+        $notNullableTypes = [
+            'void', 'mixed', 'never',
+        ];
+        if ($nullable && in_array((string) $type, $notNullableTypes)) {
+            throw new \LogicException(sprintf('%s type cannot be nullable', $type));
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         return $nullable ? new NullableType($type) : $type;
@@ -215,6 +255,7 @@ final class BuilderHelpers
     public static function normalizeValue($value) : Expr {
         if ($value instanceof Node\Expr) {
             return $value;
+<<<<<<< HEAD
         } elseif (is_null($value)) {
             return new Expr\ConstFetch(
                 new Name('null')
@@ -230,6 +271,35 @@ final class BuilderHelpers
         } elseif (is_string($value)) {
             return new Scalar\String_($value);
         } elseif (is_array($value)) {
+=======
+        }
+
+        if (is_null($value)) {
+            return new Expr\ConstFetch(
+                new Name('null')
+            );
+        }
+
+        if (is_bool($value)) {
+            return new Expr\ConstFetch(
+                new Name($value ? 'true' : 'false')
+            );
+        }
+
+        if (is_int($value)) {
+            return new Scalar\LNumber($value);
+        }
+
+        if (is_float($value)) {
+            return new Scalar\DNumber($value);
+        }
+
+        if (is_string($value)) {
+            return new Scalar\String_($value);
+        }
+
+        if (is_array($value)) {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $items = [];
             $lastKey = -1;
             foreach ($value as $itemKey => $itemValue) {
@@ -248,9 +318,15 @@ final class BuilderHelpers
             }
 
             return new Expr\Array_($items);
+<<<<<<< HEAD
         } else {
             throw new \LogicException('Invalid value');
         }
+=======
+        }
+
+        throw new \LogicException('Invalid value');
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -263,11 +339,41 @@ final class BuilderHelpers
     public static function normalizeDocComment($docComment) : Comment\Doc {
         if ($docComment instanceof Comment\Doc) {
             return $docComment;
+<<<<<<< HEAD
         } elseif (is_string($docComment)) {
             return new Comment\Doc($docComment);
         } else {
             throw new \LogicException('Doc comment must be a string or an instance of PhpParser\Comment\Doc');
         }
+=======
+        }
+
+        if (is_string($docComment)) {
+            return new Comment\Doc($docComment);
+        }
+
+        throw new \LogicException('Doc comment must be a string or an instance of PhpParser\Comment\Doc');
+    }
+
+    /**
+     * Normalizes a attribute: Converts attribute to the Attribute Group if needed.
+     *
+     * @param Node\Attribute|Node\AttributeGroup $attribute
+     *
+     * @return Node\AttributeGroup The Attribute Group
+     */
+    public static function normalizeAttribute($attribute) : Node\AttributeGroup
+    {
+        if ($attribute instanceof Node\AttributeGroup) {
+            return $attribute;
+        }
+
+        if (!($attribute instanceof Node\Attribute)) {
+            throw new \LogicException('Attribute must be an instance of PhpParser\Node\Attribute or PhpParser\Node\AttributeGroup');
+        }
+
+        return new Node\AttributeGroup([$attribute]);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**

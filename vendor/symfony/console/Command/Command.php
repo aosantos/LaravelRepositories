@@ -101,7 +101,22 @@ class Command
     {
         $this->definition = new InputDefinition();
 
+<<<<<<< HEAD
         if (null !== $name || null !== $name = static::getDefaultName()) {
+=======
+        if (null === $name && null !== $name = static::getDefaultName()) {
+            $aliases = explode('|', $name);
+
+            if ('' === $name = array_shift($aliases)) {
+                $this->setHidden(true);
+                $name = array_shift($aliases);
+            }
+
+            $this->setAliases($aliases);
+        }
+
+        if (null !== $name) {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $this->setName($name);
         }
 

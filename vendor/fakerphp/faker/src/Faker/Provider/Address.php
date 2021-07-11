@@ -25,6 +25,11 @@ class Address extends Base
 
     /**
      * @example 'town'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function citySuffix()
     {
@@ -33,6 +38,11 @@ class Address extends Base
 
     /**
      * @example 'Avenue'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function streetSuffix()
     {
@@ -41,6 +51,11 @@ class Address extends Base
 
     /**
      * @example '791'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function buildingNumber()
     {
@@ -49,6 +64,11 @@ class Address extends Base
 
     /**
      * @example 'Sashabury'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function city()
     {
@@ -59,6 +79,11 @@ class Address extends Base
 
     /**
      * @example 'Crist Parks'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function streetName()
     {
@@ -69,6 +94,11 @@ class Address extends Base
 
     /**
      * @example '791 Crist Parks'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function streetAddress()
     {
@@ -79,6 +109,11 @@ class Address extends Base
 
     /**
      * @example 86039-9874
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function postcode()
     {
@@ -87,6 +122,11 @@ class Address extends Base
 
     /**
      * @example '791 Crist Parks, Sashabury, IL 86039-9874'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function address()
     {
@@ -97,6 +137,11 @@ class Address extends Base
 
     /**
      * @example 'Japan'
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function country()
     {
@@ -104,12 +149,21 @@ class Address extends Base
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Uses signed degrees format (returns a float number between -90 and 90)
+     *
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @example '77.147489'
      *
      * @param float|int $min
      * @param float|int $max
      *
+<<<<<<< HEAD
      * @return float Uses signed degrees format (returns a float number between -90 and 90)
+=======
+     * @return float
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function latitude($min = -90, $max = 90)
     {
@@ -117,12 +171,21 @@ class Address extends Base
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Uses signed degrees format (returns a float number between -180 and 180)
+     *
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @example '86.211205'
      *
      * @param float|int $min
      * @param float|int $max
      *
+<<<<<<< HEAD
      * @return float Uses signed degrees format (returns a float number between -180 and 180)
+=======
+     * @return float
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function longitude($min = -180, $max = 180)
     {
@@ -132,7 +195,11 @@ class Address extends Base
     /**
      * @example array('77.147489', '86.211205')
      *
+<<<<<<< HEAD
      * @return array | latitude, longitude
+=======
+     * @return float[]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function localCoordinates()
     {

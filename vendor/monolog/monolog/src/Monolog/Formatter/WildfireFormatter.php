@@ -19,11 +19,21 @@ use Monolog\Logger;
  * @author Eric Clemmons (@ericclemmons) <eric@uxdriven.com>
  * @author Christophe Coevoet <stof@notk.org>
  * @author Kirill chEbba Chebunin <iam@chebba.org>
+<<<<<<< HEAD
+=======
+ *
+ * @phpstan-import-type Level from \Monolog\Logger
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class WildfireFormatter extends NormalizerFormatter
 {
     /**
      * Translates Monolog log levels to Wildfire levels.
+<<<<<<< HEAD
+=======
+     *
+     * @var array<Level, string>
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     private $logLevels = [
         Logger::DEBUG     => 'LOG',
@@ -49,6 +59,11 @@ class WildfireFormatter extends NormalizerFormatter
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
+=======
+     *
+     * @return string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function format(array $record): string
     {
@@ -63,6 +78,10 @@ class WildfireFormatter extends NormalizerFormatter
             unset($record['extra']['line']);
         }
 
+<<<<<<< HEAD
+=======
+        /** @var mixed[] $record */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $record = $this->normalize($record);
         $message = ['message' => $record['message']];
         $handleError = false;
@@ -108,6 +127,11 @@ class WildfireFormatter extends NormalizerFormatter
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
+=======
+     *
+     * @phpstan-return never
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function formatBatch(array $records)
     {
@@ -116,7 +140,12 @@ class WildfireFormatter extends NormalizerFormatter
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      * @return int|bool|string|null|array|object
+=======
+     *
+     * @return null|scalar|array<array|scalar|null>|object
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function normalize($data, int $depth = 0)
     {

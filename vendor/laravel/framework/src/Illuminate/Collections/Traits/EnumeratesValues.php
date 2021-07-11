@@ -13,6 +13,10 @@ use Illuminate\Support\Enumerable;
 use Illuminate\Support\HigherOrderCollectionProxy;
 use Illuminate\Support\HigherOrderWhenProxy;
 use JsonSerializable;
+<<<<<<< HEAD
+=======
+use ReturnTypeWillChange;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use Symfony\Component\VarDumper\VarDumper;
 use Traversable;
 
@@ -833,6 +837,10 @@ trait EnumeratesValues
      *
      * @return array
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function jsonSerialize()
     {
         return array_map(function ($value) {

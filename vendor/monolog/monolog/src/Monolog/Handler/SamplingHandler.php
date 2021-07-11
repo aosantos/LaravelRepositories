@@ -26,13 +26,24 @@ use Monolog\Formatter\FormatterInterface;
  *
  * @author Bryan Davis <bd808@wikimedia.org>
  * @author Kunal Mehta <legoktm@gmail.com>
+<<<<<<< HEAD
+=======
+ *
+ * @phpstan-import-type Record from \Monolog\Logger
+ * @phpstan-import-type Level from \Monolog\Logger
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class SamplingHandler extends AbstractHandler implements ProcessableHandlerInterface, FormattableHandlerInterface
 {
     use ProcessableHandlerTrait;
 
     /**
+<<<<<<< HEAD
      * @var callable|HandlerInterface $handler
+=======
+     * @var HandlerInterface|callable
+     * @phpstan-var HandlerInterface|callable(Record|array{level: Level}|null, HandlerInterface): HandlerInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected $handler;
 
@@ -42,7 +53,11 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
     protected $factor;
 
     /**
+<<<<<<< HEAD
      * @psalm-param HandlerInterface|callable(array, HandlerInterface): HandlerInterface $handler
+=======
+     * @psalm-param HandlerInterface|callable(Record|array{level: Level}|null, HandlerInterface): HandlerInterface $handler
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      *
      * @param callable|HandlerInterface $handler Handler or factory callable($record|null, $samplingHandler).
      * @param int                       $factor  Sample factor (e.g. 10 means every ~10th record is sampled)
@@ -67,6 +82,10 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
     {
         if ($this->isHandling($record) && mt_rand(1, $this->factor) === 1) {
             if ($this->processors) {
+<<<<<<< HEAD
+=======
+                /** @var Record $record */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 $record = $this->processRecord($record);
             }
 
@@ -81,6 +100,11 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
      *
      * If the handler was provided as a factory callable, this will trigger the handler's instantiation.
      *
+<<<<<<< HEAD
+=======
+     * @phpstan-param Record|array{level: Level}|null $record
+     *
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @return HandlerInterface
      */
     public function getHandler(array $record = null)

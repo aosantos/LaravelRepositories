@@ -21,6 +21,7 @@ class ScalarFormatter extends NormalizerFormatter
 {
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      */
     public function format(array $record): array
     {
@@ -34,6 +35,24 @@ class ScalarFormatter extends NormalizerFormatter
     /**
      * @param  mixed $value
      * @return string|int|bool|null
+=======
+     *
+     * @phpstan-return array<string, scalar|null> $record
+     */
+    public function format(array $record): array
+    {
+        $result = [];
+        foreach ($record as $key => $value) {
+            $result[$key] = $this->normalizeValue($value);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param  mixed                      $value
+     * @return scalar|null
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function normalizeValue($value)
     {

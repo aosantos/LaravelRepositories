@@ -206,7 +206,11 @@ abstract class Factory
      * Create a collection of models and persist them to the database.
      *
      * @param  iterable  $records
+<<<<<<< HEAD
      * @return \Illuminate\Database\Eloquent\Collection|mixed
+=======
+     * @return \Illuminate\Database\Eloquent\Collection
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function createMany(iterable $records)
     {
@@ -222,7 +226,11 @@ abstract class Factory
      *
      * @param  array  $attributes
      * @param  \Illuminate\Database\Eloquent\Model|null  $parent
+<<<<<<< HEAD
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|mixed
+=======
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function create($attributes = [], ?Model $parent = null)
     {
@@ -309,7 +317,11 @@ abstract class Factory
      *
      * @param  array  $attributes
      * @param  \Illuminate\Database\Eloquent\Model|null  $parent
+<<<<<<< HEAD
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|mixed
+=======
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function make($attributes = [], ?Model $parent = null)
     {

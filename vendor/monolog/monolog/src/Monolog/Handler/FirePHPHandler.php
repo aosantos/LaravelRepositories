@@ -18,6 +18,11 @@ use Monolog\Formatter\FormatterInterface;
  * Simple FirePHP Handler (http://www.firephp.org/), which uses the Wildfire protocol.
  *
  * @author Eric Clemmons (@ericclemmons) <eric@uxdriven.com>
+<<<<<<< HEAD
+=======
+ *
+ * @phpstan-import-type FormattedRecord from AbstractProcessingHandler
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class FirePHPHandler extends AbstractProcessingHandler
 {
@@ -45,6 +50,10 @@ class FirePHPHandler extends AbstractProcessingHandler
 
     /**
      * Whether or not Wildfire vendor-specific headers have been generated & sent yet
+<<<<<<< HEAD
+=======
+     * @var bool
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected static $initialized = false;
 
@@ -54,14 +63,27 @@ class FirePHPHandler extends AbstractProcessingHandler
      */
     protected static $messageIndex = 1;
 
+<<<<<<< HEAD
+=======
+    /** @var bool */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected static $sendHeaders = true;
 
     /**
      * Base header creation function used by init headers & record headers
      *
+<<<<<<< HEAD
      * @param  array  $meta    Wildfire Plugin, Protocol & Structure Indexes
      * @param  string $message Log message
      * @return array  Complete header string ready for the client as key and message as value
+=======
+     * @param array<int|string> $meta    Wildfire Plugin, Protocol & Structure Indexes
+     * @param string            $message Log message
+     *
+     * @return array<string, string> Complete header string ready for the client as key and message as value
+     *
+     * @phpstan-return non-empty-array<string, string>
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function createHeader(array $meta, string $message): array
     {
@@ -73,7 +95,17 @@ class FirePHPHandler extends AbstractProcessingHandler
     /**
      * Creates message header from record
      *
+<<<<<<< HEAD
      * @see createHeader()
+=======
+     * @return array<string, string>
+     *
+     * @phpstan-return non-empty-array<string, string>
+     *
+     * @see createHeader()
+     *
+     * @phpstan-param FormattedRecord $record
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function createRecordHeader(array $record): array
     {
@@ -98,6 +130,11 @@ class FirePHPHandler extends AbstractProcessingHandler
      *
      * @see createHeader()
      * @see sendHeader()
+<<<<<<< HEAD
+=======
+     *
+     * @return array<string, string>
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function getInitHeaders(): array
     {
@@ -124,7 +161,10 @@ class FirePHPHandler extends AbstractProcessingHandler
      *
      * @see sendHeader()
      * @see sendInitHeaders()
+<<<<<<< HEAD
      * @param array $record
+=======
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function write(array $record): void
     {

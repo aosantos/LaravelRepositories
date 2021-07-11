@@ -26,7 +26,11 @@ namespace Illuminate\Support\Facades;
  * @method static void withDoubleEncoding()
  * @method static void withoutComponentTags()
  * @method static void withoutDoubleEncoding()
+<<<<<<< HEAD
  * @method static void stringable(string|callable $class, callable|null $handler)
+=======
+ * @method static void stringable(string|callable $class, callable|null $handler = null)
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  *
  * @see \Illuminate\View\Compilers\BladeCompiler
  */

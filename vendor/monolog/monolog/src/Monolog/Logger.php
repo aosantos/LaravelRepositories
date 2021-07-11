@@ -15,6 +15,10 @@ use DateTimeZone;
 use Monolog\Handler\HandlerInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\InvalidArgumentException;
+<<<<<<< HEAD
+=======
+use Psr\Log\LogLevel;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use Throwable;
 
 /**
@@ -24,6 +28,13 @@ use Throwable;
  * and uses them to store records that are added to it.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
+<<<<<<< HEAD
+=======
+ *
+ * @phpstan-type Level Logger::DEBUG|Logger::INFO|Logger::NOTICE|Logger::WARNING|Logger::ERROR|Logger::CRITICAL|Logger::ALERT|Logger::EMERGENCY
+ * @phpstan-type LevelName 'DEBUG'|'INFO'|'NOTICE'|'WARNING'|'ERROR'|'CRITICAL'|'ALERT'|'EMERGENCY'
+ * @phpstan-type Record array{message: string, context: mixed[], level: Level, level_name: LevelName, channel: string, datetime: \DateTimeImmutable, extra: mixed[]}
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class Logger implements LoggerInterface, ResettableInterface
 {
@@ -91,6 +102,11 @@ class Logger implements LoggerInterface, ResettableInterface
      * This is a static variable and not a constant to serve as an extension point for custom levels
      *
      * @var array<int, string> $levels Logging levels with the levels as key
+<<<<<<< HEAD
+=======
+     *
+     * @phpstan-var array<Level, LevelName> $levels Logging levels with the levels as key
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected static $levels = [
         self::DEBUG     => 'DEBUG',
@@ -276,6 +292,11 @@ class Logger implements LoggerInterface, ResettableInterface
      * @param  string  $message The log message
      * @param  mixed[] $context The log context
      * @return bool    Whether the record has been processed
+<<<<<<< HEAD
+=======
+     *
+     * @phpstan-param Level $level
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function addRecord(int $level, string $message, array $context = []): bool
     {
@@ -383,6 +404,12 @@ class Logger implements LoggerInterface, ResettableInterface
      * Gets the name of the logging level.
      *
      * @throws \Psr\Log\InvalidArgumentException If level is not defined
+<<<<<<< HEAD
+=======
+     *
+     * @phpstan-param  Level     $level
+     * @phpstan-return LevelName
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function getLevelName(int $level): string
     {
@@ -398,11 +425,21 @@ class Logger implements LoggerInterface, ResettableInterface
      *
      * @param  string|int                        $level Level number (monolog) or name (PSR-3)
      * @throws \Psr\Log\InvalidArgumentException If level is not defined
+<<<<<<< HEAD
+=======
+     *
+     * @phpstan-param  Level|LevelName|LogLevel::* $level
+     * @phpstan-return Level
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function toMonologLevel($level): int
     {
         if (is_string($level)) {
             if (is_numeric($level)) {
+<<<<<<< HEAD
+=======
+                /** @phpstan-ignore-next-line */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 return intval($level);
             }
 
@@ -413,11 +450,19 @@ class Logger implements LoggerInterface, ResettableInterface
                 return constant(__CLASS__ . '::' . $upper);
             }
 
+<<<<<<< HEAD
             throw new InvalidArgumentException('Level "'.$level.'" is not defined, use one of: '.implode(', ', array_keys(static::$levels)));
         }
 
         if (!is_int($level)) {
             throw new InvalidArgumentException('Level "'.var_export($level, true).'" is not defined, use one of: '.implode(', ', array_keys(static::$levels)));
+=======
+            throw new InvalidArgumentException('Level "'.$level.'" is not defined, use one of: '.implode(', ', array_keys(static::$levels) + static::$levels));
+        }
+
+        if (!is_int($level)) {
+            throw new InvalidArgumentException('Level "'.var_export($level, true).'" is not defined, use one of: '.implode(', ', array_keys(static::$levels) + static::$levels));
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         return $level;
@@ -425,6 +470,11 @@ class Logger implements LoggerInterface, ResettableInterface
 
     /**
      * Checks whether the Logger has a handler that listens on the given level
+<<<<<<< HEAD
+=======
+     *
+     * @phpstan-param Level $level
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function isHandling(int $level): bool
     {
@@ -463,9 +513,17 @@ class Logger implements LoggerInterface, ResettableInterface
      *
      * This method allows for compatibility with common interfaces.
      *
+<<<<<<< HEAD
      * @param mixed   $level   The log level
      * @param string  $message The log message
      * @param mixed[] $context The log context
+=======
+     * @param int|string $level   The log level
+     * @param string     $message The log message
+     * @param mixed[]    $context The log context
+     *
+     * @phpstan-param Level|LevelName|LogLevel::* $level
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function log($level, $message, array $context = []): void
     {
@@ -599,6 +657,12 @@ class Logger implements LoggerInterface, ResettableInterface
     /**
      * Delegates exception management to the custom exception handler,
      * or throws the exception if no custom handler is set.
+<<<<<<< HEAD
+=======
+     *
+     * @param array $record
+     * @phpstan-param Record $record
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function handleException(Throwable $e, array $record): void
     {

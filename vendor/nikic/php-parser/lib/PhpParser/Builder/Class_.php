@@ -4,6 +4,10 @@ namespace PhpParser\Builder;
 
 use PhpParser;
 use PhpParser\BuilderHelpers;
+<<<<<<< HEAD
+=======
+use PhpParser\Node;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
@@ -20,6 +24,12 @@ class Class_ extends Declaration
     protected $properties = [];
     protected $methods = [];
 
+<<<<<<< HEAD
+=======
+    /** @var Node\AttributeGroup[] */
+    protected $attributeGroups = [];
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     /**
      * Creates a class builder.
      *
@@ -107,6 +117,22 @@ class Class_ extends Declaration
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Adds an attribute group.
+     *
+     * @param Node\Attribute|Node\AttributeGroup $attribute
+     *
+     * @return $this The builder instance (for fluid interface)
+     */
+    public function addAttribute($attribute) {
+        $this->attributeGroups[] = BuilderHelpers::normalizeAttribute($attribute);
+
+        return $this;
+    }
+
+    /**
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Returns the built class node.
      *
      * @return Stmt\Class_ The built class node
@@ -117,6 +143,10 @@ class Class_ extends Declaration
             'extends' => $this->extends,
             'implements' => $this->implements,
             'stmts' => array_merge($this->uses, $this->constants, $this->properties, $this->methods),
+<<<<<<< HEAD
+=======
+            'attrGroups' => $this->attributeGroups,
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         ], $this->attributes);
     }
 }

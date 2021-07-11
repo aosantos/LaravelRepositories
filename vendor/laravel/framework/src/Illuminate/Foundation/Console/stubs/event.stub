@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 namespace DummyNamespace;
+=======
+namespace {{ namespace }};
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -10,7 +14,11 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
+<<<<<<< HEAD
 class DummyClass
+=======
+class {{ class }}
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 

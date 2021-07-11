@@ -1095,7 +1095,11 @@ class Builder
     /**
      * Add an "or where null" clause to the query.
      *
+<<<<<<< HEAD
      * @param  string  $column
+=======
+     * @param  string|array  $column
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @return $this
      */
     public function orWhereNull($column)
@@ -2407,7 +2411,11 @@ class Builder
      * @param  array  $columns
      * @param  string  $cursorName
      * @param  string|null  $cursor
+<<<<<<< HEAD
      * @return \Illuminate\Contracts\Pagination\Paginator
+=======
+     * @return \Illuminate\Contracts\Pagination\CursorPaginator
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @throws \Illuminate\Pagination\CursorPaginationException
      */
     public function cursorPaginate($perPage = 15, $columns = ['*'], $cursorName = 'cursor', $cursor = null)
@@ -2577,7 +2585,11 @@ class Builder
     }
 
     /**
+<<<<<<< HEAD
      * Get an array with the values of a given column.
+=======
+     * Get a collection instance containing the values of a given column.
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      *
      * @param  string  $column
      * @param  string|null  $key

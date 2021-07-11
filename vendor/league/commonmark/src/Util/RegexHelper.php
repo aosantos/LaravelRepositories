@@ -63,7 +63,11 @@ final class RegexHelper
     public const REGEX_WHITESPACE_CHAR = '/^[ \t\n\x0b\x0c\x0d]/';
     public const REGEX_WHITESPACE = '/[ \t\n\x0b\x0c\x0d]+/';
     public const REGEX_UNICODE_WHITESPACE_CHAR = '/^\pZ|\s/u';
+<<<<<<< HEAD
     public const REGEX_THEMATIC_BREAK = '/^(?:(?:\*[ \t]*){3,}|(?:_[ \t]*){3,}|(?:-[ \t]*){3,})[ \t]*$/';
+=======
+    public const REGEX_THEMATIC_BREAK = '/^(?:\*[ \t]*){3,}$|^(?:_[ \t]*){3,}$|^(?:-[ \t]*){3,}$/';
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public const REGEX_LINK_DESTINATION_BRACES = '/^(?:<(?:[^<>\\n\\\\\\x00]|\\\\.)*>)/';
 
     public static function isEscapable(string $character): bool

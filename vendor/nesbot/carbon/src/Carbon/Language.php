@@ -11,6 +11,10 @@
 namespace Carbon;
 
 use JsonSerializable;
+<<<<<<< HEAD
+=======
+use ReturnTypeWillChange;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 class Language implements JsonSerializable
 {
@@ -332,6 +336,10 @@ class Language implements JsonSerializable
      *
      * @return string
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function jsonSerialize()
     {
         return $this->getIsoDescription();

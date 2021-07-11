@@ -21,6 +21,10 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Traits\ForwardsCalls;
 use JsonSerializable;
 use LogicException;
+<<<<<<< HEAD
+=======
+use ReturnTypeWillChange;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 abstract class Model implements Arrayable, ArrayAccess, HasBroadcastChannel, Jsonable, JsonSerializable, QueueableEntity, UrlRoutable
 {
@@ -1426,6 +1430,10 @@ abstract class Model implements Arrayable, ArrayAccess, HasBroadcastChannel, Jso
      *
      * @return array
      */
+<<<<<<< HEAD
+=======
+    #[ReturnTypeWillChange]
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function jsonSerialize()
     {
         return $this->toArray();

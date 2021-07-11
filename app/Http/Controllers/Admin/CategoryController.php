@@ -48,7 +48,8 @@ class CategoryController extends Controller
             'description'   => $request->description,
         ]);
 
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->
+            with('sucess','Cadastro realizadocom sucesso');
     }
 
     /**

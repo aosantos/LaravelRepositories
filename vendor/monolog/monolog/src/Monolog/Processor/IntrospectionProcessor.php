@@ -12,6 +12,10 @@
 namespace Monolog\Processor;
 
 use Monolog\Logger;
+<<<<<<< HEAD
+=======
+use Psr\Log\LogLevel;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 /**
  * Injects line/file:class/function where the log message came from
@@ -23,6 +27,7 @@ use Monolog\Logger;
  * triggered the FingersCrossedHandler.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
+<<<<<<< HEAD
  */
 class IntrospectionProcessor implements ProcessorInterface
 {
@@ -32,13 +37,35 @@ class IntrospectionProcessor implements ProcessorInterface
 
     private $skipStackFramesCount;
 
+=======
+ *
+ * @phpstan-import-type Level from \Monolog\Logger
+ * @phpstan-import-type LevelName from \Monolog\Logger
+ */
+class IntrospectionProcessor implements ProcessorInterface
+{
+    /** @var int */
+    private $level;
+    /** @var string[] */
+    private $skipClassesPartials;
+    /** @var int */
+    private $skipStackFramesCount;
+    /** @var string[] */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private $skipFunctions = [
         'call_user_func',
         'call_user_func_array',
     ];
 
     /**
+<<<<<<< HEAD
      * @param string|int $level The minimum logging level at which this Processor will be triggered
+=======
+     * @param string|int $level               The minimum logging level at which this Processor will be triggered
+     * @param string[]   $skipClassesPartials
+     *
+     * @phpstan-param Level|LevelName|LogLevel::* $level
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct($level = Logger::DEBUG, array $skipClassesPartials = [], int $skipStackFramesCount = 0)
     {
@@ -47,6 +74,12 @@ class IntrospectionProcessor implements ProcessorInterface
         $this->skipStackFramesCount = $skipStackFramesCount;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritDoc}
+     */
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function __invoke(array $record): array
     {
         // return if the level is not high enough
@@ -97,7 +130,14 @@ class IntrospectionProcessor implements ProcessorInterface
         return $record;
     }
 
+<<<<<<< HEAD
     private function isTraceClassOrSkippedFunction(array $trace, int $index)
+=======
+    /**
+     * @param array[] $trace
+     */
+    private function isTraceClassOrSkippedFunction(array $trace, int $index): bool
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!isset($trace[$index])) {
             return false;

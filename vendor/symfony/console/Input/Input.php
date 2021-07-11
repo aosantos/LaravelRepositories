@@ -146,6 +146,17 @@ abstract class Input implements InputInterface, StreamableInputInterface
      */
     public function getOption(string $name)
     {
+<<<<<<< HEAD
+=======
+        if ($this->definition->hasNegation($name)) {
+            if (null === $value = $this->getOption($this->definition->negationToName($name))) {
+                return $value;
+            }
+
+            return !$value;
+        }
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         if (!$this->definition->hasOption($name)) {
             throw new InvalidArgumentException(sprintf('The "%s" option does not exist.', $name));
         }
@@ -158,7 +169,15 @@ abstract class Input implements InputInterface, StreamableInputInterface
      */
     public function setOption(string $name, $value)
     {
+<<<<<<< HEAD
         if (!$this->definition->hasOption($name)) {
+=======
+        if ($this->definition->hasNegation($name)) {
+            $this->options[$this->definition->negationToName($name)] = !$value;
+
+            return;
+        } elseif (!$this->definition->hasOption($name)) {
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             throw new InvalidArgumentException(sprintf('The "%s" option does not exist.', $name));
         }
 
@@ -170,7 +189,11 @@ abstract class Input implements InputInterface, StreamableInputInterface
      */
     public function hasOption(string $name)
     {
+<<<<<<< HEAD
         return $this->definition->hasOption($name);
+=======
+        return $this->definition->hasOption($name) || $this->definition->hasNegation($name);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**

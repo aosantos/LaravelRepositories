@@ -6,6 +6,10 @@ namespace PhpParser\Builder;
 
 use PhpParser;
 use PhpParser\BuilderHelpers;
+<<<<<<< HEAD
+=======
+use PhpParser\Node;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use PhpParser\Node\Const_;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Stmt;
@@ -16,6 +20,12 @@ class ClassConst implements PhpParser\Builder
     protected $attributes = [];
     protected $constants = [];
 
+<<<<<<< HEAD
+=======
+    /** @var Node\AttributeGroup[] */
+    protected $attributeGroups = [];
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     /**
      * Creates a class constant builder
      *
@@ -89,6 +99,22 @@ class ClassConst implements PhpParser\Builder
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Adds an attribute group.
+     *
+     * @param Node\Attribute|Node\AttributeGroup $attribute
+     *
+     * @return $this The builder instance (for fluid interface)
+     */
+    public function addAttribute($attribute) {
+        $this->attributeGroups[] = BuilderHelpers::normalizeAttribute($attribute);
+
+        return $this;
+    }
+
+    /**
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Returns the built class node.
      *
      * @return Stmt\ClassConst The built constant node
@@ -97,7 +123,12 @@ class ClassConst implements PhpParser\Builder
         return new Stmt\ClassConst(
             $this->constants,
             $this->flags,
+<<<<<<< HEAD
             $this->attributes
+=======
+            $this->attributes,
+            $this->attributeGroups
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         );
     }
 }

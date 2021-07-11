@@ -338,7 +338,11 @@ class ClassLoader
      * Loads the given class or interface.
      *
      * @param  string    $class The name of the class
+<<<<<<< HEAD
      * @return bool|null True if loaded, null otherwise
+=======
+     * @return true|null True if loaded, null otherwise
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function loadClass($class)
     {
@@ -347,6 +351,11 @@ class ClassLoader
 
             return true;
         }
+<<<<<<< HEAD
+=======
+
+        return null;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**

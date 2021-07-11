@@ -27,7 +27,11 @@ namespace Carbon\Traits;
  * @method static addWeeks(int $weeks = 1)
  * @method static copy()
  * @method static dayOfYear(int $dayOfYear)
+<<<<<<< HEAD
  * @method string getTranslationMessage(string $key, string $locale = null, string $default = null, $translator = null)
+=======
+ * @method string getTranslationMessage(string $key, ?string $locale = null, ?string $default = null, $translator = null)
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  * @method static next(int|string $day = null)
  * @method static startOfWeek(int $day = 1)
  * @method static subWeeks(int $weeks = 1)
@@ -75,7 +79,11 @@ trait Week
             $year = (int) round($year);
 
             if ($this->weekYear(null, $dayOfWeek, $dayOfYear) === $year) {
+<<<<<<< HEAD
                 return $this->copy();
+=======
+                return $this->avoidMutation();
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             }
 
             $week = $this->week(null, $dayOfWeek, $dayOfYear);
@@ -103,13 +111,21 @@ trait Week
 
         $year = $this->year;
         $day = $this->dayOfYear;
+<<<<<<< HEAD
         $date = $this->copy()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+=======
+        $date = $this->avoidMutation()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         if ($date->year === $year && $day < $date->dayOfYear) {
             return $year - 1;
         }
 
+<<<<<<< HEAD
         $date = $this->copy()->addYear()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+=======
+        $date = $this->avoidMutation()->addYear()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         if ($date->year === $year && $day >= $date->dayOfYear) {
             return $year + 1;
@@ -151,12 +167,20 @@ trait Week
         $dayOfWeek = $dayOfWeek ?? $this->getTranslationMessage('first_day_of_week') ?? 0;
         $dayOfYear = $dayOfYear ?? $this->getTranslationMessage('day_of_first_week_of_year') ?? 1;
         $year = $this->year;
+<<<<<<< HEAD
         $start = $this->copy()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+=======
+        $start = $this->avoidMutation()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $startDay = $start->dayOfYear;
         if ($start->year !== $year) {
             $startDay -= $start->daysInYear;
         }
+<<<<<<< HEAD
         $end = $this->copy()->addYear()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+=======
+        $end = $this->avoidMutation()->addYear()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $endDay = $end->dayOfYear;
         if ($end->year !== $year) {
             $endDay += $this->daysInYear;
@@ -186,8 +210,13 @@ trait Week
             return $date->addWeeks(round($week) - $this->week(null, $dayOfWeek, $dayOfYear));
         }
 
+<<<<<<< HEAD
         $start = $date->copy()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
         $end = $date->copy()->startOfWeek($dayOfWeek);
+=======
+        $start = $date->avoidMutation()->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
+        $end = $date->avoidMutation()->startOfWeek($dayOfWeek);
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         if ($start > $end) {
             $start = $start->subWeeks(26)->dayOfYear($dayOfYear)->startOfWeek($dayOfWeek);
         }

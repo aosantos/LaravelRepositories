@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\MessageInterface;
@@ -12,10 +17,15 @@ final class Message
      * Returns the string representation of an HTTP message.
      *
      * @param MessageInterface $message Message to convert to a string.
+<<<<<<< HEAD
      *
      * @return string
      */
     public static function toString(MessageInterface $message)
+=======
+     */
+    public static function toString(MessageInterface $message): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if ($message instanceof RequestInterface) {
             $msg = trim($message->getMethod() . ' '
@@ -52,10 +62,15 @@ final class Message
      *
      * @param MessageInterface $message    The message to get the body summary
      * @param int              $truncateAt The maximum allowed size of the summary
+<<<<<<< HEAD
      *
      * @return string|null
      */
     public static function bodySummary(MessageInterface $message, $truncateAt = 120)
+=======
+     */
+    public static function bodySummary(MessageInterface $message, int $truncateAt = 120): ?string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $body = $message->getBody();
 
@@ -95,7 +110,11 @@ final class Message
      *
      * @throws \RuntimeException
      */
+<<<<<<< HEAD
     public static function rewindBody(MessageInterface $message)
+=======
+    public static function rewindBody(MessageInterface $message): void
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $body = $message->getBody();
 
@@ -112,10 +131,15 @@ final class Message
      * array values, and a "body" key containing the body of the message.
      *
      * @param string $message HTTP request or response to parse.
+<<<<<<< HEAD
      *
      * @return array
      */
     public static function parseMessage($message)
+=======
+     */
+    public static function parseMessage(string $message): array
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!$message) {
             throw new \InvalidArgumentException('Invalid message');
@@ -129,7 +153,11 @@ final class Message
             throw new \InvalidArgumentException('Invalid message: Missing header delimiter');
         }
 
+<<<<<<< HEAD
         list($rawHeaders, $body) = $messageParts;
+=======
+        [$rawHeaders, $body] = $messageParts;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $rawHeaders .= "\r\n"; // Put back the delimiter we split previously
         $headerParts = preg_split("/\r?\n/", $rawHeaders, 2);
 
@@ -137,7 +165,11 @@ final class Message
             throw new \InvalidArgumentException('Invalid message: Missing status line');
         }
 
+<<<<<<< HEAD
         list($startLine, $rawHeaders) = $headerParts;
+=======
+        [$startLine, $rawHeaders] = $headerParts;
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         if (preg_match("/(?:^HTTP\/|^[A-Z]+ \S+ HTTP\/)(\d+(?:\.\d+)?)/i", $startLine, $matches) && $matches[1] === '1.0') {
             // Header folding is deprecated for HTTP/1.1, but allowed in HTTP/1.0
@@ -175,10 +207,15 @@ final class Message
      *
      * @param string $path    Path from the start-line
      * @param array  $headers Array of headers (each value an array).
+<<<<<<< HEAD
      *
      * @return string
      */
     public static function parseRequestUri($path, array $headers)
+=======
+     */
+    public static function parseRequestUri(string $path, array $headers): string
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $hostKey = array_filter(array_keys($headers), function ($k) {
             return strtolower($k) === 'host';
@@ -199,10 +236,15 @@ final class Message
      * Parses a request message string into a request object.
      *
      * @param string $message Request message string.
+<<<<<<< HEAD
      *
      * @return Request
      */
     public static function parseRequest($message)
+=======
+     */
+    public static function parseRequest(string $message): RequestInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $data = self::parseMessage($message);
         $matches = [];
@@ -227,10 +269,15 @@ final class Message
      * Parses a response message string into a response object.
      *
      * @param string $message Response message string.
+<<<<<<< HEAD
      *
      * @return Response
      */
     public static function parseResponse($message)
+=======
+     */
+    public static function parseResponse(string $message): ResponseInterface
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $data = self::parseMessage($message);
         // According to https://tools.ietf.org/html/rfc7230#section-3.1.2 the space
@@ -246,7 +293,11 @@ final class Message
             $data['headers'],
             $data['body'],
             explode('/', $parts[0])[1],
+<<<<<<< HEAD
             isset($parts[2]) ? $parts[2] : null
+=======
+            $parts[2] ?? null
+>>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         );
     }
 }
