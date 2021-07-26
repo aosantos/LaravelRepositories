@@ -20,10 +20,7 @@ use CurlHandle;
  */
 final class Util
 {
-<<<<<<< HEAD
-=======
     /** @var array<int> */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private static $retriableErrorCodes = [
         CURLE_COULDNT_RESOLVE_HOST,
         CURLE_COULDNT_CONNECT,

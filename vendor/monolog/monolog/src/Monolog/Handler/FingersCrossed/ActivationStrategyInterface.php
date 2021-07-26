@@ -15,21 +15,15 @@ namespace Monolog\Handler\FingersCrossed;
  * Interface for activation strategies for the FingersCrossedHandler.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
-<<<<<<< HEAD
-=======
  *
  * @phpstan-import-type Record from \Monolog\Logger
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 interface ActivationStrategyInterface
 {
     /**
      * Returns whether the given record activates the handler.
-<<<<<<< HEAD
-=======
      *
      * @phpstan-param Record $record
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function isHandlerActivated(array $record): bool;
 }

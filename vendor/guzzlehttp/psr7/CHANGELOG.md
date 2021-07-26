@@ -1,17 +1,5 @@
 # Change Log
 
-<<<<<<< HEAD
-
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
-
-
-## Unreleased
-
-## 1.8.2 - 2021-04-26
-=======
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
@@ -24,14 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Identical to the RC release.
 
 ## 2.0.0@RC-1 - 2021-04-29
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 ### Fixed
 
 - Handle possibly unset `url` in `stream_get_meta_data`
 
-<<<<<<< HEAD
-=======
 ## 2.0.0@beta-1 - 2021-03-21
 
 ### Added
@@ -49,7 +34,6 @@ Identical to the RC release.
 - PHP < 7.2 support
 - All functions in the Guzzle\Psr7 namespace
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 ## 1.8.1 - 2021-03-21
 
 ### Fixed

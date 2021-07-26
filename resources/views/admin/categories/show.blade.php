@@ -2,10 +2,13 @@
 
 @section('content_header')
     <h3>
-        Editar categoria:{{$category->title}}
+        Detalhes da categoria:{{$category->title}}
     </h3>
     <ol class="breadcrumb">
-        <li><a href="{{route('categories.index')}}">Categorias</a></li>/
+        <li><a href="{{route('admin')}}">Dashboard</a></li>
+        /
+        <li><a href="{{route('categories.index')}}">Categorias</a></li>
+        /
         <li><a href="{{route('categories.show',$category->id)}}" class="active">Detalhes</a></li>
     </ol>
 @stop
@@ -22,7 +25,8 @@
                         <p><strong>Descrição:</strong>{{$category->description}}</p>
 
                         <hr>
-                        <form action="{{route('categories.destroy',$category->id)}}" class="form-horizontal" method="POST">
+                        <form action="{{route('categories.destroy',$category->id)}}" class="form-horizontal"
+                              method="POST">
                             @csrf
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-danger">Deletar</button>

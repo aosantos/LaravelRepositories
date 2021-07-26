@@ -41,11 +41,8 @@ class Internet extends Base
 
     /**
      * @example 'jdoe@acme.biz'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function email()
     {
@@ -56,11 +53,8 @@ class Internet extends Base
 
     /**
      * @example 'jdoe@example.com'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     final public function safeEmail()
     {
@@ -69,11 +63,8 @@ class Internet extends Base
 
     /**
      * @example 'jdoe@gmail.com'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function freeEmail()
     {
@@ -82,11 +73,8 @@ class Internet extends Base
 
     /**
      * @example 'jdoe@dawson.com'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function companyEmail()
     {
@@ -95,11 +83,8 @@ class Internet extends Base
 
     /**
      * @example 'gmail.com'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function freeEmailDomain()
     {
@@ -108,11 +93,8 @@ class Internet extends Base
 
     /**
      * @example 'example.org'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     final public static function safeEmailDomain()
     {
@@ -127,11 +109,8 @@ class Internet extends Base
 
     /**
      * @example 'jdoe'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function userName()
     {
@@ -154,11 +133,8 @@ class Internet extends Base
 
     /**
      * @example 'fY4èHdZv68'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function password($minLength = 6, $maxLength = 20)
     {
@@ -169,11 +145,8 @@ class Internet extends Base
 
     /**
      * @example 'tiramisu.com'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function domainName()
     {
@@ -182,11 +155,8 @@ class Internet extends Base
 
     /**
      * @example 'faber'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function domainWord()
     {
@@ -207,11 +177,8 @@ class Internet extends Base
 
     /**
      * @example 'com'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function tld()
     {
@@ -220,11 +187,8 @@ class Internet extends Base
 
     /**
      * @example 'http://www.runolfsdottir.com/'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function url()
     {
@@ -235,11 +199,8 @@ class Internet extends Base
 
     /**
      * @example 'aut-repellat-commodi-vel-itaque-nihil-id-saepe-nostrum'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function slug($nbWords = 6, $variableNbWords = true)
     {
@@ -257,11 +218,8 @@ class Internet extends Base
 
     /**
      * @example '237.149.115.38'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function ipv4()
     {
@@ -270,11 +228,8 @@ class Internet extends Base
 
     /**
      * @example '35cd:186d:3e23:2986:ef9f:5b41:42a4:e6f1'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function ipv6()
     {
@@ -289,11 +244,8 @@ class Internet extends Base
 
     /**
      * @example '10.1.1.17'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function localIpv4()
     {
@@ -304,11 +256,8 @@ class Internet extends Base
 
     /**
      * @example '32:F1:39:2F:D6:18'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function macAddress()
     {

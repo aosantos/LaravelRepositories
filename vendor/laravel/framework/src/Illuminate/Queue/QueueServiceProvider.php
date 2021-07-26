@@ -167,13 +167,10 @@ class QueueServiceProvider extends ServiceProvider implements DeferrableProvider
             };
 
             $resetScope = function () use ($app) {
-<<<<<<< HEAD
-=======
                 if (method_exists($app['log']->driver(), 'withoutContext')) {
                     $app['log']->withoutContext();
                 }
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 return $app->forgetScopedInstances();
             };
 

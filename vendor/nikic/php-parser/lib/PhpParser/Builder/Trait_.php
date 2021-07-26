@@ -4,10 +4,7 @@ namespace PhpParser\Builder;
 
 use PhpParser;
 use PhpParser\BuilderHelpers;
-<<<<<<< HEAD
-=======
 use PhpParser\Node;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use PhpParser\Node\Stmt;
 
 class Trait_ extends Declaration
@@ -17,12 +14,9 @@ class Trait_ extends Declaration
     protected $properties = [];
     protected $methods = [];
 
-<<<<<<< HEAD
-=======
     /** @var Node\AttributeGroup[] */
     protected $attributeGroups = [];
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     /**
      * Creates an interface builder.
      *
@@ -56,8 +50,6 @@ class Trait_ extends Declaration
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Adds an attribute group.
      *
      * @param Node\Attribute|Node\AttributeGroup $attribute
@@ -71,7 +63,6 @@ class Trait_ extends Declaration
     }
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Returns the built trait node.
      *
      * @return Stmt\Trait_ The built interface node
@@ -79,12 +70,8 @@ class Trait_ extends Declaration
     public function getNode() : PhpParser\Node {
         return new Stmt\Trait_(
             $this->name, [
-<<<<<<< HEAD
-                'stmts' => array_merge($this->uses, $this->properties, $this->methods)
-=======
                 'stmts' => array_merge($this->uses, $this->properties, $this->methods),
                 'attrGroups' => $this->attributeGroups,
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             ], $this->attributes
         );
     }

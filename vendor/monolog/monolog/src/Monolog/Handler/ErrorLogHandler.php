@@ -25,16 +25,6 @@ class ErrorLogHandler extends AbstractProcessingHandler
     public const OPERATING_SYSTEM = 0;
     public const SAPI = 4;
 
-<<<<<<< HEAD
-    protected $messageType;
-    protected $expandNewlines;
-
-    /**
-     * @param int        $messageType    Says where the error should go.
-     * @param int|string $level          The minimum logging level at which this handler will be triggered
-     * @param bool       $bubble         Whether the messages that are handled can bubble up the stack or not
-     * @param bool       $expandNewlines If set to true, newlines in the message will be expanded to be take multiple log entries
-=======
     /** @var int */
     protected $messageType;
     /** @var bool */
@@ -43,7 +33,6 @@ class ErrorLogHandler extends AbstractProcessingHandler
     /**
      * @param int  $messageType    Says where the error should go.
      * @param bool $expandNewlines If set to true, newlines in the message will be expanded to be take multiple log entries
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct(int $messageType = self::OPERATING_SYSTEM, $level = Logger::DEBUG, bool $bubble = true, bool $expandNewlines = false)
     {
@@ -60,11 +49,7 @@ class ErrorLogHandler extends AbstractProcessingHandler
     }
 
     /**
-<<<<<<< HEAD
-     * @return array With all available types
-=======
      * @return int[] With all available types
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function getAvailableTypes(): array
     {
@@ -83,7 +68,7 @@ class ErrorLogHandler extends AbstractProcessingHandler
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function write(array $record): void
     {
@@ -94,12 +79,9 @@ class ErrorLogHandler extends AbstractProcessingHandler
         }
 
         $lines = preg_split('{[\r\n]+}', (string) $record['formatted']);
-<<<<<<< HEAD
-=======
         if ($lines === false) {
             throw new \RuntimeException('Failed to preg_split formatted string: '.preg_last_error().' / '.preg_last_error_msg());
         }
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         foreach ($lines as $line) {
             error_log($line, $this->messageType);
         }

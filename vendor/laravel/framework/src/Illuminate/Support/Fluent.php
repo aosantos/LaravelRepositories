@@ -6,10 +6,7 @@ use ArrayAccess;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use JsonSerializable;
-<<<<<<< HEAD
-=======
 use ReturnTypeWillChange;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 class Fluent implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
 {
@@ -74,10 +71,7 @@ class Fluent implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
      *
      * @return array
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function jsonSerialize()
     {
         return $this->toArray();

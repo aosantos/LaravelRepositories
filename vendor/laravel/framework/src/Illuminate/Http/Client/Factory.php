@@ -3,13 +3,9 @@
 namespace Illuminate\Http\Client;
 
 use Closure;
-<<<<<<< HEAD
-use GuzzleHttp\Psr7\Response as Psr7Response;
-=======
 use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\Response as Psr7Response;
 use GuzzleHttp\TransferStats;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
@@ -168,13 +164,6 @@ class Factory
         }
 
         $this->stubCallbacks = $this->stubCallbacks->merge(collect([
-<<<<<<< HEAD
-            $callback instanceof Closure
-                    ? $callback
-                    : function () use ($callback) {
-                        return $callback;
-                    },
-=======
             function ($request, $options) use ($callback) {
                 $response = $callback instanceof Closure
                                 ? $callback($request, $options)
@@ -189,7 +178,6 @@ class Factory
 
                 return $response;
             },
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         ]));
 
         return $this;

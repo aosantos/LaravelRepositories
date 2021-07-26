@@ -21,21 +21,6 @@ use Swift;
  * SwiftMailerHandler uses Swift_Mailer to send the emails
  *
  * @author Gyula Sallai
-<<<<<<< HEAD
- */
-class SwiftMailerHandler extends MailHandler
-{
-    protected $mailer;
-    private $messageTemplate;
-
-    /**
-     * @psalm-param Swift_Message|callable(string, array): Swift_Message $message
-     *
-     * @param \Swift_Mailer          $mailer  The mailer to use
-     * @param callable|Swift_Message $message An example message for real messages, only the body will be replaced
-     * @param string|int             $level   The minimum logging level at which this handler will be triggered
-     * @param bool                   $bubble  Whether the messages that are handled can bubble up the stack or not
-=======
  *
  * @phpstan-import-type Record from \Monolog\Logger
  */
@@ -51,7 +36,6 @@ class SwiftMailerHandler extends MailHandler
      *
      * @param \Swift_Mailer          $mailer  The mailer to use
      * @param callable|Swift_Message $message An example message for real messages, only the body will be replaced
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct(\Swift_Mailer $mailer, $message, $level = Logger::ERROR, bool $bubble = true)
     {
@@ -62,7 +46,7 @@ class SwiftMailerHandler extends MailHandler
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function send(string $content, array $records): void
     {
@@ -85,11 +69,8 @@ class SwiftMailerHandler extends MailHandler
      * @param  string        $content formatted email body to be sent
      * @param  array         $records Log records that formed the content
      * @return Swift_Message
-<<<<<<< HEAD
-=======
      *
      * @phpstan-param Record[] $records
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function buildMessage(string $content, array $records): Swift_Message
     {

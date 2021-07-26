@@ -23,12 +23,9 @@ use Monolog\Formatter\FormatterInterface;
  * @author Haralan Dobrev <hkdobrev@gmail.com>
  * @see    https://api.slack.com/incoming-webhooks
  * @see    https://api.slack.com/docs/message-attachments
-<<<<<<< HEAD
-=======
  *
  * @phpstan-import-type FormattedRecord from \Monolog\Handler\AbstractProcessingHandler
  * @phpstan-import-type Record from \Monolog\Logger
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class SlackRecord
 {
@@ -78,11 +75,7 @@ class SlackRecord
 
     /**
      * Dot separated list of fields to exclude from slack message. E.g. ['context.field1', 'extra.field2']
-<<<<<<< HEAD
-     * @var array
-=======
      * @var string[]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     private $excludeFields;
 
@@ -96,12 +89,9 @@ class SlackRecord
      */
     private $normalizerFormatter;
 
-<<<<<<< HEAD
-=======
     /**
      * @param string[] $excludeFields
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function __construct(
         ?string $channel = null,
         ?string $username = null,
@@ -130,12 +120,9 @@ class SlackRecord
     /**
      * Returns required data in format that Slack
      * is expecting.
-<<<<<<< HEAD
-=======
      *
      * @phpstan-param FormattedRecord $record
      * @phpstan-return mixed[]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function getSlackData(array $record): array
     {
@@ -151,10 +138,7 @@ class SlackRecord
         }
 
         if ($this->formatter && !$this->useAttachment) {
-<<<<<<< HEAD
-=======
             /** @phpstan-ignore-next-line */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $message = $this->formatter->format($record);
         } else {
             $message = $record['message'];
@@ -234,18 +218,12 @@ class SlackRecord
 
     /**
      * Stringifies an array of key/value pairs to be used in attachment fields
-<<<<<<< HEAD
-     */
-    public function stringify(array $fields): string
-    {
-=======
      *
      * @param mixed[] $fields
      */
     public function stringify(array $fields): string
     {
         /** @var Record $fields */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $normalized = $this->normalizerFormatter->format($fields);
 
         $hasSecondDimension = count(array_filter($normalized, 'is_array'));
@@ -320,12 +298,9 @@ class SlackRecord
         return $this;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @param string[] $excludeFields
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function excludeFields(array $excludeFields = []): self
     {
         $this->excludeFields = $excludeFields;
@@ -343,13 +318,9 @@ class SlackRecord
     /**
      * Generates attachment field
      *
-<<<<<<< HEAD
-     * @param string|array $value
-=======
      * @param string|mixed[] $value
      *
      * @return array{title: string, value: string, short: false}
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     private function generateAttachmentField(string $title, $value): array
     {
@@ -366,13 +337,6 @@ class SlackRecord
 
     /**
      * Generates a collection of attachment fields from array
-<<<<<<< HEAD
-     */
-    private function generateAttachmentFields(array $data): array
-    {
-        $fields = array();
-        foreach ($this->normalizerFormatter->format($data) as $key => $value) {
-=======
      *
      * @param mixed[] $data
      *
@@ -385,7 +349,6 @@ class SlackRecord
 
         $fields = array();
         foreach ($normalized as $key => $value) {
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $fields[] = $this->generateAttachmentField((string) $key, $value);
         }
 
@@ -394,13 +357,10 @@ class SlackRecord
 
     /**
      * Get a copy of record with fields excluded according to $this->excludeFields
-<<<<<<< HEAD
-=======
      *
      * @phpstan-param FormattedRecord $record
      *
      * @return mixed[]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     private function removeExcludedFields(array $record): array
     {

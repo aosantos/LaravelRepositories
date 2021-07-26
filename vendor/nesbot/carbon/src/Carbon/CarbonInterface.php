@@ -26,10 +26,7 @@ use DateTimeInterface;
 use DateTimeZone;
 use JsonSerializable;
 use ReflectionException;
-<<<<<<< HEAD
-=======
 use ReturnTypeWillChange;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use Throwable;
 
 /**
@@ -725,10 +722,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @return static
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public static function __set_state($dump);
 
     /**
@@ -763,10 +757,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @return static
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function add($unit, $value = 1, $overflow = null);
 
     /**
@@ -843,8 +834,6 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function average($date = null);
 
     /**
-<<<<<<< HEAD
-=======
      * Clone the current instance if it's mutable.
      *
      * This method is convenient to ensure you don't mutate the initial object
@@ -855,7 +844,6 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function avoidMutation();
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Determines if the instance is between two others.
      *
      * The third argument allow you to specify if bounds are included or not (true by default)
@@ -1091,10 +1079,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @return static|false
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public static function createFromFormat($format, $time, $tz = null);
 
     /**
@@ -1975,11 +1960,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
 
     /**
      * Format the instance with the current locale.  You can set the current
-<<<<<<< HEAD
-     * locale using setlocale() http://php.net/setlocale.
-=======
      * locale using setlocale() https://php.net/setlocale.
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      *
      * @param string $format
      *
@@ -2168,10 +2149,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public static function getLastErrors();
 
     /**
@@ -3354,10 +3332,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @see https://php.net/manual/en/datetime.modify.php
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function modify($modify);
 
     /**
@@ -3741,10 +3716,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @return static
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function setDate($year, $month, $day);
 
     /**
@@ -3809,10 +3781,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @return static
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function setISODate($year, $week, $day = 1);
 
     /**
@@ -3883,10 +3852,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @return static
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function setTime($hour, $minute, $second = 0, $microseconds = 0);
 
     /**
@@ -3916,10 +3882,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @return static
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function setTimestamp($unixTimestamp);
 
     /**
@@ -3929,10 +3892,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @return static
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function setTimezone($value);
 
     /**
@@ -4274,10 +4234,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @return static
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function sub($unit, $value = 1, $overflow = null);
 
     public function subRealUnit($unit, $value = 1);
@@ -4816,11 +4773,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @param string                                             $key
      * @param array                                              $parameters
-<<<<<<< HEAD
-     * @param null                                               $number
-=======
      * @param string|int|float|null                              $number
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @param \Symfony\Component\Translation\TranslatorInterface $translator
      *
      * @return string
@@ -4877,11 +4830,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public static function translateWith(\Symfony\Component\Translation\TranslatorInterface $translator, string $key, array $parameters = [], $number = null): string;
 
     /**
-<<<<<<< HEAD
-     * Format as ->format() do (using date replacements patterns from http://php.net/manual/fr/function.date.php)
-=======
      * Format as ->format() do (using date replacements patterns from https://php.net/manual/en/function.date.php)
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * but translate words whenever possible (months, day names, etc.) using the current locale.
      *
      * @param string $format
@@ -5064,11 +5013,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      *
      * @param Closure|static|string|false|null $testNow real or mock Carbon instance
      * @param Closure|null $callback
-<<<<<<< HEAD
-=======
      *
      * @return mixed
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function withTestNow($testNow = null, $callback = null);
 

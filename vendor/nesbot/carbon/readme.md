@@ -8,11 +8,7 @@
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-44CC11.svg?longCache=true&style=flat-square)](https://github.com/phpstan/phpstan)
 [![Tidelift](https://tidelift.com/badges/github/briannesbitt/Carbon)](https://tidelift.com/subscription/pkg/packagist-nesbot-carbon?utm_source=packagist-nesbot-carbon&utm_medium=referral&utm_campaign=readme)
 
-<<<<<<< HEAD
-An international PHP extension for DateTime. [http://carbon.nesbot.com](http://carbon.nesbot.com)
-=======
 An international PHP extension for DateTime. [https://carbon.nesbot.com](https://carbon.nesbot.com)
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 ```php
 <?php
@@ -88,11 +84,7 @@ printf("Now: %s", Carbon::now());
 
 ### Without Composer
 
-<<<<<<< HEAD
-Why are you not using [composer](http://getcomposer.org/)? Download the Carbon [latest release](https://github.com/briannesbitt/Carbon/releases) and put the contents of the ZIP archive into a directory in your project. Then require the file `autoload.php` to get all classes and dependencies loaded on need.
-=======
 Why are you not using [composer](https://getcomposer.org/)? Download the Carbon [latest release](https://github.com/briannesbitt/Carbon/releases) and put the contents of the ZIP archive into a directory in your project. Then require the file `autoload.php` to get all classes and dependencies loaded on need.
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 ```php
 <?php
@@ -105,11 +97,7 @@ printf("Now: %s", Carbon::now());
 
 ## Docs
 
-<<<<<<< HEAD
-[http://carbon.nesbot.com/docs](http://carbon.nesbot.com/docs)
-=======
 [https://carbon.nesbot.com/docs](https://carbon.nesbot.com/docs)
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 ## Security contact information
 

@@ -19,12 +19,6 @@ use Monolog\Utils;
  * Handler sending logs to browser's javascript console with no browser extension required
  *
  * @author Olivier Poitrey <rs@dailymotion.com>
-<<<<<<< HEAD
- */
-class BrowserConsoleHandler extends AbstractProcessingHandler
-{
-    protected static $initialized = false;
-=======
  *
  * @phpstan-import-type FormattedRecord from AbstractProcessingHandler
  */
@@ -33,7 +27,6 @@ class BrowserConsoleHandler extends AbstractProcessingHandler
     /** @var bool */
     protected static $initialized = false;
     /** @var FormattedRecord[] */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected static $records = [];
 
     /**
@@ -176,12 +169,9 @@ class BrowserConsoleHandler extends AbstractProcessingHandler
         return "(function (c) {if (c && c.groupCollapsed) {\n" . implode("\n", $script) . "\n}})(console);";
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @return string[]
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private static function handleStyles(string $formatted): array
     {
         $args = [];
@@ -207,11 +197,7 @@ class BrowserConsoleHandler extends AbstractProcessingHandler
         static $colors = ['blue', 'green', 'red', 'magenta', 'orange', 'black', 'grey'];
         static $labels = [];
 
-<<<<<<< HEAD
-        return preg_replace_callback('/macro\s*:(.*?)(?:;|$)/', function (array $m) use ($string, &$colors, &$labels) {
-=======
         $style = preg_replace_callback('/macro\s*:(.*?)(?:;|$)/', function (array $m) use ($string, &$colors, &$labels) {
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             if (trim($m[1]) === 'autolabel') {
                 // Format the string as a label with consistent auto assigned background color
                 if (!isset($labels[$string])) {
@@ -224,10 +210,6 @@ class BrowserConsoleHandler extends AbstractProcessingHandler
 
             return $m[1];
         }, $style);
-<<<<<<< HEAD
-    }
-
-=======
 
         if (null === $style) {
             throw new \RuntimeException('Failed to run preg_replace_callback: ' . preg_last_error() . ' / ' . preg_last_error_msg());
@@ -240,7 +222,6 @@ class BrowserConsoleHandler extends AbstractProcessingHandler
      * @param  mixed[] $dict
      * @return mixed[]
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private static function dump(string $title, array $dict): array
     {
         $script = [];
@@ -265,11 +246,6 @@ class BrowserConsoleHandler extends AbstractProcessingHandler
         return '"' . addcslashes($arg, "\"\n\\") . '"';
     }
 
-<<<<<<< HEAD
-    private static function call(...$args): string
-    {
-        $method = array_shift($args);
-=======
     /**
      * @param mixed $args
      */
@@ -279,17 +255,13 @@ class BrowserConsoleHandler extends AbstractProcessingHandler
         if (!is_string($method)) {
             throw new \UnexpectedValueException('Expected the first arg to be a string, got: '.var_export($method, true));
         }
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         return static::call_array($method, $args);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @param mixed[] $args
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private static function call_array(string $method, array $args): string
     {
         return 'c.' . $method . '(' . implode(', ', $args) . ');';

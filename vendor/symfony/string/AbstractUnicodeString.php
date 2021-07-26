@@ -480,37 +480,22 @@ abstract class AbstractUnicodeString extends AbstractString
 
         switch ($type) {
             case \STR_PAD_RIGHT:
-<<<<<<< HEAD
-                return $this->append(str_repeat($pad->string, $freeLen / $padLen).($len ? $pad->slice(0, $len) : ''));
-
-            case \STR_PAD_LEFT:
-                return $this->prepend(str_repeat($pad->string, $freeLen / $padLen).($len ? $pad->slice(0, $len) : ''));
-=======
                 return $this->append(str_repeat($pad->string, intdiv($freeLen, $padLen)).($len ? $pad->slice(0, $len) : ''));
 
             case \STR_PAD_LEFT:
                 return $this->prepend(str_repeat($pad->string, intdiv($freeLen, $padLen)).($len ? $pad->slice(0, $len) : ''));
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
             case \STR_PAD_BOTH:
                 $freeLen /= 2;
 
                 $rightLen = ceil($freeLen);
                 $len = $rightLen % $padLen;
-<<<<<<< HEAD
-                $str = $this->append(str_repeat($pad->string, $rightLen / $padLen).($len ? $pad->slice(0, $len) : ''));
-=======
                 $str = $this->append(str_repeat($pad->string, intdiv($rightLen, $padLen)).($len ? $pad->slice(0, $len) : ''));
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
                 $leftLen = floor($freeLen);
                 $len = $leftLen % $padLen;
 
-<<<<<<< HEAD
-                return $str->prepend(str_repeat($pad->string, $leftLen / $padLen).($len ? $pad->slice(0, $len) : ''));
-=======
                 return $str->prepend(str_repeat($pad->string, intdiv($leftLen, $padLen)).($len ? $pad->slice(0, $len) : ''));
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
             default:
                 throw new InvalidArgumentException('Invalid padding type.');

@@ -13,8 +13,6 @@ use PhpParser\Node\Stmt\Use_;
 class BuilderFactory
 {
     /**
-<<<<<<< HEAD
-=======
      * Creates an attribute node.
      *
      * @param string|Name $name Name of the attribute
@@ -30,7 +28,6 @@ class BuilderFactory
     }
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Creates a namespace builder.
      *
      * @param null|string|Node\Name $name Name of the namespace
@@ -228,14 +225,6 @@ class BuilderFactory
      */
     public function args(array $args) : array {
         $normalizedArgs = [];
-<<<<<<< HEAD
-        foreach ($args as $arg) {
-            if ($arg instanceof Arg) {
-                $normalizedArgs[] = $arg;
-            } else {
-                $normalizedArgs[] = new Arg(BuilderHelpers::normalizeValue($arg));
-            }
-=======
         foreach ($args as $key => $arg) {
             if (!($arg instanceof Arg)) {
                 $arg = new Arg(BuilderHelpers::normalizeValue($arg));
@@ -244,7 +233,6 @@ class BuilderFactory
                 $arg->name = BuilderHelpers::normalizeIdentifier($key);
             }
             $normalizedArgs[] = $arg;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
         return $normalizedArgs;
     }

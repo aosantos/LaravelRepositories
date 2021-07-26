@@ -5,11 +5,8 @@ namespace League\Flysystem;
 use League\Flysystem\Util\MimeType;
 use LogicException;
 
-<<<<<<< HEAD
-=======
 use function strcmp;
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 class Util
 {
     /**
@@ -107,12 +104,7 @@ class Util
     public static function normalizeRelativePath($path)
     {
         $path = str_replace('\\', '/', $path);
-<<<<<<< HEAD
-        $path = static::removeFunkyWhiteSpace($path);
-
-=======
         $path =  static::removeFunkyWhiteSpace($path);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $parts = [];
 
         foreach (explode('/', $path) as $part) {
@@ -136,13 +128,6 @@ class Util
             }
         }
 
-<<<<<<< HEAD
-        return implode('/', $parts);
-    }
-
-    /**
-     * Removes unprintable characters and invalid unicode characters.
-=======
         $path = implode('/', $parts);
 
         return $path;
@@ -150,7 +135,6 @@ class Util
 
     /**
      * Rejects unprintable characters and invalid unicode characters.
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      *
      * @param string $path
      *
@@ -158,15 +142,8 @@ class Util
      */
     protected static function removeFunkyWhiteSpace($path)
     {
-<<<<<<< HEAD
-        // We do this check in a loop, since removing invalid unicode characters
-        // can lead to new characters being created.
-        while (preg_match('#\p{C}+|^\./#u', $path)) {
-            $path = preg_replace('#\p{C}+|^\./#u', '', $path);
-=======
         if (preg_match('#\p{C}+#u', $path)) {
             throw CorruptedPathDetected::forPath($path);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         return $path;
@@ -229,11 +206,7 @@ class Util
         $listedDirectories = [];
 
         foreach ($listing as $object) {
-<<<<<<< HEAD
-            list($directories, $listedDirectories) = static::emulateObjectDirectories($object, $directories, $listedDirectories);
-=======
             [$directories, $listedDirectories] = static::emulateObjectDirectories($object, $directories, $listedDirectories);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         $directories = array_diff(array_unique($directories), array_unique($listedDirectories));

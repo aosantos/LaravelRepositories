@@ -28,16 +28,6 @@ use Monolog\Logger;
  */
 class RedisPubSubHandler extends AbstractProcessingHandler
 {
-<<<<<<< HEAD
-    private $redisClient;
-    private $channelKey;
-
-    /**
-     * @param \Predis\Client|\Redis $redis  The redis instance
-     * @param string                $key    The channel key to publish records to
-     * @param string|int            $level  The minimum logging level at which this handler will be triggered
-     * @param bool                  $bubble Whether the messages that are handled can bubble up the stack or not
-=======
     /** @var \Predis\Client|\Redis */
     private $redisClient;
     /** @var string */
@@ -46,7 +36,6 @@ class RedisPubSubHandler extends AbstractProcessingHandler
     /**
      * @param \Predis\Client|\Redis $redis The redis instance
      * @param string                $key   The channel key to publish records to
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct($redis, string $key, $level = Logger::DEBUG, bool $bubble = true)
     {

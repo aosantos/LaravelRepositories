@@ -32,10 +32,7 @@ use InvalidArgumentException;
 use Iterator;
 use JsonSerializable;
 use ReflectionException;
-<<<<<<< HEAD
-=======
 use ReturnTypeWillChange;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use RuntimeException;
 
 /**
@@ -966,11 +963,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
      */
     public function getStartDate(string $rounding = null)
     {
-<<<<<<< HEAD
-        $date = $this->startDate->copy();
-=======
         $date = $this->startDate->avoidMutation();
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         return $rounding ? $date->round($this->getDateInterval(), $rounding) : $date;
     }
@@ -988,11 +981,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
             return null;
         }
 
-<<<<<<< HEAD
-        $date = $this->endDate->copy();
-=======
         $date = $this->endDate->avoidMutation();
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         return $rounding ? $date->round($this->getDateInterval(), $rounding) : $date;
     }
@@ -1535,11 +1524,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
     {
         $state = [
             $this->key,
-<<<<<<< HEAD
-            $this->current ? $this->current->copy() : null,
-=======
             $this->current ? $this->current->avoidMutation() : null,
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $this->validationResult,
         ];
 
@@ -1738,11 +1723,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
         $date = $this->getEndFromRecurrences() ?? $this->iterateUntilEnd();
 
         if ($date && $rounding) {
-<<<<<<< HEAD
-            $date = $date->copy()->round($this->getDateInterval(), $rounding);
-=======
             $date = $date->avoidMutation()->round($this->getDateInterval(), $rounding);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         return $date;
@@ -1763,21 +1744,13 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
         if ($this->recurrences === INF) {
             $start = $this->getStartDate();
 
-<<<<<<< HEAD
-            return $start < $start->copy()->add($this->getDateInterval())
-=======
             return $start < $start->avoidMutation()->add($this->getDateInterval())
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 ? CarbonImmutable::endOfTime()
                 : CarbonImmutable::startOfTime();
         }
 
         if ($this->filters === [[static::RECURRENCES_FILTER, null]]) {
-<<<<<<< HEAD
-            return $this->getStartDate()->copy()->add(
-=======
             return $this->getStartDate()->avoidMutation()->add(
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 $this->getDateInterval()->times(
                     $this->recurrences - ($this->isStartExcluded() ? 0 : 1)
                 )
@@ -1823,18 +1796,8 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
             $range = static::create($range);
         }
 
-<<<<<<< HEAD
-        $thisDates = [$this->getStartDate(), $this->calculateEnd()];
-        sort($thisDates);
-        [$start, $end] = $thisDates;
-
-        $rangeDates = [$range->getStartDate(), $range->calculateEnd()];
-        sort($rangeDates);
-        [$rangeStart, $rangeEnd] = $rangeDates;
-=======
         [$start, $end] = $this->orderCouple($this->getStartDate(), $this->calculateEnd());
         [$rangeStart, $rangeEnd] = $this->orderCouple($range->getStartDate(), $range->calculateEnd());
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         return $end > $rangeStart && $rangeEnd > $start;
     }
@@ -2201,10 +2164,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
      *
      * @return CarbonInterface[]
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function jsonSerialize()
     {
         return $this->toArray();
@@ -2421,11 +2381,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
         foreach ($this->filters as $tuple) {
             $result = \call_user_func(
                 $tuple[0],
-<<<<<<< HEAD
-                $current->copy(),
-=======
                 $current->avoidMutation(),
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 $this->key,
                 $this
             );
@@ -2534,12 +2490,9 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
             ? static::instance($period)
             : static::create($period, ...$arguments);
     }
-<<<<<<< HEAD
-=======
 
     private function orderCouple($first, $second): array
     {
         return $first > $second ? [$second, $first] : [$first, $second];
     }
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 }

@@ -19,12 +19,9 @@ class Param implements PhpParser\Builder
 
     protected $variadic = false;
 
-<<<<<<< HEAD
-=======
     /** @var Node\AttributeGroup[] */
     protected $attributeGroups = [];
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     /**
      * Creates a parameter builder.
      *
@@ -99,8 +96,6 @@ class Param implements PhpParser\Builder
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Adds an attribute group.
      *
      * @param Node\Attribute|Node\AttributeGroup $attribute
@@ -114,7 +109,6 @@ class Param implements PhpParser\Builder
     }
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Returns the built parameter node.
      *
      * @return Node\Param The built parameter node
@@ -122,11 +116,7 @@ class Param implements PhpParser\Builder
     public function getNode() : Node {
         return new Node\Param(
             new Node\Expr\Variable($this->name),
-<<<<<<< HEAD
-            $this->default, $this->type, $this->byRef, $this->variadic
-=======
             $this->default, $this->type, $this->byRef, $this->variadic, [], 0, $this->attributeGroups
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         );
     }
 }

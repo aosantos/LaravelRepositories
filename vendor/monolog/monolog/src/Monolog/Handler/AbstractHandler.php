@@ -13,21 +13,12 @@ namespace Monolog\Handler;
 
 use Monolog\Logger;
 use Monolog\ResettableInterface;
-<<<<<<< HEAD
-=======
 use Psr\Log\LogLevel;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 /**
  * Base Handler class providing basic level/bubble support
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
-<<<<<<< HEAD
- */
-abstract class AbstractHandler extends Handler implements ResettableInterface
-{
-    protected $level = Logger::DEBUG;
-=======
  *
  * @phpstan-import-type Level from \Monolog\Logger
  * @phpstan-import-type LevelName from \Monolog\Logger
@@ -40,17 +31,13 @@ abstract class AbstractHandler extends Handler implements ResettableInterface
      */
     protected $level = Logger::DEBUG;
     /** @var bool */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected $bubble = true;
 
     /**
      * @param int|string $level  The minimum logging level at which this handler will be triggered
      * @param bool       $bubble Whether the messages that are handled can bubble up the stack or not
-<<<<<<< HEAD
-=======
      *
      * @phpstan-param Level|LevelName|LogLevel::* $level
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct($level = Logger::DEBUG, bool $bubble = true)
     {
@@ -59,7 +46,7 @@ abstract class AbstractHandler extends Handler implements ResettableInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function isHandling(array $record): bool
     {
@@ -69,11 +56,7 @@ abstract class AbstractHandler extends Handler implements ResettableInterface
     /**
      * Sets minimum logging level at which this handler will be triggered.
      *
-<<<<<<< HEAD
-     * @param  int|string $level Level or level name
-=======
      * @param  Level|LevelName|LogLevel::* $level Level or level name
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @return self
      */
     public function setLevel($level): self
@@ -87,11 +70,8 @@ abstract class AbstractHandler extends Handler implements ResettableInterface
      * Gets minimum logging level at which this handler will be triggered.
      *
      * @return int
-<<<<<<< HEAD
-=======
      *
      * @phpstan-return Level
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function getLevel(): int
     {
@@ -123,12 +103,9 @@ abstract class AbstractHandler extends Handler implements ResettableInterface
         return $this->bubble;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * {@inheritDoc}
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function reset()
     {
     }

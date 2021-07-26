@@ -69,11 +69,7 @@ return [
     'diff_after_tomorrow' => 'overmorgen',
     'diff_before_yesterday' => 'eergisteren',
     'period_recurrences' => ':count keer',
-<<<<<<< HEAD
-    'period_interval' => function ($interval) {
-=======
     'period_interval' => function (string $interval = '') {
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         /** @var string $output */
         $output = preg_replace('/^(een|één|1)\s+/', '', $interval);
 

@@ -5,11 +5,8 @@ namespace Illuminate\Support\Facades;
 /**
  * @method static \Psr\Log\LoggerInterface channel(string $channel = null)
  * @method static \Psr\Log\LoggerInterface stack(array $channels, string $channel = null)
-<<<<<<< HEAD
-=======
  * @method static \Illuminate\Log\Logger withContext(array $context = [])
  * @method static \Illuminate\Log\Logger withoutContext()
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  * @method static void alert(string $message, array $context = [])
  * @method static void critical(string $message, array $context = [])
  * @method static void debug(string $message, array $context = [])

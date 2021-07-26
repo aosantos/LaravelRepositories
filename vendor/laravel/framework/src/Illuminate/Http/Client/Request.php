@@ -5,19 +5,13 @@ namespace Illuminate\Http\Client;
 use ArrayAccess;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Traits\Macroable;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use LogicException;
 
 class Request implements ArrayAccess
 {
-<<<<<<< HEAD
-=======
     use Macroable;
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     /**
      * The underlying PSR request.
      *

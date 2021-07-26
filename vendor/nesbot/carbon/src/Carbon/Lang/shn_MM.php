@@ -11,11 +11,7 @@
 
 /*
  * Authors:
-<<<<<<< HEAD
- * - ubuntu Myanmar LoCo Team http://www.ubuntu-mm.net Bone Pyae Sone bone.burma@mail.com
-=======
  * - ubuntu Myanmar LoCo Team https://ubuntu-mm.net Bone Pyae Sone bone.burma@mail.com
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 return array_replace_recursive(require __DIR__.'/en.php', [
     'formats' => [

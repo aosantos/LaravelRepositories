@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::post('admin/products/search',  'App\Http\Controllers\Admin\ProductController@search')->name('products.search');
 Route::resource('admin/products',App\Http\Controllers\Admin\ProductController::class);
 
 Route::get('admin',function(){

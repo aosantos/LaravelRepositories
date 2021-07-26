@@ -10,10 +10,7 @@ use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Collection;
 use IteratorAggregate;
 use JsonSerializable;
-<<<<<<< HEAD
-=======
 use ReturnTypeWillChange;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 class CursorPaginator extends AbstractCursorPaginator implements Arrayable, ArrayAccess, Countable, IteratorAggregate, Jsonable, JsonSerializable, PaginatorContract
 {
@@ -146,10 +143,7 @@ class CursorPaginator extends AbstractCursorPaginator implements Arrayable, Arra
      *
      * @return array
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function jsonSerialize()
     {
         return $this->toArray();

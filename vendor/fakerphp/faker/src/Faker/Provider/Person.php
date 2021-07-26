@@ -79,23 +79,17 @@ class Person extends Base
         return $this->generator->parse(static::randomElement(static::$firstNameFormat));
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @return string
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public static function firstNameMale()
     {
         return static::randomElement(static::$firstNameMale);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @return string
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public static function firstNameFemale()
     {
         return static::randomElement(static::$firstNameFemale);
@@ -133,11 +127,8 @@ class Person extends Base
 
     /**
      * @example 'Mr.'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function titleMale()
     {
@@ -146,11 +137,8 @@ class Person extends Base
 
     /**
      * @example 'Mrs.'
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function titleFemale()
     {

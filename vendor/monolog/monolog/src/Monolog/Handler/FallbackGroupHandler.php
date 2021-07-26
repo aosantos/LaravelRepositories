@@ -13,8 +13,6 @@ namespace Monolog\Handler;
 
 use Throwable;
 
-<<<<<<< HEAD
-=======
 /**
  * Forwards records to at most one handler
  *
@@ -24,19 +22,15 @@ use Throwable;
  *
  * @phpstan-import-type Record from \Monolog\Logger
  */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 class FallbackGroupHandler extends GroupHandler
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function handle(array $record): bool
     {
         if ($this->processors) {
-<<<<<<< HEAD
-=======
             /** @var Record $record */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $record = $this->processRecord($record);
         }
         foreach ($this->handlers as $handler) {
@@ -52,7 +46,7 @@ class FallbackGroupHandler extends GroupHandler
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function handleBatch(array $records): void
     {
@@ -61,10 +55,7 @@ class FallbackGroupHandler extends GroupHandler
             foreach ($records as $record) {
                 $processed[] = $this->processRecord($record);
             }
-<<<<<<< HEAD
-=======
             /** @var Record[] $records */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $records = $processed;
         }
 

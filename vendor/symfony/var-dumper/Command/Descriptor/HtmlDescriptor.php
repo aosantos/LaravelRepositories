@@ -94,11 +94,7 @@ HTML
 
     private function extractDate(array $context, string $format = 'r'): string
     {
-<<<<<<< HEAD
-        return date($format, $context['timestamp']);
-=======
         return date($format, (int) $context['timestamp']);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     private function renderTags(array $tags): string

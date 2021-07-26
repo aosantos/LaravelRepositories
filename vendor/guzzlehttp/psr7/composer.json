@@ -2,9 +2,6 @@
     "name": "guzzlehttp/psr7",
     "type": "library",
     "description": "PSR-7 message implementation that also provides common utility methods",
-<<<<<<< HEAD
-    "keywords": ["request", "response", "message", "stream", "http", "uri", "url", "psr-7"],
-=======
     "keywords": [
         "request",
         "response",
@@ -15,7 +12,6 @@
         "url",
         "psr-7"
     ],
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     "license": "MIT",
     "authors": [
         {
@@ -26,30 +22,6 @@
         {
             "name": "Tobias Schultze",
             "homepage": "https://github.com/Tobion"
-<<<<<<< HEAD
-        }
-    ],
-    "require": {
-        "php": ">=5.4.0",
-        "psr/http-message": "~1.0",
-        "ralouphie/getallheaders": "^2.0.5 || ^3.0.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.8 || ^9.3.10",
-        "ext-zlib": "*"
-    },
-    "provide": {
-        "psr/http-message-implementation": "1.0"
-    },
-    "suggest": {
-        "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
-    },
-    "autoload": {
-        "psr-4": {
-            "GuzzleHttp\\Psr7\\": "src/"
-        },
-        "files": ["src/functions_include.php"]
-=======
         },
         {
             "name": "Márk Sági-Kazár",
@@ -84,19 +56,10 @@
         "psr-4": {
             "GuzzleHttp\\Psr7\\": "src/"
         }
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     },
     "autoload-dev": {
         "psr-4": {
             "GuzzleHttp\\Tests\\Psr7\\": "tests/"
         }
-<<<<<<< HEAD
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.7-dev"
-        }
-=======
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 }

@@ -11,10 +11,7 @@ use Illuminate\Queue\SerializableClosure;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use JsonSerializable;
-<<<<<<< HEAD
-=======
 use ReturnTypeWillChange;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use Throwable;
 
 class Batch implements Arrayable, JsonSerializable
@@ -463,10 +460,7 @@ class Batch implements Arrayable, JsonSerializable
      *
      * @return array
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function jsonSerialize()
     {
         return $this->toArray();

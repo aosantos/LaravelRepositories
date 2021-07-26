@@ -14,10 +14,7 @@ use const PHP_SAPI;
 use const PHP_VERSION;
 use function array_diff;
 use function array_map;
-<<<<<<< HEAD
-=======
 use function array_merge;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use function assert;
 use function class_exists;
 use function count;
@@ -155,11 +152,8 @@ final class TestRunner extends BaseTestRunner
 
         $this->handleConfiguration($arguments);
 
-<<<<<<< HEAD
-=======
         $warnings = array_merge($warnings, $arguments['warnings']);
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         if (is_int($arguments['columns']) && $arguments['columns'] < 16) {
             $arguments['columns']   = 16;
             $tooFewColumnsRequested = true;
@@ -898,13 +892,10 @@ final class TestRunner extends BaseTestRunner
             $arguments['configurationObject'] = (new Loader)->load($arguments['configuration']);
         }
 
-<<<<<<< HEAD
-=======
         if (!isset($arguments['warnings'])) {
             $arguments['warnings'] = [];
         }
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $arguments['debug']     = $arguments['debug'] ?? false;
         $arguments['filter']    = $arguments['filter'] ?? false;
         $arguments['listeners'] = $arguments['listeners'] ?? [];

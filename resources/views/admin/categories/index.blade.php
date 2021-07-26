@@ -7,6 +7,8 @@
     </h3>
 
     <ol class="breadcrumb">
+        <li><a href="{{route('admin')}}">Dashboard</a></li>
+        /
         <li><a href="{{route('categories.index')}}">Categorias</a></li>
     </ol>
 
@@ -20,11 +22,15 @@
                     <div class="card-header">
                         <div class="box box-success">
                             <div class="box-body">
+                                @include('admin.includes.alerts')
                                 <form action="{{route('categories.search')}}" class="form form-inline" method="post">
                                     @csrf
-                                    <input type="text" name="title" placeholder="Pesquisar" class="form-control" value="{{$data['title']?? ''}}">
-                                    <input type="text" name="url" placeholder="Pesquisar" class="form-control" value="{{$data['url']?? ''}}" >
-                                    <input type="text" name="description" placeholder="Pesquisar" class="form-control" value="{{$data['description']?? ''}}">
+                                    <input type="text" name="title" placeholder="Pesquisar" class="form-control"
+                                           value="{{$data['title']?? ''}}">
+                                    <input type="text" name="url" placeholder="Pesquisar" class="form-control"
+                                           value="{{$data['url']?? ''}}">
+                                    <input type="text" name="description" placeholder="Pesquisar" class="form-control"
+                                           value="{{$data['description']?? ''}}">
                                     <button type="submit" class="btn btn-primary">Pesquisar</button>
                                 </form>
 

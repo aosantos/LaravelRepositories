@@ -46,9 +46,6 @@ class EventMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-<<<<<<< HEAD
-        return __DIR__.'/stubs/event.stub';
-=======
         return $this->resolveStubPath('/stubs/event.stub');
     }
 
@@ -63,7 +60,6 @@ class EventMakeCommand extends GeneratorCommand
         return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
                         ? $customPath
                         : __DIR__.$stub;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**

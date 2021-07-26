@@ -9,8 +9,6 @@
  * file that was distributed with this source code.
  */
 
-<<<<<<< HEAD
-=======
 if (!version_compare(PHP_VERSION, PHP_VERSION, '=')) {
     fwrite(
         STDERR,
@@ -26,7 +24,6 @@ if (!version_compare(PHP_VERSION, PHP_VERSION, '=')) {
     die(1);
 }
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 if (version_compare('7.3.0', PHP_VERSION, '>')) {
     fwrite(
         STDERR,

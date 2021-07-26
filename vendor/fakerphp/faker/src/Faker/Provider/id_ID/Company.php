@@ -17,8 +17,6 @@ class Company extends \Faker\Provider\Company
     protected static $companyPrefix = ['PT', 'CV', 'UD', 'PD', 'Perum'];
 
     /**
-<<<<<<< HEAD
-=======
      * @see https://www.amesbostonhotel.com/macam-macam-profesi-pekerjaan/
      * @see https://dukcapil.kedirikab.go.id/artikel/Jenis-Pekerjaan_ID10.html
      */
@@ -40,7 +38,6 @@ class Company extends \Faker\Provider\Company
     ];
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @see http://id.wikipedia.org/wiki/Jenis_badan_usaha
      */
     protected static $companySuffix = ['(Persero) Tbk', 'Tbk'];

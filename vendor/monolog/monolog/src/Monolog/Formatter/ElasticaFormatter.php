@@ -17,11 +17,8 @@ use Elastica\Document;
  * Format a log message into an Elastica Document
  *
  * @author Jelle Vink <jelle.vink@gmail.com>
-<<<<<<< HEAD
-=======
  *
  * @phpstan-import-type Record from \Monolog\Logger
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class ElasticaFormatter extends NormalizerFormatter
 {
@@ -49,7 +46,7 @@ class ElasticaFormatter extends NormalizerFormatter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function format(array $record)
     {
@@ -68,33 +65,21 @@ class ElasticaFormatter extends NormalizerFormatter
      */
     public function getType(): string
     {
-<<<<<<< HEAD
-=======
         /** @phpstan-ignore-next-line */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         return $this->type;
     }
 
     /**
      * Convert a log message into an Elastica Document
-<<<<<<< HEAD
-     * @param  array    $record
-     * @return Document
-=======
      *
      * @phpstan-param Record $record
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function getDocument(array $record): Document
     {
         $document = new Document();
         $document->setData($record);
-<<<<<<< HEAD
-        if(method_exists($document, 'setType')) {
-=======
         if (method_exists($document, 'setType')) {
             /** @phpstan-ignore-next-line */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $document->setType($this->type);
         }
         $document->setIndex($this->index);

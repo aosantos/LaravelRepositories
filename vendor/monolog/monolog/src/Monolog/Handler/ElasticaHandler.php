@@ -11,10 +11,7 @@
 
 namespace Monolog\Handler;
 
-<<<<<<< HEAD
-=======
 use Elastica\Document;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Formatter\ElasticaFormatter;
 use Monolog\Logger;
@@ -45,24 +42,13 @@ class ElasticaHandler extends AbstractProcessingHandler
     protected $client;
 
     /**
-<<<<<<< HEAD
-     * @var array Handler config options
-=======
      * @var mixed[] Handler config options
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected $options = [];
 
     /**
-<<<<<<< HEAD
-     * @param Client     $client  Elastica Client object
-     * @param array      $options Handler configuration
-     * @param int|string $level   The minimum logging level at which this handler will be triggered
-     * @param bool       $bubble  Whether the messages that are handled can bubble up the stack or not
-=======
      * @param Client  $client  Elastica Client object
      * @param mixed[] $options Handler configuration
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct(Client $client, array $options = [], $level = Logger::DEBUG, bool $bubble = true)
     {
@@ -87,7 +73,7 @@ class ElasticaHandler extends AbstractProcessingHandler
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function setFormatter(FormatterInterface $formatter): HandlerInterface
     {
@@ -98,12 +84,9 @@ class ElasticaHandler extends AbstractProcessingHandler
         throw new \InvalidArgumentException('ElasticaHandler is only compatible with ElasticaFormatter');
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @return mixed[]
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function getOptions(): array
     {
         return $this->options;
@@ -118,7 +101,7 @@ class ElasticaHandler extends AbstractProcessingHandler
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function handleBatch(array $records): void
     {
@@ -128,12 +111,9 @@ class ElasticaHandler extends AbstractProcessingHandler
 
     /**
      * Use Elasticsearch bulk API to send list of documents
-<<<<<<< HEAD
-=======
      *
      * @param Document[] $documents
      *
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @throws \RuntimeException
      */
     protected function bulkSend(array $documents): void

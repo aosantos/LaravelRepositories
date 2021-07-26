@@ -20,10 +20,7 @@ use Monolog\ResettableInterface;
  */
 class UidProcessor implements ProcessorInterface, ResettableInterface
 {
-<<<<<<< HEAD
-=======
     /** @var string */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private $uid;
 
     public function __construct(int $length = 7)
@@ -35,12 +32,9 @@ class UidProcessor implements ProcessorInterface, ResettableInterface
         $this->uid = $this->generateUid($length);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * {@inheritDoc}
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function __invoke(array $record): array
     {
         $record['extra']['uid'] = $this->uid;

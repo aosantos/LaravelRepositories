@@ -59,15 +59,9 @@ class UrlWindow
     protected function getSmallSlider()
     {
         return [
-<<<<<<< HEAD
-            'first'  => $this->paginator->getUrlRange(1, $this->lastPage()),
-            'slider' => null,
-            'last'   => null,
-=======
             'first' => $this->paginator->getUrlRange(1, $this->lastPage()),
             'slider' => null,
             'last' => null,
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         ];
     }
 
@@ -151,15 +145,9 @@ class UrlWindow
     protected function getFullSlider($onEachSide)
     {
         return [
-<<<<<<< HEAD
-            'first'  => $this->getStart(),
-            'slider' => $this->getAdjacentUrlRange($onEachSide),
-            'last'   => $this->getFinish(),
-=======
             'first' => $this->getStart(),
             'slider' => $this->getAdjacentUrlRange($onEachSide),
             'last' => $this->getFinish(),
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         ];
     }
 

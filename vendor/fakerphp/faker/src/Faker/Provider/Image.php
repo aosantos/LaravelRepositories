@@ -79,11 +79,8 @@ class Image extends Base
      * Requires curl, or allow_url_fopen to be on in php.ini.
      *
      * @example '/path/to/dir/13b73edae8443990be1aa8f1a483bc27.png'
-<<<<<<< HEAD
-=======
      *
      * @return bool|string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function image(
         $dir = null,

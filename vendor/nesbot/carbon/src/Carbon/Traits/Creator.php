@@ -592,11 +592,7 @@ trait Creator
         // @codeCoverageIgnoreEnd
 
         if ($originalTz === null) {
-<<<<<<< HEAD
-            return parent::createFromFormat($format, "$time");
-=======
             return parent::createFromFormat($format, (string) $time);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         $tz = \is_int($originalTz)
@@ -609,11 +605,7 @@ trait Creator
             return false;
         }
 
-<<<<<<< HEAD
-        return parent::createFromFormat($format, "$time", $tz);
-=======
         return parent::createFromFormat($format, (string) $time, $tz);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**

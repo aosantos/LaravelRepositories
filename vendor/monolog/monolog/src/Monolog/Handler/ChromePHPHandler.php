@@ -22,11 +22,8 @@ use Monolog\Utils;
  * This also works out of the box with Firefox 43+
  *
  * @author Christophe Coevoet <stof@notk.org>
-<<<<<<< HEAD
-=======
  *
  * @phpstan-import-type Record from \Monolog\Logger
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class ChromePHPHandler extends AbstractProcessingHandler
 {
@@ -47,10 +44,7 @@ class ChromePHPHandler extends AbstractProcessingHandler
      */
     protected const USER_AGENT_REGEX = '{\b(?:Chrome/\d+(?:\.\d+)*|HeadlessChrome|Firefox/(?:4[3-9]|[5-9]\d|\d{3,})(?:\.\d)*)\b}';
 
-<<<<<<< HEAD
-=======
     /** @var bool */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected static $initialized = false;
 
     /**
@@ -62,28 +56,16 @@ class ChromePHPHandler extends AbstractProcessingHandler
      */
     protected static $overflowed = false;
 
-<<<<<<< HEAD
-=======
     /** @var mixed[] */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected static $json = [
         'version' => self::VERSION,
         'columns' => ['label', 'log', 'backtrace', 'type'],
         'rows' => [],
     ];
 
-<<<<<<< HEAD
-    protected static $sendHeaders = true;
-
-    /**
-     * @param string|int $level  The minimum logging level at which this handler will be triggered
-     * @param bool       $bubble Whether the messages that are handled can bubble up the stack or not
-     */
-=======
     /** @var bool */
     protected static $sendHeaders = true;
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function __construct($level = Logger::DEBUG, bool $bubble = true)
     {
         parent::__construct($level, $bubble);
@@ -93,7 +75,7 @@ class ChromePHPHandler extends AbstractProcessingHandler
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function handleBatch(array $records): void
     {
@@ -107,13 +89,9 @@ class ChromePHPHandler extends AbstractProcessingHandler
             if ($record['level'] < $this->level) {
                 continue;
             }
-<<<<<<< HEAD
-            $messages[] = $this->processRecord($record);
-=======
             /** @var Record $message */
             $message = $this->processRecord($record);
             $messages[] = $message;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         if (!empty($messages)) {

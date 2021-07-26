@@ -168,11 +168,8 @@ class Base
 
     /**
      * Returns a random ASCII character (excluding accents and special chars)
-<<<<<<< HEAD
-=======
      *
      * @return string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public static function randomAscii()
     {

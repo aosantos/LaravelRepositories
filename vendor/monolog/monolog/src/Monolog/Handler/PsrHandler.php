@@ -40,11 +40,6 @@ class PsrHandler extends AbstractHandler implements FormattableHandlerInterface
 
     /**
      * @param LoggerInterface $logger The underlying PSR-3 compliant logger to which messages will be proxied
-<<<<<<< HEAD
-     * @param string|int      $level  The minimum logging level at which this handler will be triggered
-     * @param bool            $bubble Whether the messages that are handled can bubble up the stack or not
-=======
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct(LoggerInterface $logger, $level = Logger::DEBUG, bool $bubble = true)
     {

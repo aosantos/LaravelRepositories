@@ -25,11 +25,6 @@ class LineFormatter extends NormalizerFormatter
 {
     public const SIMPLE_FORMAT = "[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n";
 
-<<<<<<< HEAD
-    protected $format;
-    protected $allowInlineLineBreaks;
-    protected $ignoreEmptyContextAndExtra;
-=======
     /** @var string */
     protected $format;
     /** @var bool */
@@ -37,7 +32,6 @@ class LineFormatter extends NormalizerFormatter
     /** @var bool */
     protected $ignoreEmptyContextAndExtra;
     /** @var bool */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected $includeStacktraces;
 
     /**
@@ -54,11 +48,7 @@ class LineFormatter extends NormalizerFormatter
         parent::__construct($dateFormat);
     }
 
-<<<<<<< HEAD
-    public function includeStacktraces(bool $include = true)
-=======
     public function includeStacktraces(bool $include = true): void
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $this->includeStacktraces = $include;
         if ($this->includeStacktraces) {
@@ -66,26 +56,18 @@ class LineFormatter extends NormalizerFormatter
         }
     }
 
-<<<<<<< HEAD
-    public function allowInlineLineBreaks(bool $allow = true)
-=======
     public function allowInlineLineBreaks(bool $allow = true): void
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $this->allowInlineLineBreaks = $allow;
     }
 
-<<<<<<< HEAD
-    public function ignoreEmptyContextAndExtra(bool $ignore = true)
-=======
     public function ignoreEmptyContextAndExtra(bool $ignore = true): void
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $this->ignoreEmptyContextAndExtra = $ignore;
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function format(array $record): string
     {
@@ -128,12 +110,9 @@ class LineFormatter extends NormalizerFormatter
         // remove leftover %extra.xxx% and %context.xxx% if any
         if (false !== strpos($output, '%')) {
             $output = preg_replace('/%(?:extra|context)\..+?%/', '', $output);
-<<<<<<< HEAD
-=======
             if (null === $output) {
                 throw new \RuntimeException('Failed to run preg_replace: ' . preg_last_error() . ' / ' . preg_last_error_msg());
             }
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         return $output;
@@ -149,12 +128,9 @@ class LineFormatter extends NormalizerFormatter
         return $message;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @param mixed $value
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function stringify($value): string
     {
         return $this->replaceNewlines($this->convertToString($value));
@@ -173,12 +149,9 @@ class LineFormatter extends NormalizerFormatter
         return $str;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @param mixed $data
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected function convertToString($data): string
     {
         if (null === $data || is_bool($data)) {

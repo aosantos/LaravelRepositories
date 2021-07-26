@@ -194,14 +194,10 @@ trait Rounding
      */
     public function roundWeek($weekStartsAt = null)
     {
-<<<<<<< HEAD
-        return $this->closest($this->copy()->floorWeek($weekStartsAt), $this->copy()->ceilWeek($weekStartsAt));
-=======
         return $this->closest(
             $this->avoidMutation()->floorWeek($weekStartsAt),
             $this->avoidMutation()->ceilWeek($weekStartsAt)
         );
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -226,11 +222,7 @@ trait Rounding
     public function ceilWeek($weekStartsAt = null)
     {
         if ($this->isMutable()) {
-<<<<<<< HEAD
-            $startOfWeek = $this->copy()->startOfWeek($weekStartsAt);
-=======
             $startOfWeek = $this->avoidMutation()->startOfWeek($weekStartsAt);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
             return $startOfWeek != $this ?
                 $this->startOfWeek($weekStartsAt)->addWeek() :
@@ -241,10 +233,6 @@ trait Rounding
 
         return $startOfWeek != $this ?
             $startOfWeek->addWeek() :
-<<<<<<< HEAD
-            $this->copy();
-=======
             $this->avoidMutation();
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 }

@@ -125,11 +125,7 @@ class Address extends \Faker\Provider\Address
 
     public static function buildingNumber()
     {
-<<<<<<< HEAD
-        return self::numberBetween(101, 110);
-=======
         return (string) self::numberBetween(101, 110);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     public function secondaryAddress()

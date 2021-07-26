@@ -15,10 +15,7 @@ use Composer\InstalledVersions;
 use Doctrine\Common\Persistence\Proxy as LegacyProxy;
 use Doctrine\Persistence\Proxy;
 use Mockery\MockInterface;
-<<<<<<< HEAD
-=======
 use Phake\IMock;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use PHPUnit\Framework\MockObject\Matcher\StatelessInvocation;
 use PHPUnit\Framework\MockObject\MockObject;
 use Prophecy\Prophecy\ProphecySubjectInterface;
@@ -314,10 +311,7 @@ class DebugClassLoader
                     && !is_subclass_of($symbols[$i], ProxyInterface::class)
                     && !is_subclass_of($symbols[$i], LegacyProxy::class)
                     && !is_subclass_of($symbols[$i], MockInterface::class)
-<<<<<<< HEAD
-=======
                     && !is_subclass_of($symbols[$i], IMock::class)
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 ) {
                     $loader->checkClass($symbols[$i]);
                 }

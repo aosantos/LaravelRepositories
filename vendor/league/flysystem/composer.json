@@ -40,10 +40,6 @@
         }
     },
     "suggest": {
-<<<<<<< HEAD
-        "ext-fileinfo": "Required for MimeType",
-=======
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
         "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
         "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",

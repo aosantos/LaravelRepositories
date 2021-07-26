@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare(strict_types=1);
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\UriInterface;
@@ -20,13 +17,6 @@ final class UriNormalizer
 {
     /**
      * Default normalizations which only include the ones that preserve semantics.
-<<<<<<< HEAD
-     *
-     * self::CAPITALIZE_PERCENT_ENCODING | self::DECODE_UNRESERVED_CHARACTERS | self::CONVERT_EMPTY_PATH |
-     * self::REMOVE_DEFAULT_HOST | self::REMOVE_DEFAULT_PORT | self::REMOVE_DOT_SEGMENTS
-     */
-    const PRESERVING_NORMALIZATIONS = 63;
-=======
      */
     public const PRESERVING_NORMALIZATIONS =
         self::CAPITALIZE_PERCENT_ENCODING |
@@ -35,18 +25,13 @@ final class UriNormalizer
         self::REMOVE_DEFAULT_HOST |
         self::REMOVE_DEFAULT_PORT |
         self::REMOVE_DOT_SEGMENTS;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
     /**
      * All letters within a percent-encoding triplet (e.g., "%3A") are case-insensitive, and should be capitalized.
      *
      * Example: http://example.org/a%c2%b1b → http://example.org/a%C2%B1b
      */
-<<<<<<< HEAD
-    const CAPITALIZE_PERCENT_ENCODING = 1;
-=======
     public const CAPITALIZE_PERCENT_ENCODING = 1;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
     /**
      * Decodes percent-encoded octets of unreserved characters.
@@ -57,22 +42,14 @@ final class UriNormalizer
      *
      * Example: http://example.org/%7Eusern%61me/ → http://example.org/~username/
      */
-<<<<<<< HEAD
-    const DECODE_UNRESERVED_CHARACTERS = 2;
-=======
     public const DECODE_UNRESERVED_CHARACTERS = 2;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
     /**
      * Converts the empty path to "/" for http and https URIs.
      *
      * Example: http://example.org → http://example.org/
      */
-<<<<<<< HEAD
-    const CONVERT_EMPTY_PATH = 4;
-=======
     public const CONVERT_EMPTY_PATH = 4;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
     /**
      * Removes the default host of the given URI scheme from the URI.
@@ -85,22 +62,14 @@ final class UriNormalizer
      *
      * Example: file://localhost/myfile → file:///myfile
      */
-<<<<<<< HEAD
-    const REMOVE_DEFAULT_HOST = 8;
-=======
     public const REMOVE_DEFAULT_HOST = 8;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
     /**
      * Removes the default port of the given URI scheme from the URI.
      *
      * Example: http://example.org:80/ → http://example.org/
      */
-<<<<<<< HEAD
-    const REMOVE_DEFAULT_PORT = 16;
-=======
     public const REMOVE_DEFAULT_PORT = 16;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
     /**
      * Removes unnecessary dot-segments.
@@ -110,11 +79,7 @@ final class UriNormalizer
      *
      * Example: http://example.org/../a/b/../c/./d.html → http://example.org/a/c/d.html
      */
-<<<<<<< HEAD
-    const REMOVE_DOT_SEGMENTS = 32;
-=======
     public const REMOVE_DOT_SEGMENTS = 32;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
     /**
      * Paths which include two or more adjacent slashes are converted to one.
@@ -125,11 +90,7 @@ final class UriNormalizer
      *
      * Example: http://example.org//foo///bar.html → http://example.org/foo/bar.html
      */
-<<<<<<< HEAD
-    const REMOVE_DUPLICATE_SLASHES = 64;
-=======
     public const REMOVE_DUPLICATE_SLASHES = 64;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
     /**
      * Sort query parameters with their values in alphabetical order.
@@ -142,11 +103,7 @@ final class UriNormalizer
      * Note: The sorting is neither locale nor Unicode aware (the URI query does not get decoded at all) as the
      * purpose is to be able to compare URIs in a reproducible way, not to have the params sorted perfectly.
      */
-<<<<<<< HEAD
-    const SORT_QUERY_PARAMETERS = 128;
-=======
     public const SORT_QUERY_PARAMETERS = 128;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
     /**
      * Returns a normalized URI.
@@ -162,17 +119,9 @@ final class UriNormalizer
      * @param UriInterface $uri   The URI to normalize
      * @param int          $flags A bitmask of normalizations to apply, see constants
      *
-<<<<<<< HEAD
-     * @return UriInterface The normalized URI
-     *
-     * @link https://tools.ietf.org/html/rfc3986#section-6.2
-     */
-    public static function normalize(UriInterface $uri, $flags = self::PRESERVING_NORMALIZATIONS)
-=======
      * @link https://tools.ietf.org/html/rfc3986#section-6.2
      */
     public static function normalize(UriInterface $uri, int $flags = self::PRESERVING_NORMALIZATIONS): UriInterface
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if ($flags & self::CAPITALIZE_PERCENT_ENCODING) {
             $uri = self::capitalizePercentEncoding($uri);
@@ -225,26 +174,14 @@ final class UriNormalizer
      * @param UriInterface $uri2           An URI to compare
      * @param int          $normalizations A bitmask of normalizations to apply, see constants
      *
-<<<<<<< HEAD
-     * @return bool
-     *
-     * @link https://tools.ietf.org/html/rfc3986#section-6.1
-     */
-    public static function isEquivalent(UriInterface $uri1, UriInterface $uri2, $normalizations = self::PRESERVING_NORMALIZATIONS)
-=======
      * @link https://tools.ietf.org/html/rfc3986#section-6.1
      */
     public static function isEquivalent(UriInterface $uri1, UriInterface $uri2, int $normalizations = self::PRESERVING_NORMALIZATIONS): bool
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return (string) self::normalize($uri1, $normalizations) === (string) self::normalize($uri2, $normalizations);
     }
 
-<<<<<<< HEAD
-    private static function capitalizePercentEncoding(UriInterface $uri)
-=======
     private static function capitalizePercentEncoding(UriInterface $uri): UriInterface
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $regex = '/(?:%[A-Fa-f0-9]{2})++/';
 
@@ -260,11 +197,7 @@ final class UriNormalizer
             );
     }
 
-<<<<<<< HEAD
-    private static function decodeUnreservedCharacters(UriInterface $uri)
-=======
     private static function decodeUnreservedCharacters(UriInterface $uri): UriInterface
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $regex = '/%(?:2D|2E|5F|7E|3[0-9]|[46][1-9A-F]|[57][0-9A])/i';
 

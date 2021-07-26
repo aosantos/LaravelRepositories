@@ -2,11 +2,6 @@
 
 namespace Illuminate\Http\Testing;
 
-<<<<<<< HEAD
-use Illuminate\Support\Str;
-
-=======
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 class FileFactory
 {
     /**
@@ -58,11 +53,7 @@ class FileFactory
     public function image($name, $width = 10, $height = 10)
     {
         return new File($name, $this->generateImage(
-<<<<<<< HEAD
-            $width, $height, Str::endsWith(Str::lower($name), ['.jpg', '.jpeg']) ? 'jpeg' : 'png'
-=======
             $width, $height, pathinfo($name, PATHINFO_EXTENSION)
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         ));
     }
 
@@ -71,26 +62,6 @@ class FileFactory
      *
      * @param  int  $width
      * @param  int  $height
-<<<<<<< HEAD
-     * @param  string  $type
-     * @return resource
-     */
-    protected function generateImage($width, $height, $type)
-    {
-        return tap(tmpfile(), function ($temp) use ($width, $height, $type) {
-            ob_start();
-
-            $image = imagecreatetruecolor($width, $height);
-
-            switch ($type) {
-                case 'jpeg':
-                    imagejpeg($image);
-                    break;
-                case 'png':
-                    imagepng($image);
-                    break;
-            }
-=======
      * @param  string  $extension
      * @return resource
      */
@@ -106,7 +77,6 @@ class FileFactory
             $image = imagecreatetruecolor($width, $height);
 
             call_user_func("image{$extension}", $image);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
             fwrite($temp, ob_get_clean());
         });

@@ -20,31 +20,19 @@ use Monolog\Logger;
  *
  * @author  Christian Bergau <cbergau86@gmail.com>
  * @author  Jason Davis <happydude@jasondavis.net>
-<<<<<<< HEAD
-=======
  *
  * @phpstan-import-type FormattedRecord from AbstractProcessingHandler
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class ZendMonitorHandler extends AbstractProcessingHandler
 {
     /**
      * Monolog level / ZendMonitor Custom Event priority map
      *
-<<<<<<< HEAD
-     * @var array
-=======
      * @var array<int, int>
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected $levelMap = [];
 
     /**
-<<<<<<< HEAD
-     * @param  string|int                $level  The minimum logging level at which this handler will be triggered.
-     * @param  bool                      $bubble Whether the messages that are handled can bubble up the stack or not.
-=======
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @throws MissingExtensionException
      */
     public function __construct($level = Logger::DEBUG, bool $bubble = true)
@@ -69,7 +57,7 @@ class ZendMonitorHandler extends AbstractProcessingHandler
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function write(array $record): void
     {
@@ -87,11 +75,8 @@ class ZendMonitorHandler extends AbstractProcessingHandler
      * @param string $message   Text displayed in "Error String"
      * @param array  $formatted Displayed in Custom Variables tab
      * @param int    $severity  Set the event severity level (-1,0,1)
-<<<<<<< HEAD
-=======
      *
      * @phpstan-param FormattedRecord $formatted
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function writeZendMonitorCustomEvent(string $type, string $message, array $formatted, int $severity): void
     {
@@ -99,19 +84,16 @@ class ZendMonitorHandler extends AbstractProcessingHandler
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getDefaultFormatter(): FormatterInterface
     {
         return new NormalizerFormatter();
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @return array<int, int>
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function getLevelMap(): array
     {
         return $this->levelMap;

@@ -14,10 +14,7 @@ namespace Monolog\Handler;
 use Monolog\Logger;
 use Monolog\ResettableInterface;
 use Monolog\Formatter\FormatterInterface;
-<<<<<<< HEAD
-=======
 use Psr\Log\LogLevel;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 /**
  * Simple handler wrapper that filters records based on a list of levels
@@ -26,13 +23,10 @@ use Psr\Log\LogLevel;
  *
  * @author Hennadiy Verkh
  * @author Jordi Boggiano <j.boggiano@seld.be>
-<<<<<<< HEAD
-=======
  *
  * @phpstan-import-type Record from \Monolog\Logger
  * @phpstan-import-type Level from \Monolog\Logger
  * @phpstan-import-type LevelName from \Monolog\Logger
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class FilterHandler extends Handler implements ProcessableHandlerInterface, ResettableInterface, FormattableHandlerInterface
 {
@@ -41,12 +35,8 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     /**
      * Handler or factory callable($record, $this)
      *
-<<<<<<< HEAD
-     * @var callable|\Monolog\Handler\HandlerInterface
-=======
      * @var callable|HandlerInterface
      * @phpstan-var callable(?Record, HandlerInterface): HandlerInterface|HandlerInterface
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected $handler;
 
@@ -54,10 +44,7 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
      * Minimum level for logs that are passed to handler
      *
      * @var int[]
-<<<<<<< HEAD
-=======
      * @phpstan-var Level[]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected $acceptedLevels;
 
@@ -69,22 +56,15 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     protected $bubble;
 
     /**
-<<<<<<< HEAD
-     * @psalm-param HandlerInterface|callable(?array, HandlerInterface): HandlerInterface $handler
-=======
      * @psalm-param HandlerInterface|callable(?Record, HandlerInterface): HandlerInterface $handler
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      *
      * @param callable|HandlerInterface $handler        Handler or factory callable($record|null, $filterHandler).
      * @param int|array                 $minLevelOrList A list of levels to accept or a minimum level if maxLevel is provided
      * @param int|string                $maxLevel       Maximum level to accept, only used if $minLevelOrList is not an array
      * @param bool                      $bubble         Whether the messages that are handled can bubble up the stack or not
-<<<<<<< HEAD
-=======
      *
      * @phpstan-param Level|LevelName|LogLevel::*|array<Level|LevelName|LogLevel::*> $minLevelOrList
      * @phpstan-param Level|LevelName|LogLevel::* $maxLevel
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct($handler, $minLevelOrList = Logger::DEBUG, $maxLevel = Logger::EMERGENCY, bool $bubble = true)
     {
@@ -97,12 +77,9 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
         }
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @phpstan-return Level[]
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function getAcceptedLevels(): array
     {
         return array_flip($this->acceptedLevels);
@@ -111,12 +88,9 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     /**
      * @param int|string|array $minLevelOrList A list of levels to accept or a minimum level or level name if maxLevel is provided
      * @param int|string       $maxLevel       Maximum level or level name to accept, only used if $minLevelOrList is not an array
-<<<<<<< HEAD
-=======
      *
      * @phpstan-param Level|LevelName|LogLevel::*|array<Level|LevelName|LogLevel::*> $minLevelOrList
      * @phpstan-param Level|LevelName|LogLevel::*                                    $maxLevel
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function setAcceptedLevels($minLevelOrList = Logger::DEBUG, $maxLevel = Logger::EMERGENCY): self
     {
@@ -135,7 +109,7 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function isHandling(array $record): bool
     {
@@ -143,7 +117,7 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function handle(array $record): bool
     {
@@ -152,10 +126,7 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
         }
 
         if ($this->processors) {
-<<<<<<< HEAD
-=======
             /** @var Record $record */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $record = $this->processRecord($record);
         }
 
@@ -165,7 +136,7 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function handleBatch(array $records): void
     {
@@ -187,11 +158,8 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
      * If the handler was provided as a factory callable, this will trigger the handler's instantiation.
      *
      * @return HandlerInterface
-<<<<<<< HEAD
-=======
      *
      * @phpstan-param Record $record
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function getHandler(array $record = null)
     {
@@ -206,7 +174,7 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function setFormatter(FormatterInterface $formatter): HandlerInterface
     {
@@ -221,7 +189,7 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getFormatter(): FormatterInterface
     {
@@ -236,12 +204,9 @@ class FilterHandler extends Handler implements ProcessableHandlerInterface, Rese
     public function reset()
     {
         $this->resetProcessors();
-<<<<<<< HEAD
-=======
 
         if ($this->getHandler() instanceof ResettableInterface) {
             $this->getHandler()->reset();
         }
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 }

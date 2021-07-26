@@ -12,12 +12,9 @@ class Function_ extends FunctionLike
     protected $name;
     protected $stmts = [];
 
-<<<<<<< HEAD
-=======
     /** @var Node\AttributeGroup[] */
     protected $attributeGroups = [];
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     /**
      * Creates a function builder.
      *
@@ -41,8 +38,6 @@ class Function_ extends FunctionLike
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Adds an attribute group.
      *
      * @param Node\Attribute|Node\AttributeGroup $attribute
@@ -56,7 +51,6 @@ class Function_ extends FunctionLike
     }
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Returns the built function node.
      *
      * @return Stmt\Function_ The built function node
@@ -67,10 +61,7 @@ class Function_ extends FunctionLike
             'params'     => $this->params,
             'returnType' => $this->returnType,
             'stmts'      => $this->stmts,
-<<<<<<< HEAD
-=======
             'attrGroups' => $this->attributeGroups,
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         ], $this->attributes);
     }
 }

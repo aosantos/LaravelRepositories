@@ -37,18 +37,12 @@ use PhpConsole\Helper;
  *      PC::debug($_SERVER); // PHP Console debugger for any type of vars
  *
  * @author Sergey Barbushin https://www.linkedin.com/in/barbushin
-<<<<<<< HEAD
- */
-class PHPConsoleHandler extends AbstractProcessingHandler
-{
-=======
  *
  * @phpstan-import-type Record from \Monolog\Logger
  */
 class PHPConsoleHandler extends AbstractProcessingHandler
 {
     /** @var array<string, mixed> */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private $options = [
         'enabled' => true, // bool Is PHP Console server enabled
         'classesPartialsTraceIgnore' => ['Monolog\\'], // array Hide calls of classes started with...
@@ -76,15 +70,8 @@ class PHPConsoleHandler extends AbstractProcessingHandler
     private $connector;
 
     /**
-<<<<<<< HEAD
-     * @param  array             $options   See \Monolog\Handler\PHPConsoleHandler::$options for more details
-     * @param  Connector|null    $connector Instance of \PhpConsole\Connector class (optional)
-     * @param  string|int        $level     The minimum logging level at which this handler will be triggered.
-     * @param  bool              $bubble    Whether the messages that are handled can bubble up the stack or not.
-=======
      * @param  array<string, mixed> $options   See \Monolog\Handler\PHPConsoleHandler::$options for more details
      * @param  Connector|null       $connector Instance of \PhpConsole\Connector class (optional)
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @throws \RuntimeException
      */
     public function __construct(array $options = [], ?Connector $connector = null, $level = Logger::DEBUG, bool $bubble = true)
@@ -97,14 +84,11 @@ class PHPConsoleHandler extends AbstractProcessingHandler
         $this->connector = $this->initConnector($connector);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @param array<string, mixed> $options
      *
      * @return array<string, mixed>
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private function initOptions(array $options): array
     {
         $wrongOptions = array_diff(array_keys($options), array_keys($this->options));
@@ -175,12 +159,9 @@ class PHPConsoleHandler extends AbstractProcessingHandler
         return $this->connector;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @return array<string, mixed>
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function getOptions(): array
     {
         return $this->options;
@@ -209,12 +190,9 @@ class PHPConsoleHandler extends AbstractProcessingHandler
         }
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @phpstan-param Record $record
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private function handleDebugRecord(array $record): void
     {
         $tags = $this->getRecordTags($record);
@@ -225,23 +203,17 @@ class PHPConsoleHandler extends AbstractProcessingHandler
         $this->connector->getDebugDispatcher()->dispatchDebug($message, $tags, $this->options['classesPartialsTraceIgnore']);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @phpstan-param Record $record
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private function handleExceptionRecord(array $record): void
     {
         $this->connector->getErrorsDispatcher()->dispatchException($record['context']['exception']);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @phpstan-param Record $record
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private function handleErrorRecord(array $record): void
     {
         $context = $record['context'];
@@ -255,13 +227,10 @@ class PHPConsoleHandler extends AbstractProcessingHandler
         );
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @phpstan-param Record $record
      * @return string
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private function getRecordTags(array &$record)
     {
         $tags = null;

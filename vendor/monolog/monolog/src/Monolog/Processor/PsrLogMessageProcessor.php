@@ -41,12 +41,7 @@ class PsrLogMessageProcessor implements ProcessorInterface
     }
 
     /**
-<<<<<<< HEAD
-     * @param  array $record
-     * @return array
-=======
      * {@inheritDoc}
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __invoke(array $record): array
     {

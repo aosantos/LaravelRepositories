@@ -6,6 +6,8 @@ use ArrayAccess;
 use Closure;
 use Exception;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -195,12 +197,10 @@ abstract class AbstractCursorPaginator implements Htmlable
         return collect($this->parameters)
             ->flip()
             ->map(function ($_, $parameterName) use ($item) {
-                if ($item instanceof ArrayAccess || is_array($item)) {
-<<<<<<< HEAD
-                    return $item[$parameterName] ?? $item[Str::afterLast($parameterName, '.')];
-                } elseif (is_object($item)) {
-                    return $item->{$parameterName} ?? $item->{Str::afterLast($parameterName, '.')};
-=======
+                if ($item instanceof Model &&
+                    ! is_null($parameter = $this->getPivotParameterForItem($item, $parameterName))) {
+                    return $parameter;
+                } elseif ($item instanceof ArrayAccess || is_array($item)) {
                     return $this->ensureParameterIsPrimitive(
                         $item[$parameterName] ?? $item[Str::afterLast($parameterName, '.')]
                     );
@@ -208,7 +208,6 @@ abstract class AbstractCursorPaginator implements Htmlable
                     return $this->ensureParameterIsPrimitive(
                         $item->{$parameterName} ?? $item->{Str::afterLast($parameterName, '.')}
                     );
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 }
 
                 throw new Exception('Only arrays and objects are supported when cursor paginating items.');
@@ -216,8 +215,26 @@ abstract class AbstractCursorPaginator implements Htmlable
     }
 
     /**
-<<<<<<< HEAD
-=======
+     * Get the cursor parameter value from a pivot model if applicable.
+     *
+     * @param  \ArrayAccess|\stdClass  $item
+     * @param  string  $parameterName
+     * @return string|null
+     */
+    protected function getPivotParameterForItem($item, $parameterName)
+    {
+        $table = Str::beforeLast($parameterName, '.');
+
+        foreach ($item->getRelations() as $relation) {
+            if ($relation instanceof Pivot && $relation->getTable() === $table) {
+                return $this->ensureParameterIsPrimitive(
+                    $relation->getAttribute(Str::afterLast($parameterName, '.'))
+                );
+            }
+        }
+    }
+
+    /**
      * Ensure the parameter is a primitive type.
      *
      * This can resolve issues that arise the developer uses a value object for an attribute.
@@ -233,7 +250,6 @@ abstract class AbstractCursorPaginator implements Htmlable
     }
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Get / set the URL fragment to be appended to URLs.
      *
      * @param  string|null  $fragment

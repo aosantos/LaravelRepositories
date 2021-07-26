@@ -19,11 +19,7 @@ namespace Monolog\Processor;
 class WebProcessor implements ProcessorInterface
 {
     /**
-<<<<<<< HEAD
-     * @var array|\ArrayAccess
-=======
      * @var array<string, mixed>|\ArrayAccess<string, mixed>
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected $serverData;
 
@@ -32,11 +28,7 @@ class WebProcessor implements ProcessorInterface
      *
      * Array is structured as [key in record.extra => key in $serverData]
      *
-<<<<<<< HEAD
-     * @var array
-=======
      * @var array<string, string>
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected $extraFields = [
         'url'         => 'REQUEST_URI',
@@ -47,13 +39,8 @@ class WebProcessor implements ProcessorInterface
     ];
 
     /**
-<<<<<<< HEAD
-     * @param array|\ArrayAccess|null $serverData  Array or object w/ ArrayAccess that provides access to the $_SERVER data
-     * @param array|null              $extraFields Field names and the related key inside $serverData to be added. If not provided it defaults to: url, ip, http_method, server, referrer
-=======
      * @param array<string, mixed>|\ArrayAccess<string, mixed>|null $serverData  Array or object w/ ArrayAccess that provides access to the $_SERVER data
      * @param array<string, string>|null                            $extraFields Field names and the related key inside $serverData to be added. If not provided it defaults to: url, ip, http_method, server, referrer
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct($serverData = null, array $extraFields = null)
     {
@@ -82,12 +69,9 @@ class WebProcessor implements ProcessorInterface
         }
     }
 
-<<<<<<< HEAD
-=======
     /**
      * {@inheritDoc}
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function __invoke(array $record): array
     {
         // skip processing if for some reason request data
@@ -108,13 +92,10 @@ class WebProcessor implements ProcessorInterface
         return $this;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @param  mixed[] $extra
      * @return mixed[]
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private function appendExtraFields(array $extra): array
     {
         foreach ($this->extraFields as $extraName => $serverName) {

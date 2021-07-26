@@ -27,8 +27,6 @@ class Logger implements LoggerInterface
     protected $dispatcher;
 
     /**
-<<<<<<< HEAD
-=======
      * Any context to be added to logs.
      *
      * @var array
@@ -36,7 +34,6 @@ class Logger implements LoggerInterface
     protected $context = [];
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Create a new log writer instance.
      *
      * @param  \Psr\Log\LoggerInterface  $logger
@@ -181,21 +178,15 @@ class Logger implements LoggerInterface
      */
     protected function writeLog($level, $message, $context)
     {
-<<<<<<< HEAD
-        $this->logger->{$level}($message = $this->formatMessage($message), $context);
-=======
         $this->logger->{$level}(
             $message = $this->formatMessage($message),
             $context = array_merge($this->context, $context)
         );
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         $this->fireLogEvent($level, $message, $context);
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Add context to all future logs.
      *
      * @param  array  $context
@@ -221,7 +212,6 @@ class Logger implements LoggerInterface
     }
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Register a new callback handler for when a log event is triggered.
      *
      * @param  \Closure  $callback

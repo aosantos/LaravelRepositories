@@ -12,10 +12,7 @@
 namespace Monolog\Handler;
 
 use Monolog\Logger;
-<<<<<<< HEAD
-=======
 use Psr\Log\LogLevel;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 /**
  * Simple handler wrapper that deduplicates log records across multiple requests
@@ -36,13 +33,10 @@ use Psr\Log\LogLevel;
  * same way.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
-<<<<<<< HEAD
-=======
  *
  * @phpstan-import-type Record from \Monolog\Logger
  * @phpstan-import-type LevelName from \Monolog\Logger
  * @phpstan-import-type Level from \Monolog\Logger
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class DeduplicationHandler extends BufferHandler
 {
@@ -52,11 +46,7 @@ class DeduplicationHandler extends BufferHandler
     protected $deduplicationStore;
 
     /**
-<<<<<<< HEAD
-     * @var int
-=======
      * @var Level
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected $deduplicationLevel;
 
@@ -76,11 +66,8 @@ class DeduplicationHandler extends BufferHandler
      * @param string|int       $deduplicationLevel The minimum logging level for log records to be looked at for deduplication purposes
      * @param int              $time               The period (in seconds) during which duplicate entries should be suppressed after a given log is sent through
      * @param bool             $bubble             Whether the messages that are handled can bubble up the stack or not
-<<<<<<< HEAD
-=======
      *
      * @phpstan-param Level|LevelName|LogLevel::* $deduplicationLevel
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct(HandlerInterface $handler, ?string $deduplicationStore = null, $deduplicationLevel = Logger::ERROR, int $time = 60, bool $bubble = true)
     {
@@ -120,12 +107,9 @@ class DeduplicationHandler extends BufferHandler
         }
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @phpstan-param Record $record
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private function isDuplicate(array $record): bool
     {
         if (!file_exists($this->deduplicationStore)) {
@@ -192,12 +176,9 @@ class DeduplicationHandler extends BufferHandler
         $this->gc = false;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @phpstan-param Record $record
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private function appendRecord(array $record): void
     {
         file_put_contents($this->deduplicationStore, $record['datetime']->getTimestamp() . ':' . $record['level_name'] . ':' . preg_replace('{[\r\n].*}', '', $record['message']) . "\n", FILE_APPEND);

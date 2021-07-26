@@ -33,16 +33,11 @@ use Monolog\Formatter\MongoDBFormatter;
  */
 class MongoDBHandler extends AbstractProcessingHandler
 {
-<<<<<<< HEAD
-    private $collection;
-    private $manager;
-=======
     /** @var \MongoDB\Collection */
     private $collection;
     /** @var Client|Manager */
     private $manager;
     /** @var string */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private $namespace;
 
     /**
@@ -51,11 +46,6 @@ class MongoDBHandler extends AbstractProcessingHandler
      * @param Client|Manager $mongodb    MongoDB library or driver client
      * @param string         $database   Database name
      * @param string         $collection Collection name
-<<<<<<< HEAD
-     * @param string|int     $level      The minimum logging level at which this handler will be triggered
-     * @param bool           $bubble     Whether the messages that are handled can bubble up the stack or not
-=======
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct($mongodb, string $database, string $collection, $level = Logger::DEBUG, bool $bubble = true)
     {

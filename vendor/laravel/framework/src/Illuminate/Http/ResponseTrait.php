@@ -33,8 +33,6 @@ trait ResponseTrait
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Get the status text for the response.
      *
      * @return string
@@ -45,7 +43,6 @@ trait ResponseTrait
     }
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Get the content of the response.
      *
      * @return string

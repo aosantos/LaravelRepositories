@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+
 class ProductController extends Controller
 {
     protected $product;
@@ -26,7 +27,8 @@ class ProductController extends Controller
     {
         $products = $this->product->with('category')->get();
 
-        return response()->json($products);
+        //return response()->json($products);
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -36,15 +38,15 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('name','id');
-
-        return view('admin.products.create',compact('categories'));
+        $categories =  Category::pluck('title','id');
+        
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUpdateProductFormRequest $request)
@@ -55,70 +57,107 @@ class ProductController extends Controller
 
         $product = $this->product->create($request->all());
 
-        return response()->json(['sucesso'=>'Produto adicionado com sucesso']);
+        return redirect()->route('products.index')
+            ->withSuccess('Produto Cadastrado');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $product = $this->product->with('category')
-            ->where('id',$id)
+            ->where('id', $id)
             ->first();
 
-        if(!$product){
+        if (!$product) {
             return redirect()->back();
         }
 
-        return response()->json($product);
+        return view('admin.products.show', compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $categories =  Category::pluck('title','id');
-
-        if(!$product = $this->product->find($id)){
+        $categories = Category::pluck('title','id');
+        
+        if (!$product = $this->product->find($id)) {
             return redirect()->back();
         }
-        return view('admin.products.edit',compact('product','categories'));
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(StoreUpdateProductFormRequest $request, $id)
     {
         $product = $this->product->find($id)->update($request->all());
 
-        return response()->json(['sucesso'=>'Produto atualizado com sucesso']);
+        return redirect()->route('products.index')
+            ->withSuccess('Produto atualizado com sucesso');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-       //$this->product->find($id)->delete();
-        Product::where('id',$id)->delete();
+        //$this->product->find($id)->delete();
+        Product::where('id', $id)->delete();
 
-        return response()->json(['sucesso'=>'Produto excluido com sucesso']);
+        return redirect()->route('products.index')
+            ->withSuccess('Produto excluido com sucesso');
 
+    }
+
+    public function search(Request $request)
+    {
+        
+        /*$products = $this->product
+            ->with([
+                'category' => function ($query)use($request){
+                    $query->where('id',$request->category);
+                }
+        ])*/
+        $products = $this->product
+        ->with('category')
+            ->where(function ($query) use ($request) {
+                if ($request->name) {
+                    $filter = $request->name;
+                    $query->where(function ($querySub) use ($filter) {
+                        $querySub->where('name','LIKE',"%{$filter}%")
+                            ->orWhere('description','LIKE',"%{$filter}%");
+                    });
+                }
+
+                if ($request->price) {
+                    $query->where('price', $request->price);
+                }
+                if ($request->category) {
+                    $query->orWhere('category_id', $request->category);
+                }
+            })
+            ->get();
+      
+
+        return view('admin.products.index', compact('products'));
     }
 }

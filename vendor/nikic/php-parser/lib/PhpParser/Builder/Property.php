@@ -4,10 +4,7 @@ namespace PhpParser\Builder;
 
 use PhpParser;
 use PhpParser\BuilderHelpers;
-<<<<<<< HEAD
-=======
 use PhpParser\Node;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\NullableType;
@@ -24,12 +21,9 @@ class Property implements PhpParser\Builder
     /** @var null|Identifier|Name|NullableType */
     protected $type;
 
-<<<<<<< HEAD
-=======
     /** @var Node\AttributeGroup[] */
     protected $attributeGroups = [];
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     /**
      * Creates a property builder.
      *
@@ -125,8 +119,6 @@ class Property implements PhpParser\Builder
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Adds an attribute group.
      *
      * @param Node\Attribute|Node\AttributeGroup $attribute
@@ -140,7 +132,6 @@ class Property implements PhpParser\Builder
     }
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Returns the built class node.
      *
      * @return Stmt\Property The built property node
@@ -152,12 +143,8 @@ class Property implements PhpParser\Builder
                 new Stmt\PropertyProperty($this->name, $this->default)
             ],
             $this->attributes,
-<<<<<<< HEAD
-            $this->type
-=======
             $this->type,
             $this->attributeGroups
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         );
     }
 }

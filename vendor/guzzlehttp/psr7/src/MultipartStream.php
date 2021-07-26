@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare(strict_types=1);
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\StreamInterface;
@@ -12,22 +9,12 @@ use Psr\Http\Message\StreamInterface;
 /**
  * Stream that when read returns bytes for a streaming multipart or
  * multipart/form-data stream.
-<<<<<<< HEAD
- *
- * @final
- */
-class MultipartStream implements StreamInterface
-{
-    use StreamDecoratorTrait;
-
-=======
  */
 final class MultipartStream implements StreamInterface
 {
     use StreamDecoratorTrait;
 
     /** @var string */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private $boundary;
 
     /**
@@ -42,50 +29,28 @@ final class MultipartStream implements StreamInterface
      *
      * @throws \InvalidArgumentException
      */
-<<<<<<< HEAD
-    public function __construct(array $elements = [], $boundary = null)
-=======
     public function __construct(array $elements = [], string $boundary = null)
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $this->boundary = $boundary ?: sha1(uniqid('', true));
         $this->stream = $this->createStream($elements);
     }
 
-<<<<<<< HEAD
-    /**
-     * Get the boundary
-     *
-     * @return string
-     */
-    public function getBoundary()
-=======
     public function getBoundary(): string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->boundary;
     }
 
-<<<<<<< HEAD
-    public function isWritable()
-=======
     public function isWritable(): bool
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return false;
     }
 
     /**
      * Get the headers needed before transferring the content of a POST file
-<<<<<<< HEAD
-     */
-    private function getHeaders(array $headers)
-=======
      *
      * @param array<string, string> $headers
      */
     private function getHeaders(array $headers): string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $str = '';
         foreach ($headers as $key => $value) {
@@ -98,11 +63,7 @@ final class MultipartStream implements StreamInterface
     /**
      * Create the aggregate stream that will be used to upload the POST data
      */
-<<<<<<< HEAD
-    protected function createStream(array $elements)
-=======
     protected function createStream(array $elements = []): StreamInterface
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $stream = new AppendStream();
 
@@ -116,11 +77,7 @@ final class MultipartStream implements StreamInterface
         return $stream;
     }
 
-<<<<<<< HEAD
-    private function addElement(AppendStream $stream, array $element)
-=======
     private function addElement(AppendStream $stream, array $element): void
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         foreach (['contents', 'name'] as $key) {
             if (!array_key_exists($key, $element)) {
@@ -137,19 +94,11 @@ final class MultipartStream implements StreamInterface
             }
         }
 
-<<<<<<< HEAD
-        list($body, $headers) = $this->createElement(
-            $element['name'],
-            $element['contents'],
-            isset($element['filename']) ? $element['filename'] : null,
-            isset($element['headers']) ? $element['headers'] : []
-=======
         [$body, $headers] = $this->createElement(
             $element['name'],
             $element['contents'],
             $element['filename'] ?? null,
             $element['headers'] ?? []
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         );
 
         $stream->addStream(Utils::streamFor($this->getHeaders($headers)));
@@ -157,14 +106,7 @@ final class MultipartStream implements StreamInterface
         $stream->addStream(Utils::streamFor("\r\n"));
     }
 
-<<<<<<< HEAD
-    /**
-     * @return array
-     */
-    private function createElement($name, StreamInterface $stream, $filename, array $headers)
-=======
     private function createElement(string $name, StreamInterface $stream, ?string $filename, array $headers): array
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         // Set a default content-disposition header if one was no provided
         $disposition = $this->getHeader($headers, 'content-disposition');
@@ -197,11 +139,7 @@ final class MultipartStream implements StreamInterface
         return [$stream, $headers];
     }
 
-<<<<<<< HEAD
-    private function getHeader(array $headers, $key)
-=======
     private function getHeader(array $headers, string $key)
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $lowercaseHeader = strtolower($key);
         foreach ($headers as $k => $v) {

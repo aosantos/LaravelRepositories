@@ -5,10 +5,7 @@ namespace Illuminate\Database\Eloquent\Casts;
 use ArrayObject as BaseArrayObject;
 use Illuminate\Contracts\Support\Arrayable;
 use JsonSerializable;
-<<<<<<< HEAD
-=======
 use ReturnTypeWillChange;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
 class ArrayObject extends BaseArrayObject implements Arrayable, JsonSerializable
 {
@@ -37,10 +34,7 @@ class ArrayObject extends BaseArrayObject implements Arrayable, JsonSerializable
      *
      * @return array
      */
-<<<<<<< HEAD
-=======
     #[ReturnTypeWillChange]
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function jsonSerialize()
     {
         return $this->getArrayCopy();

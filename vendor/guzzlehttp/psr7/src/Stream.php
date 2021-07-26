@@ -1,43 +1,17 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare(strict_types=1);
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\StreamInterface;
 
 /**
  * PHP stream implementation.
-<<<<<<< HEAD
- *
- * @var $stream
-=======
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class Stream implements StreamInterface
 {
     /**
-<<<<<<< HEAD
-     * Resource modes.
-     *
-     * @var string
-     *
-     * @see http://php.net/manual/function.fopen.php
-     * @see http://php.net/manual/en/function.gzopen.php
-     */
-    const READABLE_MODES = '/r|a\+|ab\+|w\+|wb\+|x\+|xb\+|c\+|cb\+/';
-    const WRITABLE_MODES = '/a|w|r\+|rb\+|rw|x|c/';
-
-    private $stream;
-    private $size;
-    private $seekable;
-    private $readable;
-    private $writable;
-    private $uri;
-=======
      * @see http://php.net/manual/function.fopen.php
      * @see http://php.net/manual/en/function.gzopen.php
      */
@@ -57,7 +31,6 @@ class Stream implements StreamInterface
     /** @var string|null */
     private $uri;
     /** @var mixed[] */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private $customMetadata;
 
     /**
@@ -69,21 +42,12 @@ class Stream implements StreamInterface
      * - metadata: (array) Any additional metadata to return when the metadata
      *   of the stream is accessed.
      *
-<<<<<<< HEAD
-     * @param resource $stream  Stream resource to wrap.
-     * @param array    $options Associative array of options.
-     *
-     * @throws \InvalidArgumentException if the stream is not a stream resource
-     */
-    public function __construct($stream, $options = [])
-=======
      * @param resource                            $stream  Stream resource to wrap.
      * @param array{size?: int, metadata?: array} $options Associative array of options.
      *
      * @throws \InvalidArgumentException if the stream is not a stream resource
      */
     public function __construct($stream, array $options = [])
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!is_resource($stream)) {
             throw new \InvalidArgumentException('Stream must be a resource');
@@ -93,14 +57,7 @@ class Stream implements StreamInterface
             $this->size = $options['size'];
         }
 
-<<<<<<< HEAD
-        $this->customMetadata = isset($options['metadata'])
-            ? $options['metadata']
-            : [];
-
-=======
         $this->customMetadata = $options['metadata'] ?? [];
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $this->stream = $stream;
         $meta = stream_get_meta_data($this->stream);
         $this->seekable = $meta['seekable'];
@@ -117,35 +74,23 @@ class Stream implements StreamInterface
         $this->close();
     }
 
-<<<<<<< HEAD
-    public function __toString()
-=======
     public function __toString(): string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         try {
             if ($this->isSeekable()) {
                 $this->seek(0);
             }
             return $this->getContents();
-<<<<<<< HEAD
-        } catch (\Exception $e) {
-=======
         } catch (\Throwable $e) {
             if (\PHP_VERSION_ID >= 70400) {
                 throw $e;
             }
             trigger_error(sprintf('%s::__toString exception: %s', self::class, (string) $e), E_USER_ERROR);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             return '';
         }
     }
 
-<<<<<<< HEAD
-    public function getContents()
-=======
     public function getContents(): string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -160,11 +105,7 @@ class Stream implements StreamInterface
         return $contents;
     }
 
-<<<<<<< HEAD
-    public function close()
-=======
     public function close(): void
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (isset($this->stream)) {
             if (is_resource($this->stream)) {
@@ -188,11 +129,7 @@ class Stream implements StreamInterface
         return $result;
     }
 
-<<<<<<< HEAD
-    public function getSize()
-=======
     public function getSize(): ?int
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if ($this->size !== null) {
             return $this->size;
@@ -208,11 +145,7 @@ class Stream implements StreamInterface
         }
 
         $stats = fstat($this->stream);
-<<<<<<< HEAD
-        if (isset($stats['size'])) {
-=======
         if (is_array($stats) && isset($stats['size'])) {
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $this->size = $stats['size'];
             return $this->size;
         }
@@ -220,38 +153,22 @@ class Stream implements StreamInterface
         return null;
     }
 
-<<<<<<< HEAD
-    public function isReadable()
-=======
     public function isReadable(): bool
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->readable;
     }
 
-<<<<<<< HEAD
-    public function isWritable()
-=======
     public function isWritable(): bool
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->writable;
     }
 
-<<<<<<< HEAD
-    public function isSeekable()
-=======
     public function isSeekable(): bool
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->seekable;
     }
 
-<<<<<<< HEAD
-    public function eof()
-=======
     public function eof(): bool
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -260,11 +177,7 @@ class Stream implements StreamInterface
         return feof($this->stream);
     }
 
-<<<<<<< HEAD
-    public function tell()
-=======
     public function tell(): int
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -279,20 +192,12 @@ class Stream implements StreamInterface
         return $result;
     }
 
-<<<<<<< HEAD
-    public function rewind()
-=======
     public function rewind(): void
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $this->seek(0);
     }
 
-<<<<<<< HEAD
-    public function seek($offset, $whence = SEEK_SET)
-=======
     public function seek($offset, $whence = SEEK_SET): void
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $whence = (int) $whence;
 
@@ -308,11 +213,7 @@ class Stream implements StreamInterface
         }
     }
 
-<<<<<<< HEAD
-    public function read($length)
-=======
     public function read($length): string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -336,11 +237,7 @@ class Stream implements StreamInterface
         return $string;
     }
 
-<<<<<<< HEAD
-    public function write($string)
-=======
     public function write($string): int
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!isset($this->stream)) {
             throw new \RuntimeException('Stream is detached');
@@ -372,10 +269,6 @@ class Stream implements StreamInterface
 
         $meta = stream_get_meta_data($this->stream);
 
-<<<<<<< HEAD
-        return isset($meta[$key]) ? $meta[$key] : null;
-=======
         return $meta[$key] ?? null;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 }

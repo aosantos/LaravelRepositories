@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare(strict_types=1);
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 namespace GuzzleHttp\Psr7;
 
 final class Header
@@ -16,15 +13,8 @@ final class Header
      * contains a key, this function will inject a key with a '' string value.
      *
      * @param string|array $header Header to parse into components.
-<<<<<<< HEAD
-     *
-     * @return array Returns the parsed header values.
-     */
-    public static function parse($header)
-=======
      */
     public static function parse($header): array
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         static $trimmed = "\"'  \n\t\r";
         $params = $matches = [];
@@ -54,15 +44,8 @@ final class Header
      * headers into an array of headers with no comma separated values.
      *
      * @param string|array $header Header to normalize.
-<<<<<<< HEAD
-     *
-     * @return array Returns the normalized header field values.
-     */
-    public static function normalize($header)
-=======
      */
     public static function normalize($header): array
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         if (!is_array($header)) {
             return array_map('trim', explode(',', $header));

@@ -960,8 +960,6 @@ class Collection implements ArrayAccess, Enumerable
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Create chunks representing a "sliding window" view of the items in the collection.
      *
      * @param  int  $size
@@ -978,7 +976,6 @@ class Collection implements ArrayAccess, Enumerable
     }
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Skip the first {$count} items.
      *
      * @param  int  $count

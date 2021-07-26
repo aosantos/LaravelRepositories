@@ -71,11 +71,7 @@ class WindowsPipes extends AbstractPipes
                     }
                     $this->lockHandles[$pipe] = $h;
 
-<<<<<<< HEAD
-                    if (!fclose(fopen($file, 'w')) || !$h = fopen($file, 'r')) {
-=======
                     if (!($h = fopen($file, 'w')) || !fclose($h) || !$h = fopen($file, 'r')) {
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                         flock($this->lockHandles[$pipe], \LOCK_UN);
                         fclose($this->lockHandles[$pipe]);
                         unset($this->lockHandles[$pipe]);

@@ -22,13 +22,6 @@ use Monolog\Utils;
  */
 class CubeHandler extends AbstractProcessingHandler
 {
-<<<<<<< HEAD
-    private $udpConnection;
-    private $httpConnection;
-    private $scheme;
-    private $host;
-    private $port;
-=======
     /** @var resource|\Socket|null */
     private $udpConnection = null;
     /** @var resource|\CurlHandle|null */
@@ -40,7 +33,6 @@ class CubeHandler extends AbstractProcessingHandler
     /** @var int */
     private $port;
     /** @var string[] */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     private $acceptedSchemes = ['http', 'udp'];
 
     /**
@@ -54,11 +46,7 @@ class CubeHandler extends AbstractProcessingHandler
     {
         $urlInfo = parse_url($url);
 
-<<<<<<< HEAD
-        if (!isset($urlInfo['scheme'], $urlInfo['host'], $urlInfo['port'])) {
-=======
         if ($urlInfo === false || !isset($urlInfo['scheme'], $urlInfo['host'], $urlInfo['port'])) {
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             throw new \UnexpectedValueException('URL "'.$url.'" is not valid');
         }
 
@@ -71,11 +59,7 @@ class CubeHandler extends AbstractProcessingHandler
 
         $this->scheme = $urlInfo['scheme'];
         $this->host = $urlInfo['host'];
-<<<<<<< HEAD
-        $this->port = $urlInfo['port'];
-=======
         $this->port = (int) $urlInfo['port'];
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         parent::__construct($level, $bubble);
     }
@@ -92,20 +76,12 @@ class CubeHandler extends AbstractProcessingHandler
             throw new MissingExtensionException('The sockets extension is required to use udp URLs with the CubeHandler');
         }
 
-<<<<<<< HEAD
-        $this->udpConnection = socket_create(AF_INET, SOCK_DGRAM, 0);
-        if (!$this->udpConnection) {
-            throw new \LogicException('Unable to create a socket');
-        }
-
-=======
         $udpConnection = socket_create(AF_INET, SOCK_DGRAM, 0);
         if (false === $udpConnection) {
             throw new \LogicException('Unable to create a socket');
         }
 
         $this->udpConnection = $udpConnection;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         if (!socket_connect($this->udpConnection, $this->host, $this->port)) {
             throw new \LogicException('Unable to connect to the socket at ' . $this->host . ':' . $this->port);
         }
@@ -123,27 +99,18 @@ class CubeHandler extends AbstractProcessingHandler
             throw new MissingExtensionException('The curl extension is required to use http URLs with the CubeHandler');
         }
 
-<<<<<<< HEAD
-        $this->httpConnection = curl_init('http://'.$this->host.':'.$this->port.'/1.0/event/put');
-
-        if (!$this->httpConnection) {
-            throw new \LogicException('Unable to connect to ' . $this->host . ':' . $this->port);
-        }
-
-=======
         $httpConnection = curl_init('http://'.$this->host.':'.$this->port.'/1.0/event/put');
         if (false === $httpConnection) {
             throw new \LogicException('Unable to connect to ' . $this->host . ':' . $this->port);
         }
 
         $this->httpConnection = $httpConnection;
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         curl_setopt($this->httpConnection, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($this->httpConnection, CURLOPT_RETURNTRANSFER, true);
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function write(array $record): void
     {
@@ -184,13 +151,10 @@ class CubeHandler extends AbstractProcessingHandler
             $this->connectHttp();
         }
 
-<<<<<<< HEAD
-=======
         if (null === $this->httpConnection) {
             throw new \LogicException('No connection could be established');
         }
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         curl_setopt($this->httpConnection, CURLOPT_POSTFIELDS, '['.$data.']');
         curl_setopt($this->httpConnection, CURLOPT_HTTPHEADER, [
             'Content-Type: application/json',

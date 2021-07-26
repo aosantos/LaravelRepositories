@@ -1,7 +1,5 @@
 # CHANGELOG
 
-<<<<<<< HEAD
-=======
 ## 2021-07-06, v1.15
 
 - Updated the generator phpdoc to help identify magic methods (#307)
@@ -11,7 +9,6 @@
 - Don't generate birth number of '000' for Swedish personal identity (#306)
 - Add job list for localization id_ID (#339)
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 ## 2021-03-30, v1.14.1
 
 - Fix where randomNumber and randomFloat would return a 0 value (#291 / #292)

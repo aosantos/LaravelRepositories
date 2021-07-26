@@ -5,7 +5,10 @@
         Editar categoria:{{$category->title}}
     </h3>
     <ol class="breadcrumb">
-        <li><a href="{{route('categories.index')}}">Categorias</a></li>/
+        <li><a href="{{route('admin')}}">Dashboard</a></li>
+        /
+        <li><a href="{{route('categories.index')}}">Categorias</a></li>
+        /
         <li><a href="{{route('categories.edit',$category->id)}}" class="active">Editar</a></li>
     </ol>
 @stop

@@ -17,11 +17,7 @@
             $status = 'warning';
         } else {
             $severity = 0;
-<<<<<<< HEAD
-            if (($exception = $log['context']['exception'] ?? null) instanceof \ErrorException) {
-=======
             if (($exception = $log['context']['exception'] ?? null) instanceof \ErrorException || $exception instanceof \Symfony\Component\ErrorHandler\Exception\SilencedErrorContext) {
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 $severity = $exception->getSeverity();
             }
             $status = \E_DEPRECATED === $severity || \E_USER_DEPRECATED === $severity ? 'warning' : 'normal';

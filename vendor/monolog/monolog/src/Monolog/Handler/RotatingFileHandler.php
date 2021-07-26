@@ -30,13 +30,6 @@ class RotatingFileHandler extends StreamHandler
     public const FILE_PER_MONTH = 'Y-m';
     public const FILE_PER_YEAR = 'Y';
 
-<<<<<<< HEAD
-    protected $filename;
-    protected $maxFiles;
-    protected $mustRotate;
-    protected $nextRotation;
-    protected $filenameFormat;
-=======
     /** @var string */
     protected $filename;
     /** @var int */
@@ -48,17 +41,11 @@ class RotatingFileHandler extends StreamHandler
     /** @var string */
     protected $filenameFormat;
     /** @var string */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     protected $dateFormat;
 
     /**
      * @param string     $filename
      * @param int        $maxFiles       The maximal amount of files to keep (0 means unlimited)
-<<<<<<< HEAD
-     * @param string|int $level          The minimum logging level at which this handler will be triggered
-     * @param bool       $bubble         Whether the messages that are handled can bubble up the stack or not
-=======
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * @param int|null   $filePermission Optional file permissions (default (0644) are only for owner read/write)
      * @param bool       $useLocking     Try to lock log file before doing any writes
      */
@@ -74,7 +61,7 @@ class RotatingFileHandler extends StreamHandler
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function close(): void
     {
@@ -86,7 +73,7 @@ class RotatingFileHandler extends StreamHandler
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function reset()
     {
@@ -121,17 +108,13 @@ class RotatingFileHandler extends StreamHandler
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function write(array $record): void
     {
         // on the first record written, if the log is new, we should rotate (once per day)
         if (null === $this->mustRotate) {
-<<<<<<< HEAD
-            $this->mustRotate = !file_exists($this->url);
-=======
             $this->mustRotate = null === $this->url || !file_exists($this->url);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         }
 
         if ($this->nextRotation <= $record['datetime']) {
@@ -157,14 +140,11 @@ class RotatingFileHandler extends StreamHandler
         }
 
         $logFiles = glob($this->getGlobPattern());
-<<<<<<< HEAD
-=======
         if (false === $logFiles) {
             // failed to glob
             return;
         }
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         if ($this->maxFiles >= count($logFiles)) {
             // no files to remove
             return;
@@ -199,11 +179,7 @@ class RotatingFileHandler extends StreamHandler
             $fileInfo['dirname'] . '/' . $this->filenameFormat
         );
 
-<<<<<<< HEAD
-        if (!empty($fileInfo['extension'])) {
-=======
         if (isset($fileInfo['extension'])) {
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $timedFilename .= '.'.$fileInfo['extension'];
         }
 
@@ -218,11 +194,7 @@ class RotatingFileHandler extends StreamHandler
             [$fileInfo['filename'], '[0-9][0-9][0-9][0-9]*'],
             $fileInfo['dirname'] . '/' . $this->filenameFormat
         );
-<<<<<<< HEAD
-        if (!empty($fileInfo['extension'])) {
-=======
         if (isset($fileInfo['extension'])) {
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $glob .= '.'.$fileInfo['extension'];
         }
 

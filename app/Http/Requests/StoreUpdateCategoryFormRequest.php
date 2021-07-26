@@ -23,9 +23,10 @@ class StoreUpdateCategoryFormRequest extends FormRequest
      */
     public function rules()
     {
+        $id = $this->segment(3);
         return [
-            'title'         => 'required|min:3|max:60|unique:categories',
-            'url'           => 'required|min:3|max:60|unique:categories',
+            'title'         => "required|min:3|max:60|unique:categories,title,{$id},id",
+            'url'           => "required|min:3|max:60|unique:categories,url,{$id},id",
             'description'   => 'max:2000',
         ];
     }

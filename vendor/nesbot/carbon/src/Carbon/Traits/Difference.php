@@ -121,9 +121,6 @@ trait Difference
     #[ReturnTypeWillChange]
     public function diff($date = null, $absolute = false)
     {
-<<<<<<< HEAD
-        return parent::diff($this->resolveCarbon($date), (bool) $absolute);
-=======
         $other = $this->resolveCarbon($date);
 
         // Can be removed if https://github.com/derickr/timelib/pull/110
@@ -135,7 +132,6 @@ trait Difference
         // @codeCoverageIgnoreEnd
 
         return parent::diff($other, (bool) $absolute);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -554,22 +550,14 @@ trait Difference
         }
         $monthsDiff = $start->diffInMonths($end);
         /** @var Carbon|CarbonImmutable $floorEnd */
-<<<<<<< HEAD
-        $floorEnd = $start->copy()->addMonths($monthsDiff);
-=======
         $floorEnd = $start->avoidMutation()->addMonths($monthsDiff);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         if ($floorEnd >= $end) {
             return $sign * $monthsDiff;
         }
 
         /** @var Carbon|CarbonImmutable $startOfMonthAfterFloorEnd */
-<<<<<<< HEAD
-        $startOfMonthAfterFloorEnd = $floorEnd->copy()->addMonth()->startOfMonth();
-=======
         $startOfMonthAfterFloorEnd = $floorEnd->avoidMutation()->addMonth()->startOfMonth();
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         if ($startOfMonthAfterFloorEnd > $end) {
             return $sign * ($monthsDiff + $floorEnd->floatDiffInDays($end) / $floorEnd->daysInMonth);
@@ -597,22 +585,14 @@ trait Difference
         }
         $yearsDiff = $start->diffInYears($end);
         /** @var Carbon|CarbonImmutable $floorEnd */
-<<<<<<< HEAD
-        $floorEnd = $start->copy()->addYears($yearsDiff);
-=======
         $floorEnd = $start->avoidMutation()->addYears($yearsDiff);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         if ($floorEnd >= $end) {
             return $sign * $yearsDiff;
         }
 
         /** @var Carbon|CarbonImmutable $startOfYearAfterFloorEnd */
-<<<<<<< HEAD
-        $startOfYearAfterFloorEnd = $floorEnd->copy()->addYear()->startOfYear();
-=======
         $startOfYearAfterFloorEnd = $floorEnd->avoidMutation()->addYear()->startOfYear();
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         if ($startOfYearAfterFloorEnd > $end) {
             return $sign * ($yearsDiff + $floorEnd->floatDiffInDays($end) / $floorEnd->daysInYear);
@@ -671,11 +651,7 @@ trait Difference
     public function floatDiffInRealDays($date = null, $absolute = true)
     {
         $date = $this->resolveUTC($date);
-<<<<<<< HEAD
-        $utc = $this->copy()->utc();
-=======
         $utc = $this->avoidMutation()->utc();
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $hoursDiff = $utc->floatDiffInRealHours($date, $absolute);
 
         return ($hoursDiff < 0 ? -1 : 1) * $utc->diffInDays($date) + fmod($hoursDiff, static::HOURS_PER_DAY) / static::HOURS_PER_DAY;
@@ -713,22 +689,14 @@ trait Difference
         }
         $monthsDiff = $start->diffInMonths($end);
         /** @var Carbon|CarbonImmutable $floorEnd */
-<<<<<<< HEAD
-        $floorEnd = $start->copy()->addMonths($monthsDiff);
-=======
         $floorEnd = $start->avoidMutation()->addMonths($monthsDiff);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         if ($floorEnd >= $end) {
             return $sign * $monthsDiff;
         }
 
         /** @var Carbon|CarbonImmutable $startOfMonthAfterFloorEnd */
-<<<<<<< HEAD
-        $startOfMonthAfterFloorEnd = $floorEnd->copy()->addMonth()->startOfMonth();
-=======
         $startOfMonthAfterFloorEnd = $floorEnd->avoidMutation()->addMonth()->startOfMonth();
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         if ($startOfMonthAfterFloorEnd > $end) {
             return $sign * ($monthsDiff + $floorEnd->floatDiffInRealDays($end) / $floorEnd->daysInMonth);
@@ -756,22 +724,14 @@ trait Difference
         }
         $yearsDiff = $start->diffInYears($end);
         /** @var Carbon|CarbonImmutable $floorEnd */
-<<<<<<< HEAD
-        $floorEnd = $start->copy()->addYears($yearsDiff);
-=======
         $floorEnd = $start->avoidMutation()->addYears($yearsDiff);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         if ($floorEnd >= $end) {
             return $sign * $yearsDiff;
         }
 
         /** @var Carbon|CarbonImmutable $startOfYearAfterFloorEnd */
-<<<<<<< HEAD
-        $startOfYearAfterFloorEnd = $floorEnd->copy()->addYear()->startOfYear();
-=======
         $startOfYearAfterFloorEnd = $floorEnd->avoidMutation()->addYear()->startOfYear();
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 
         if ($startOfYearAfterFloorEnd > $end) {
             return $sign * ($yearsDiff + $floorEnd->floatDiffInRealDays($end) / $floorEnd->daysInYear);
@@ -787,11 +747,7 @@ trait Difference
      */
     public function secondsSinceMidnight()
     {
-<<<<<<< HEAD
-        return $this->diffInSeconds($this->copy()->startOfDay());
-=======
         return $this->diffInSeconds($this->avoidMutation()->startOfDay());
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -801,11 +757,7 @@ trait Difference
      */
     public function secondsUntilEndOfDay()
     {
-<<<<<<< HEAD
-        return $this->diffInSeconds($this->copy()->endOfDay());
-=======
         return $this->diffInSeconds($this->avoidMutation()->endOfDay());
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -1164,15 +1116,9 @@ trait Difference
     public function calendar($referenceTime = null, array $formats = [])
     {
         /** @var CarbonInterface $current */
-<<<<<<< HEAD
-        $current = $this->copy()->startOfDay();
-        /** @var CarbonInterface $other */
-        $other = $this->resolveCarbon($referenceTime)->copy()->setTimezone($this->getTimezone())->startOfDay();
-=======
         $current = $this->avoidMutation()->startOfDay();
         /** @var CarbonInterface $other */
         $other = $this->resolveCarbon($referenceTime)->avoidMutation()->setTimezone($this->getTimezone())->startOfDay();
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $diff = $other->diffInDays($current, false);
         $format = $diff < -6 ? 'sameElse' : (
             $diff < -1 ? 'lastWeek' : (
@@ -1190,10 +1136,6 @@ trait Difference
             $format = $format($current, $other) ?? '';
         }
 
-<<<<<<< HEAD
-        return $this->isoFormat(\strval($format));
-=======
         return $this->isoFormat((string) $format);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 }

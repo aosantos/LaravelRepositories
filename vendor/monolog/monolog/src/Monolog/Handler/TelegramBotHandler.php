@@ -27,31 +27,20 @@ use Monolog\Logger;
  * @link https://core.telegram.org/bots/api
  *
  * @author Mazur Alexandr <alexandrmazur96@gmail.com>
-<<<<<<< HEAD
-=======
  *
  * @phpstan-import-type Record from \Monolog\Logger
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class TelegramBotHandler extends AbstractProcessingHandler
 {
     private const BOT_API = 'https://api.telegram.org/bot';
 
     /**
-<<<<<<< HEAD
-     * @var array AVAILABLE_PARSE_MODES The available values of parseMode according to the Telegram api documentation
-=======
      * The available values of parseMode according to the Telegram api documentation
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     private const AVAILABLE_PARSE_MODES = [
         'HTML',
         'MarkdownV2',
-<<<<<<< HEAD
-        'Markdown' // legacy mode without underline and strikethrough, use MarkdownV2 instead
-=======
         'Markdown', // legacy mode without underline and strikethrough, use MarkdownV2 instead
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     ];
 
     /**
@@ -72,41 +61,25 @@ class TelegramBotHandler extends AbstractProcessingHandler
      * The kind of formatting that is used for the message.
      * See available options at https://core.telegram.org/bots/api#formatting-options
      * or in AVAILABLE_PARSE_MODES
-<<<<<<< HEAD
-     * @var string|null
-=======
      * @var ?string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     private $parseMode;
 
     /**
      * Disables link previews for links in the message.
-<<<<<<< HEAD
-     * @var bool|null
-=======
      * @var ?bool
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     private $disableWebPagePreview;
 
     /**
      * Sends the message silently. Users will receive a notification with no sound.
-<<<<<<< HEAD
-     * @var bool|null
-=======
      * @var ?bool
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     private $disableNotification;
 
     /**
      * @param string $apiKey  Telegram bot access token provided by BotFather
      * @param string $channel Telegram channel name
-<<<<<<< HEAD
-     * @inheritDoc
-=======
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     public function __construct(
         string $apiKey,
@@ -133,42 +106,30 @@ class TelegramBotHandler extends AbstractProcessingHandler
         }
 
         $this->parseMode = $parseMode;
-<<<<<<< HEAD
-=======
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         return $this;
     }
 
     public function disableWebPagePreview(bool $disableWebPagePreview = null): self
     {
         $this->disableWebPagePreview = $disableWebPagePreview;
-<<<<<<< HEAD
-=======
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         return $this;
     }
 
     public function disableNotification(bool $disableNotification = null): self
     {
         $this->disableNotification = $disableNotification;
-<<<<<<< HEAD
-=======
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         return $this;
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function handleBatch(array $records): void
     {
-<<<<<<< HEAD
-=======
         /** @var Record[] $messages */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $messages = [];
 
         foreach ($records as $record) {
@@ -177,10 +138,7 @@ class TelegramBotHandler extends AbstractProcessingHandler
             }
 
             if ($this->processors) {
-<<<<<<< HEAD
-=======
                 /** @var Record $record */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
                 $record = $this->processRecord($record);
             }
 
@@ -220,12 +178,9 @@ class TelegramBotHandler extends AbstractProcessingHandler
         ]));
 
         $result = Curl\Util::execute($ch);
-<<<<<<< HEAD
-=======
         if (!is_string($result)) {
             throw new RuntimeException('Telegram API error. Description: No response');
         }
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         $result = json_decode($result, true);
 
         if ($result['ok'] === false) {

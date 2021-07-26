@@ -81,14 +81,6 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
             return;
         }
 
-<<<<<<< HEAD
-        $this->storeRelativeAgeDirective('max-age', $response->headers->getCacheControlDirective('max-age'), $age);
-        $this->storeRelativeAgeDirective('s-maxage', $response->headers->getCacheControlDirective('s-maxage') ?: $response->headers->getCacheControlDirective('max-age'), $age);
-
-        $expires = $response->getExpires();
-        $expires = null !== $expires ? (int) $expires->format('U') - (int) $response->getDate()->format('U') : null;
-        $this->storeRelativeAgeDirective('expires', $expires >= 0 ? $expires : null, 0);
-=======
         $isHeuristicallyCacheable = $response->headers->hasCacheControlDirective('public');
         $maxAge = $response->headers->hasCacheControlDirective('max-age') ? (int) $response->headers->getCacheControlDirective('max-age') : null;
         $this->storeRelativeAgeDirective('max-age', $maxAge, $age, $isHeuristicallyCacheable);
@@ -98,7 +90,6 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
         $expires = $response->getExpires();
         $expires = null !== $expires ? (int) $expires->format('U') - (int) $response->getDate()->format('U') : null;
         $this->storeRelativeAgeDirective('expires', $expires >= 0 ? $expires : null, 0, $isHeuristicallyCacheable);
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -209,13 +200,6 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
      * we have to subtract the age so that the value is normalized for an age of 0.
      *
      * If the value is lower than the currently stored value, we update the value, to keep a rolling
-<<<<<<< HEAD
-     * minimal value of each instruction. If the value is NULL, the directive will not be set on the final response.
-     */
-    private function storeRelativeAgeDirective(string $directive, ?int $value, int $age)
-    {
-        if (null === $value) {
-=======
      * minimal value of each instruction.
      *
      * If the value is NULL and the isHeuristicallyCacheable parameter is false, the directive will
@@ -239,7 +223,6 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
                  */
                 return;
             }
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $this->ageDirectives[$directive] = false;
         }
 

@@ -19,28 +19,14 @@ use Throwable;
  * This can be useful to log to databases or remote APIs
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
-<<<<<<< HEAD
-=======
  *
  * @phpstan-import-type Record from \Monolog\Logger
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
  */
 class JsonFormatter extends NormalizerFormatter
 {
     public const BATCH_MODE_JSON = 1;
     public const BATCH_MODE_NEWLINES = 2;
 
-<<<<<<< HEAD
-    protected $batchMode;
-    protected $appendNewline;
-    protected $ignoreEmptyContextAndExtra;
-
-    /**
-     * @var bool
-     */
-    protected $includeStacktraces = false;
-
-=======
     /** @var self::BATCH_MODE_* */
     protected $batchMode;
     /** @var bool */
@@ -53,17 +39,13 @@ class JsonFormatter extends NormalizerFormatter
     /**
      * @param self::BATCH_MODE_* $batchMode
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function __construct(int $batchMode = self::BATCH_MODE_JSON, bool $appendNewline = true, bool $ignoreEmptyContextAndExtra = false)
     {
         $this->batchMode = $batchMode;
         $this->appendNewline = $appendNewline;
         $this->ignoreEmptyContextAndExtra = $ignoreEmptyContextAndExtra;
-<<<<<<< HEAD
-=======
 
         parent::__construct();
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     }
 
     /**
@@ -87,7 +69,7 @@ class JsonFormatter extends NormalizerFormatter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function format(array $record): string
     {
@@ -112,7 +94,7 @@ class JsonFormatter extends NormalizerFormatter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function formatBatch(array $records): string
     {
@@ -126,12 +108,9 @@ class JsonFormatter extends NormalizerFormatter
         }
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @return void
      */
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     public function includeStacktraces(bool $include = true)
     {
         $this->includeStacktraces = $include;
@@ -139,11 +118,8 @@ class JsonFormatter extends NormalizerFormatter
 
     /**
      * Return a JSON-encoded array of records.
-<<<<<<< HEAD
-=======
      *
      * @phpstan-param Record[] $records
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function formatBatchJson(array $records): string
     {
@@ -153,11 +129,8 @@ class JsonFormatter extends NormalizerFormatter
     /**
      * Use new lines to separate records instead of a
      * JSON-encoded array.
-<<<<<<< HEAD
-=======
      *
      * @phpstan-param Record[] $records
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function formatBatchNewlines(array $records): string
     {
@@ -202,13 +175,10 @@ class JsonFormatter extends NormalizerFormatter
             return $normalized;
         }
 
-<<<<<<< HEAD
-=======
         if ($data instanceof \DateTimeInterface) {
             return $this->formatDate($data);
         }
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
         if ($data instanceof Throwable) {
             return $this->normalizeException($data, $depth);
         }
@@ -223,11 +193,8 @@ class JsonFormatter extends NormalizerFormatter
     /**
      * Normalizes given exception with or without its own stack trace based on
      * `includeStacktraces` property.
-<<<<<<< HEAD
-=======
      *
      * {@inheritDoc}
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      */
     protected function normalizeException(Throwable $e, int $depth = 0): array
     {

@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
-=======
 declare(strict_types=1);
 
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 namespace GuzzleHttp\Psr7;
 
 use Psr\Http\Message\StreamInterface;
@@ -12,15 +9,8 @@ use Psr\Http\Message\StreamInterface;
 /**
  * Stream decorator that can cache previously read bytes from a sequentially
  * read stream.
-<<<<<<< HEAD
- *
- * @final
- */
-class CachingStream implements StreamInterface
-=======
  */
 final class CachingStream implements StreamInterface
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 {
     use StreamDecoratorTrait;
 
@@ -44,33 +34,16 @@ final class CachingStream implements StreamInterface
         $this->stream = $target ?: new Stream(Utils::tryFopen('php://temp', 'r+'));
     }
 
-<<<<<<< HEAD
-    public function getSize()
-=======
     public function getSize(): ?int
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return max($this->stream->getSize(), $this->remoteStream->getSize());
     }
 
-<<<<<<< HEAD
-    public function rewind()
-=======
     public function rewind(): void
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $this->seek(0);
     }
 
-<<<<<<< HEAD
-    public function seek($offset, $whence = SEEK_SET)
-    {
-        if ($whence == SEEK_SET) {
-            $byte = $offset;
-        } elseif ($whence == SEEK_CUR) {
-            $byte = $offset + $this->tell();
-        } elseif ($whence == SEEK_END) {
-=======
     public function seek($offset, $whence = SEEK_SET): void
     {
         if ($whence === SEEK_SET) {
@@ -78,7 +51,6 @@ final class CachingStream implements StreamInterface
         } elseif ($whence === SEEK_CUR) {
             $byte = $offset + $this->tell();
         } elseif ($whence === SEEK_END) {
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
             $size = $this->remoteStream->getSize();
             if ($size === null) {
                 $size = $this->cacheEntireStream();
@@ -103,11 +75,7 @@ final class CachingStream implements StreamInterface
         }
     }
 
-<<<<<<< HEAD
-    public function read($length)
-=======
     public function read($length): string
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         // Perform a regular read on any previously read data from the buffer
         $data = $this->stream->read($length);
@@ -136,11 +104,7 @@ final class CachingStream implements StreamInterface
         return $data;
     }
 
-<<<<<<< HEAD
-    public function write($string)
-=======
     public function write($string): int
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         // When appending to the end of the currently read stream, you'll want
         // to skip bytes from being read from the remote stream to emulate
@@ -154,11 +118,7 @@ final class CachingStream implements StreamInterface
         return $this->stream->write($string);
     }
 
-<<<<<<< HEAD
-    public function eof()
-=======
     public function eof(): bool
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         return $this->stream->eof() && $this->remoteStream->eof();
     }
@@ -166,14 +126,6 @@ final class CachingStream implements StreamInterface
     /**
      * Close both the remote stream and buffer stream
      */
-<<<<<<< HEAD
-    public function close()
-    {
-        $this->remoteStream->close() && $this->stream->close();
-    }
-
-    private function cacheEntireStream()
-=======
     public function close(): void
     {
         $this->remoteStream->close();
@@ -181,7 +133,6 @@ final class CachingStream implements StreamInterface
     }
 
     private function cacheEntireStream(): int
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
     {
         $target = new FnStream(['write' => 'strlen']);
         Utils::copyToStream($this, $target);

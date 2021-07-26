@@ -2,18 +2,11 @@
 
 namespace Illuminate\Queue\Failed;
 
-<<<<<<< HEAD
-use Illuminate\Database\ConnectionResolverInterface;
-use Illuminate\Support\Facades\Date;
-
-class DatabaseFailedJobProvider implements FailedJobProviderInterface
-=======
 use DateTimeInterface;
 use Illuminate\Database\ConnectionResolverInterface;
 use Illuminate\Support\Facades\Date;
 
 class DatabaseFailedJobProvider implements FailedJobProviderInterface, PrunableFailedJobProvider
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
 {
     /**
      * The connection resolver implementation.
@@ -114,8 +107,6 @@ class DatabaseFailedJobProvider implements FailedJobProviderInterface, PrunableF
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Prune all of the entries older than the given date.
      *
      * @param  \DateTimeInterface  $before
@@ -137,7 +128,6 @@ class DatabaseFailedJobProvider implements FailedJobProviderInterface, PrunableF
     }
 
     /**
->>>>>>> 257505fe7f385dddbd7a37ea6158c5bc619eb0cd
      * Get a new query builder instance for the table.
      *
      * @return \Illuminate\Database\Query\Builder
