@@ -25,7 +25,7 @@ class ProductController extends Controller
      */
     public function index(Product $product)
     {
-        $products = $this->product->with('category')->get();
+        $products = $this->product->with('category')->paginate(1);
 
         //return response()->json($products);
         return view('admin.products.index', compact('products'));
@@ -39,7 +39,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories =  Category::pluck('title','id');
-        
+
         return view('admin.products.create', compact('categories'));
     }
 
@@ -90,7 +90,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $categories = Category::pluck('title','id');
-        
+
         if (!$product = $this->product->find($id)) {
             return redirect()->back();
         }
@@ -130,7 +130,7 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
-        
+
         /*$products = $this->product
             ->with([
                 'category' => function ($query)use($request){
@@ -155,8 +155,8 @@ class ProductController extends Controller
                     $query->orWhere('category_id', $request->category);
                 }
             })
-            ->get();
-      
+            ->paginate(1);
+
 
         return view('admin.products.index', compact('products'));
     }
