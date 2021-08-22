@@ -5,8 +5,6 @@
         Cadastrar novo produto
     </h3>
     <ol class="breadcrumb">
-        <li><a href="{{route('admin')}}">Dashboard</a></li>
-        /
         <li><a href="{{route('products.index')}}">Produtos</a></li>
         /
         <li><a href="{{route('products.create')}}" class="active">Cadastrar</a></li>

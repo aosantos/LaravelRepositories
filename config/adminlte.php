@@ -187,7 +187,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'admin',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -238,6 +238,13 @@ return [
         [
             'text'        => 'Produtos',
             'url'         => 'admin/products',
+            'icon'        => 'far fa-fw fa-file',
+           // 'label'       => 4,
+            'label_color' => 'success',
+        ],
+           [
+            'text'        => 'Usuários',
+            'url'         => 'admin/users',
             'icon'        => 'far fa-fw fa-file',
            // 'label'       => 4,
             'label_color' => 'success',

@@ -2,9 +2,8 @@
 
 namespace App\Repositories\Core;
 
-use App\Models\Product;
-use App\Repositories\Contracts\RepositoryInterface;
 use App\Repositories\Exceptions\NotEntityDefined;
+use App\Repositories\Contracts\RepositoryInterface;
 
 class BaseEloquentRepository implements RepositoryInterface
 {
@@ -25,17 +24,17 @@ class BaseEloquentRepository implements RepositoryInterface
         return $this->entity->find($id);
     }
 
-    public function findWhere($column,$valor)
+    public function findWhere($column, $valor)
     {
         return $this->entity
-            ->where($column,$valor)
+            ->where($column, $valor)
             ->get();
     }
 
-    public function findWhereFirst($column,$valor)
+    public function findWhereFirst($column, $valor)
     {
         return $this->entity
-            ->where($column,$valor)
+            ->where($column, $valor)
             ->first();
     }
 
@@ -49,7 +48,7 @@ class BaseEloquentRepository implements RepositoryInterface
         return $this->entity->create($data);
     }
 
-    public function update($id,array $data)
+    public function update($id, array $data)
     {
         $entity = $this->findById($id);
 
@@ -61,11 +60,26 @@ class BaseEloquentRepository implements RepositoryInterface
         return $this->entity->find($id)->delete();
     }
 
-    public function resolveEntity($entity)
+    public function relationships(...$relationships)
     {
-        if(!method_exists($this,'entity')){
+        $this->entity = $this->entity->with($relationships);
+
+        return $this;
+    }
+
+    public function orderBy($column, $order = 'DESC')
+    {
+        $this->entity = $this->entity->orderBy($column, $order);
+
+        return $this;
+    }
+
+    public function resolveEntity()
+    {
+        if (!method_exists($this, 'entity')) {
             throw new NotEntityDefined;
         }
+
         return app($this->entity());
     }
 }

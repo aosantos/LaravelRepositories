@@ -5,8 +5,6 @@
         Cadastrar nova categoria
     </h3>
     <ol class="breadcrumb">
-        <li><a href="{{route('admin')}}">Dashboard</a></li>
-        /
         <li><a href="{{route('categories.index')}}">Categorias</a></li>
         /
         <li><a href="{{route('categories.create')}}" class="active">Cadastrar</a></li>

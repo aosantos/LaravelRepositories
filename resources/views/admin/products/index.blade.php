@@ -7,8 +7,6 @@
     </h3>
 
     <ol class="breadcrumb">
-        <li><a href="{{route('admin')}}">Dashboard</a></li>
-        /
         <li><a href="{{route('products.index')}}">Produtos</a></li>
     </ol>
 

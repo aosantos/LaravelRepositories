@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateCategoryFormRequest;
+use DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-
+use App\Http\Controllers\Controller;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
 
 class CategoryController extends Controller
 {
+    protected $repository;
+
+    public function __construct(CategoryRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,11 +24,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = DB::table('categories')
-            ->orderBy('id','desc')
-            ->get();
+        $categories = $this->repository->orderBy('title', 'ASC')->paginate();
 
-        return view('admin.categories.index',compact($categories,'categories'));
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -31,25 +36,25 @@ class CategoryController extends Controller
      */
     public function create()
     {
-     return view('admin.categories.create');
+        return view('admin.categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreUpdateCategoryFormRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUpdateCategoryFormRequest $request)
     {
-        DB::table('categories')->insert([
+        $this->repository->store([
             'title'         => $request->title,
-            'url'           => $request->url,
             'description'   => $request->description,
         ]);
 
-        return redirect()->route('categories.index')->
-            with('sucess','Cadastro realizadocom sucesso');
+        return redirect()
+                    ->route('categories.index')
+                    ->withSuccess('Cadastro realizado com sucesso');
     }
 
     /**
@@ -60,13 +65,12 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = DB::table('categories')->where('id', $id)->first();
+        $category = $this->repository->findById($id);
 
-        if(!$category){
+        if (!$category)
             return redirect()->back();
-        }
 
-        return view('admin.categories.show',compact('category'));
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -77,31 +81,27 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = DB::table('categories')->where('id', $id)->first();
-
-        if(!$category){
+        if (!$category = $this->repository->findById($id))
             return redirect()->back();
-        }
 
-        return view('admin.categories.edit',compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreUpdateCategoryFormRequest  $request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateCategoryFormRequest $request, $id)
     {
-        DB::table('categories')
-            ->where('id',$id)
-            ->update([
-                'title'         => $request->title,
-                'url'           => $request->url,
-                'description'   => $request->description
-            ]);
+        $this->repository
+                ->update($id, [
+                    'title'         => $request->title,
+                    'description'   => $request->description,
+                ]);
+                
         return redirect()->route('categories.index');
     }
 
@@ -113,36 +113,25 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('categories')->where('id',$id)->delete();
+        $products = $this->repository->productsByCategoryId($id);
+        if (count($products) > 0)
+            return redirect()
+                    ->route('categories.index')
+                    ->with('message', 'Não pode deletar porque existem produtos vinculados a essa categoria.');
 
-        return redirect()->route('categories.index');
+        $this->repository->delete($id);
+
+        return redirect()
+                    ->route('categories.index')
+                    ->withSuccess('Categoria deletada com sucesso');
     }
+
     public function search(Request $request)
     {
-        $data = $request->all();
-        /*$categories = DB::table('categories')
-            ->where('title',$search)
-            ->orWhere('url',$search)
-            ->orWhere('description','LIKE',"%{$search}%")
-            ->get();
-        */
+        $data = $request->except('_token');
 
-        $categories = DB::table('categories')
-            ->where(function ($query) use ($data){
-                if (isset($data['title'])){
-                    $query->where('title',$data['title']);
-                }
-            if(isset($data['url'])){
-                $query->orWhere('url',$data['url']);
-            }
-                if(isset($data['description'])){
-                    $desc = $data['description'];
-                    $query->Where('description','LIKE',"%{$desc}%");
-                }
-           })
-            ->orderBy('id','desc')
-            ->get();
-
-        return view('admin.categories.index',compact('categories'));
+        $categories = $this->repository->search($data);
+        
+        return view('admin.categories.index', compact('categories', 'data'));
     }
 }

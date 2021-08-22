@@ -5,7 +5,6 @@
         Detalhes do produto:{{$product->title}}
     </h3>
     <ol class="breadcrumb">
-        <li><a href="{{route('admin')}}">Dashboard</a></li>/
         <li><a href="{{route('products.index')}}">Categorias</a></li>/
         <li><a href="{{route('products.show',$product->id)}}" class="active">Detalhes</a></li>
     </ol>
